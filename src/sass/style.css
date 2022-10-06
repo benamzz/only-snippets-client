@@ -1,31 +1,4 @@
-:root {
-  --main-green: #0B8D85;
-}
-
 body {
-  margin: 0;
-  background-color: #2e0c35;
-  border: 0px;
-}
-
-#start {
-  height: 99vh;
-  position: relative;
-  border: 5px solid var(--main-green);
-}
-#start h1 {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--main-green);
-}
-#start h3 {
-  margin: 0;
-  position: absolute;
-  top: 60%;
-  left: 60%;
-  transform: translate(-60%, -60%);
-  color: white;
+  background-color: rgb(53, 18, 18);
+  color: #fff;
 }/*# sourceMappingURL=style.css.map */
