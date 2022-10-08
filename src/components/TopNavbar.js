@@ -1,9 +1,11 @@
 function TopNavbar() {
   return (
     <div className="TopNavbar">
-      <a href="/search">search</a>
-      <a href="/">Home</a>
-      <a href="/users/:id/love">MY loves</a>
+      <nav>
+        <a href="/search">Search</a>
+        <a href="/">Home</a>
+        <a href="/users/:id/love">♥️</a>
+      </nav>
     </div>
   );
 }

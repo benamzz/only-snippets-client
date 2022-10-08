@@ -1,4 +1,21 @@
+:root {
+  --green: #0B8D85 ;
+}
+
 body {
   background-color: rgb(53, 18, 18);
   color: #fff;
+  margin: 0;
+}
+
+.TopNavbar {
+  background-color: var(--green);
+  overflow: hidden;
+}
+.TopNavbar a {
+  color: #fff;
+  position: relative;
+  display: inline-flex;
+  font-size: 2rem;
+  color: white;
 }/*# sourceMappingURL=style.css.map */
