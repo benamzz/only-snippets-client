@@ -18,4 +18,8 @@ body {
   display: inline-flex;
   font-size: 2rem;
   color: white;
+}
+
+.Home section {
+  margin: 20px;
 }/*# sourceMappingURL=style.css.map */
