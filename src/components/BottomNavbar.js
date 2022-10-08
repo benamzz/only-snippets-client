@@ -1,10 +1,8 @@
-import { useParams } from "react-router-dom";
 import {useContext} from 'react';
 import { AuthContext } from "../context/auth.context";
 
 function BottomNavbar() {
-    const { isLoggedIn,user,logOutUser} = useContext(AuthContext);
-    const { userId } = useParams();
+    const { user} = useContext(AuthContext);
 
   return (
     <div className="BottomNavbar">
