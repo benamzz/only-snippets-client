@@ -25,9 +25,9 @@ function Signup(props) {
     // Make an axios request to the API
     // If POST request is successful redirect to login page
     // If the request resolves with an error, set the error message in the state
-    axios.post(`${API_URL}/auth/users`, requestBody)
+    axios.post(`${API_URL}/api/users`, requestBody)
       .then((response) => {
-        console.log('carrot')
+        console.log(response)
         navigate('/login');
       })
       .catch((error) => {
