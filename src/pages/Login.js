@@ -42,6 +42,7 @@ function Login(props) {
 
   return (
     <div className="Login">
+     <i class="fas fa-arrow-circle-left"></i>
       <h3>Welcome back!</h3>
 
       <form onSubmit={handleLoginSubmit}>
