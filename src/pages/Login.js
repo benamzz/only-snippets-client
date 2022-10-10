@@ -42,17 +42,17 @@ function Login(props) {
 
   return (
     <div className="Login">
-     <i class="fas fa-arrow-circle-left"></i>
+      <i class="fas fa-arrow-circle-left"></i>
       <h3>Welcome back!</h3>
 
       <form onSubmit={handleLoginSubmit}>
         <div className="btn googleAuth-btn">
           <a href="#">
-            <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" />
-             Google Login
+            <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
+            Google Login
           </a>
         </div>
-      
+
         <div>or</div>
 
         <label>

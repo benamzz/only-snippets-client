@@ -77,11 +77,11 @@ function Profile() {
         <p>followers: {!followers ? 0 : followers.data.length} people </p>
       </div>
       <div className="articlesList">
-        {myArticles.data.map(el => {
+        {myArticles && (myArticles.data.map(el => {
           return (
             <Article value={el}></Article>
           )
-        })}
+        }))}
       </div>
 
       <BottomNavbar />
