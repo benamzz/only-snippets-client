@@ -1,8 +1,10 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { AuthContext } from "../context/auth.context";
 
 function BottomNavbar() {
-    const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
+  if (!user) return "loading"
 
   return (
     <div className="BottomNavbar">
