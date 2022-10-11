@@ -21,8 +21,8 @@ function Home() {
       <div className="Home">
         <TopNavbar />
         <section>
-          <h1>hello {currentUser.username}</h1>
-          <img src={currentUser.avatarUrl} alt="avatar" />
+          <h1>hello {currentUser.user.username}</h1>
+          <img src={currentUser.user.avatarUrl} alt="avatar" />
           <p>
             Pikachu (ピカチュウ, Pikachū?) est une espèce de Pokémon, une créature
             de fiction issue de la franchise médiatique Pokémon de Nintendo. Il est

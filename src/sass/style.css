@@ -14,18 +14,31 @@ body {
   margin: 0;
 }
 
-.Login {
+.Login, .Signup {
   background-color: var(--green);
   margin: 50px;
 }
-.Login h3 {
+.Login form, .Signup form {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.Login a, .Signup a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.724);
+}
+.Login .fa-arrow-circle-left, .Signup .fa-arrow-circle-left {
+  display: flex;
+}
+.Login h2, .Signup h2 {
   text-shadow: #000;
 }
-.Login label {
-  padding: 10px 0px 10px 0px;
+.Login label, .Signup label {
+  padding: 30px 0px 10px 0px;
   text-align: left;
 }
-.Login input {
+.Login input, .Signup input {
+  justify-content: center;
   padding: 8px;
   color: #fff;
   margin-bottom: 5px;
@@ -33,43 +46,15 @@ body {
   border: solid 1px var(--green);
   background-color: var(--darkGreen);
 }
-.Login form {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+.Login .pwd-reset, .Signup .pwd-reset {
+  font-size: 16px;
+  text-align: left;
 }
-.Login a {
-  color: rgba(255, 255, 255, 0.724);
+.Login h4, .Signup h4 {
+  text-align: center;
 }
-.Login #auth-btn {
-  margin: 10px;
-  padding: 15px;
-  font-size: 20px;
-  background: var(--darkGreen);
-  color: var(--white);
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
-}
-.Login #auth-btn:hover {
-  background-color: #2c2c2c;
-  color: var(--white);
-  cursor: pointer;
-  padding-left: 30px;
-}
-.Login #auth-btn:after {
-  content: " ✨";
-  opacity: 0;
-  top: 14px;
-  transition: 0.6s;
-}
-.Login #auth-btn:hover:after {
-  opacity: 1;
-  right: 10px;
-}
-.Login .googleAuth-btn {
-  margin: 10px;
+.Login .googleAuth-btn, .Signup .googleAuth-btn {
+  margin: 30px;
   padding: 15px;
   font-size: 20px;
   background: #fff;
@@ -78,9 +63,39 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
 }
-.Login .googleAuth-btn a {
+.Login .googleAuth-btn a, .Signup .googleAuth-btn a {
   color: #000;
   text-decoration: none;
+}
+.Login #auth-btn, .Signup #auth-btn {
+  margin: 10px;
+  padding: 15px;
+  margin-top: 50px;
+  font-size: 20px;
+  width: 200px;
+  justify-content: center;
+  background: var(--darkGreen);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+}
+.Login #auth-btn:hover, .Signup #auth-btn:hover {
+  background-color: #2c2c2c;
+  color: var(--white);
+  cursor: pointer;
+  padding-left: 30px;
+}
+.Login #auth-btn:after, .Signup #auth-btn:after {
+  content: " ✨";
+  opacity: 0;
+  top: 14px;
+  transition: 0.6s;
+}
+.Login #auth-btn:hover:after, .Signup #auth-btn:hover:after {
+  opacity: 1;
+  right: 10px;
 }
 
 .TopNavbar {

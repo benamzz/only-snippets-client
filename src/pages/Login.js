@@ -42,11 +42,13 @@ function Login(props) {
 
   return (
     <div className="Login">
-      <i class="fas fa-arrow-circle-left"></i>
-      <h3>Welcome back!</h3>
+      <a href="/signup" id="arrow-back"><i class="fas fa-arrow-circle-left"></i></a>
+     
+      <h2>Welcome back!</h2>
 
       <form onSubmit={handleLoginSubmit}>
-        <div className="btn googleAuth-btn">
+
+        <div className="googleAuth-btn">
           <a href="#">
             <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
             Google Login
@@ -78,16 +80,17 @@ function Login(props) {
           forgot my password...
         </a>
 
+        <div className="btn-auth-div">
         <button id="auth-btn" type="submit">
           Login
         </button>
+        </div>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
 
-      <h4><em>only.snippet</em></h4>
     </div>
   );
 }
