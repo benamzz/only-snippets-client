@@ -42,15 +42,14 @@ function Profile() {
     axios.get(`${API_URL}/api/articles?userId=${userId}`, {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
-      .then((articles) => { setMyArticles(articles) })
+      .then((articles) => {
+        const filteredArticles = articles.data.filter(el => !el.parentId)
+        setMyArticles(filteredArticles)
+      })
       .catch(err => console.log(err))
   }, [userId])
+
   useEffect(() => { getArticles() }, [getArticles])
-
-
-  console.log('user:', user)
-  console.log('followers', followers)
-  console.log('articles:', myArticles)
 
   if (!user) return "loading";
 
@@ -77,7 +76,7 @@ function Profile() {
         <p>followers: {!followers ? 0 : followers.data.length} people </p>
       </div>
       <div className="articlesList">
-        {myArticles && (myArticles.data.map(el => {
+        {myArticles && (myArticles.map(el => {
           return (
             <div key={el._id}>
               <Article value={el}></Article>
