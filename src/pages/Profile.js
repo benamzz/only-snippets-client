@@ -23,7 +23,7 @@ function Profile() {
       .then((userFromApi) => {
         setUser(userFromApi.data);
       })
-      .catch((err) => console.log("coucou err", err));
+      .catch((err) => console.log("err", err));
   }, [userId]);
   useEffect(() => { getUser() }, [getUser]);
 

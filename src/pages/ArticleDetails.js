@@ -24,17 +24,18 @@ function ArticleDetails() {
         axios.get(`${API_URL}/api/articles/${articleId}/comments`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
-            .then(comments => setComments(comments))
+            .then(comments => setComments(comments.data))
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getComments() }, [getComments])
+
 
     if (!article) return "loading"
 
     return (
         <div className="ArticleDetails">
             <Article value={article.data} />
-            {comments.data && comments.data.map(el => {
+            {comments && comments.map(el => {
                 return (
                     <Article value={el} />
                 )

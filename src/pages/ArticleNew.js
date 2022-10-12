@@ -1,60 +1,55 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
 
 function ArticleNew() {
+    const [tag, setTag] = useState("")
+    const [content, setContent] = useState("")
+    const [snippet, setSnippet] = useState("")
     const API_URL = "http://localhost:5005";
-    const navigate = useNavigate();
+    const storedToken = localStorage.getItem("authToken");
+    const navigate = useNavigate()
 
-    const handleArticleSubmit = (e) => {
+    const handleTagInput = e => setTag(e.target.value);
+    const handleContentInput = e => setContent(e.target.value);
+    const handleSnippetInput = e => setSnippet(e.target.value);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { tag, content };
+        const newArticle = { tag, content };
+        const newSnippet = { snippet }
+
+        console.log("Article Submitted: ", newArticle);
+        console.log("Snippet Submitted: ", newSnippet);
+
         axios
-            .post(`${API_URL}/api/sessions`, requestBody)
-            .then((response) => {
-                navigate("/");
+            .post(`${API_URL}/api/articles`, newArticle, {
+                headers: { Authorization: `Bearer ${storedToken}` },
             })
-            .catch((error) => {
-                const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
-            });
-    };
-
-
-    const handleSnippetSubmit = (e) => {
-        e.preventDefault();
-        const requestBody = { content };
-        axios
-            .post(`${API_URL}/api/sessions`, requestBody)
             .then((response) => {
-                navigate("/");
+                console.log('response', response)
+                navigate(`/articles/${response.data._id}`)
             })
-            .catch((error) => {
-                const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
-            });
-    };
-
+            .catch((err) => console.log("err", err));
+    }
 
     return (
         <div className="ArticleNew">
-            <form id="articleForm" onSubmit={handleArticleSubmit}>
+            <form id="articleForm" onSubmit={handleSubmit}>
                 <label>
-                    Tag: <select>
+                    Tag: <select name="tag" value={tag} onChange={handleTagInput} placeholder="">
                         <option value="HTML">HTML</option>
                         <option value="JS">JS</option>
                         <option value="CSS">CSS</option>
                     </select>
                 </label>
                 <label>
-                    Content : <input />
+                    Content : <input type="text" name="content" value={content} onChange={handleContentInput} />
                 </label>
-            </form>
-            <form id="snippetForm" onSubmit={handleSnippetSubmit}>
                 <label>
-                    Snippet:<input />
+                    Snippet:<input type="text" name="snippet" value={snippet} onChange={handleSnippetInput} />
                 </label>
+                <button type="submit">Send Article</button>
             </form>
         </div>
     )

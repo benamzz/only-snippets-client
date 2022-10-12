@@ -43,7 +43,7 @@ function Login() {
   return (
     <div className="Login">
       <a href="/signup" id="arrow-back"><i class="fas fa-arrow-circle-left"></i></a>
-     
+
       <h2>Welcome back!</h2>
 
       <form onSubmit={handleLoginSubmit}>
@@ -81,9 +81,9 @@ function Login() {
         </a>
 
         <div className="btn-auth-div">
-        <button id="auth-btn" type="submit">
-          Login
-        </button>
+          <button id="auth-btn" type="submit">
+            Login
+          </button>
         </div>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
