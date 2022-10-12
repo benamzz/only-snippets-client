@@ -78,6 +78,8 @@ function Profile() {
       </div>
       <Link to={`/users/${userId}`}>Articles</Link>
       <Link to={`/users/${userId}/likes`}>Likes</Link>
+      <Link to={`/users/${userId}/follows`}>following</Link>
+      <Link to={`/users/${userId}/followers`}>followers</Link>
       <div className="articlesList">
         {myArticles && (myArticles.map(el => {
           return (
