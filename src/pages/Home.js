@@ -7,15 +7,19 @@ import snippetImg from "../components/codeSnippet.svg";
 
 function Home() {
   const currentUser = useContext(AuthContext);
-  console.log("currentUser:", currentUser);
+  // console.log("currentUser:", currentUser);
   if (!currentUser.user) {
     return (
-      <div className="Home">
-        <h1>Welcome to only.snippet</h1>
+      <div className="HomeDisconnected">
+        <h1>Welcome <span>to</span> <span id="name-app" >only.snippet</span> </h1>
 
-        <img src={snippetImg} alt="snippet" />
-        <Link to={"/signup"}>Sign Up</Link>
-        <Link to={"/login"}>Log In</Link>
+        <img src={snippetImg} alt="snippet"/>
+        <p>an app for developers by developers </p>
+        
+        <div id="two-auth">
+        <Link id="auth-btn" to={"/signup"}>Sign Up</Link>
+        <Link to={"/login"} id="auth-btn">Log In</Link>
+        </div>
       </div>
     );
   } else {
