@@ -28,7 +28,16 @@ function ArticleNew() {
             })
             .then((response) => {
                 console.log('response', response)
-                navigate(`/articles/${response.data._id}`)
+                axios
+                    .post(`${API_URL}/api/articles/${response.data._id}/snippets`, newSnippet, {
+                        headers: { Authorization: `Bearer ${storedToken}` },
+                    })
+                    .then(response2 => {
+                        console.log("response2", response2)
+                        navigate(`/articles/${response.data._id}`)
+                    })
+                    .catch(err => console.log("err", err))
+
             })
             .catch((err) => console.log("err", err));
     }
@@ -37,7 +46,8 @@ function ArticleNew() {
         <div className="ArticleNew">
             <form id="articleForm" onSubmit={handleSubmit}>
                 <label>
-                    Tag: <select name="tag" value={tag} onChange={handleTagInput} placeholder="">
+                    Tag: <select name="tag" value={tag} onChange={handleTagInput}>
+                        <option value=""></option>
                         <option value="HTML">HTML</option>
                         <option value="JS">JS</option>
                         <option value="CSS">CSS</option>

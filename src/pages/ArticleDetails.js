@@ -2,6 +2,7 @@ import Article from "../components/Article"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+const storedToken = localStorage.getItem("authToken");
 
 function ArticleDetails() {
     const [article, setArticle] = useState(null)
@@ -10,7 +11,6 @@ function ArticleDetails() {
     const { articleId } = useParams()
 
     const getArticle = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
         axios.get(`${API_URL}/api/articles/${articleId}`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
@@ -20,7 +20,6 @@ function ArticleDetails() {
     useEffect(() => { getArticle() }, [getArticle])
 
     const getComments = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
         axios.get(`${API_URL}/api/articles/${articleId}/comments`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
