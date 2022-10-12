@@ -12,6 +12,7 @@ function Article(props) {
                 <p>{props.value.content}</p>
             </Link>
             <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet}`}>Voir le Snippet</Link>
+            <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
 
         </div>
     );

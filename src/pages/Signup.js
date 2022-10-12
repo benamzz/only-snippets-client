@@ -17,12 +17,7 @@ function Signup(props) {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    // Create an object representing the request body
     const requestBody = { email, password };
-
-    // Make an axios request to the API
-    // If POST request is successful redirect to login page
-    // If the request resolves with an error, set the error message in the state
     axios
       .post(`${API_URL}/api/users`, requestBody)
       .then((response) => {
@@ -45,18 +40,18 @@ function Signup(props) {
 
       <form onSubmit={handleSignupSubmit}>
 
-      <div className="googleAuth-btn">
+        <div className="googleAuth-btn">
           <a href="#">
             <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
-             Sign up with Google
+            Sign up with Google
           </a>
         </div>
 
         <div>or</div>
 
         <label>Email <i className="fas fa-at"> :</i></label>
-        <input type="email" name="email" value={email} onChange={handleEmail}           placeholder="Your email adress"
- />
+        <input type="email" name="email" value={email} onChange={handleEmail} placeholder="Your email adress"
+        />
 
         <label>Password :</label>
         <input
@@ -67,10 +62,10 @@ function Signup(props) {
           placeholder="Your password"
 
         />
-        
-      <div className="btn-auth-div">
-        <button type="submit" id="auth-btn">Sign Up</button>
-      </div>
+
+        <div className="btn-auth-div">
+          <button type="submit" id="auth-btn">Sign Up</button>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
