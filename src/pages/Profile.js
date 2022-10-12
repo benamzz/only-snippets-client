@@ -4,7 +4,7 @@ import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import Article from "../components/Article";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Profile() {
   const API_URL = "http://localhost:5005";
@@ -51,6 +51,7 @@ function Profile() {
 
   useEffect(() => { getArticles() }, [getArticles])
 
+
   if (!user) return "loading";
 
   return (
@@ -75,6 +76,8 @@ function Profile() {
         <p>follows : {user.following.length} people</p>
         <p>followers: {!followers ? 0 : followers.data.length} people </p>
       </div>
+      <Link to={`/users/${userId}`}>Articles</Link>
+      <Link to={`/users/${userId}/likes`}>Likes</Link>
       <div className="articlesList">
         {myArticles && (myArticles.map(el => {
           return (
