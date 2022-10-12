@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 function Article(props) {
-    console.log("props.value", props.value)
     if (!props.value) return "loading"
     return (
         <div className="Article">
