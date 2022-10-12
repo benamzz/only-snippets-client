@@ -79,7 +79,9 @@ function Profile() {
       <div className="articlesList">
         {myArticles && (myArticles.data.map(el => {
           return (
-            <Article value={el}></Article>
+            <div key={el._id}>
+              <Article value={el}></Article>
+            </div>
           )
         }))}
       </div>

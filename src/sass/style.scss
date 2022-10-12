@@ -27,23 +27,36 @@ body {
 //  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀ 
                                                                  
 
-
-
-
-.Login {
+.Login, .Signup {
   background-color: var(--green);
   margin: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
 
-  h3 {
+ 
+  a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.724);
+  }
+
+  .fa-arrow-circle-left{
+    display: flex;
+  }
+
+  h2 {
     text-shadow: #000;
   }
 
   label {
-    padding: 10px 0px 10px 0px;
+    padding: 30px 0px 10px 0px;
     text-align: left;
   }
 
   input {
+    justify-content: center;
     padding: 8px;
     color: #fff;
     margin-bottom: 5px;
@@ -52,65 +65,70 @@ body {
     background-color: var(--darkGreen);
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+  .pwd-reset {
+    font-size: 16px;
+    text-align: left;
   }
 
-  a {
-    color: rgba(255, 255, 255, 0.724);
+  h4{
+    text-align: center;
   }
-
-  
-  #auth-btn {
-    margin: 10px;
-    padding: 15px;
-    font-size: 20px;
-
-    background: var(--darkGreen);
-    color: var(--white);
-    border: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-
-    box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
-  }
-
-  #auth-btn:hover {
-    background-color: #2c2c2c;
-    color: var(--white);
-    cursor: pointer;
-    padding-left: 30px;
-  }
-
-  #auth-btn:after {
-    content: " ✨";
-    opacity: 0;
-    top: 14px;
-    transition: 0.6s;
-  }
-
-  #auth-btn:hover:after {
-    opacity: 1;
-    right: 10px;
-  }
-
+    
   .googleAuth-btn {
-    margin: 10px;
+    margin: 30px;
     padding: 15px;
     font-size: 20px;
     background: #fff;
     border: none;
     border-radius: 10px;
     transition: all 0.3s ease;
-
+  
     box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
-
+  
     a{
       color: #000;
       text-decoration: none;
     }
+  }
+  
+  
+  #auth-btn {
+    margin: 10px;
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 200px;
+  
+    
+    justify-content: center;
+    
+  
+    background: var(--darkGreen);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  
+    box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+  }
+  
+  #auth-btn:hover {
+    background-color: #2c2c2c;
+    color: var(--white);
+    cursor: pointer;
+    padding-left: 30px;
+  }
+  
+  #auth-btn:after {
+    content: " ✨";
+    opacity: 0;
+    top: 14px;
+    transition: 0.6s;
+  }
+  
+  #auth-btn:hover:after {
+    opacity: 1;
+    right: 10px;
   }
 }
 
@@ -128,7 +146,6 @@ body {
 //      ▐░▌     ▐░░░░░░░░░░░▌▐░▌          ▐░▌      ▐░░▌▐░▌       ▐░▌        ▐░▌        
 //       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀        ▀▀  ▀         ▀          ▀         
                                                                                     
-
 
 .TopNavbar {
   background-color: var(--green);
