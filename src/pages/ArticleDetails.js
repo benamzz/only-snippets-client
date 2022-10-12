@@ -29,9 +29,6 @@ function ArticleDetails() {
     }, [articleId])
     useEffect(() => { getComments() }, [getComments])
 
-    console.log("article:", article)
-    console.log("comments:", comments)
-
     if (!article) return "loading"
 
     return (
