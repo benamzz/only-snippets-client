@@ -11,7 +11,7 @@ function Follows() {
     const { userId } = useParams();
     const [follows, setFollows] = useState(null)
 
-    const getUser = useCallback(() => {
+    const getFollows = useCallback(() => {
         const storedToken = localStorage.getItem("authToken");
         axios
             .get(`${API_URL}/api/users/${userId}`, {
@@ -22,7 +22,7 @@ function Follows() {
             })
             .catch((err) => console.log("err", err));
     }, [userId]);
-    useEffect(() => { getUser() }, [getUser]);
+    useEffect(() => { getFollows() }, [getFollows]);
 
     if (!follows) return "loading";
 

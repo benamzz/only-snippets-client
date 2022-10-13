@@ -19,24 +19,17 @@ function ArticleNew() {
         e.preventDefault();
         const newArticle = { tag, content };
         const newSnippet = { snippet }
-
-        console.log("Article Submitted: ", newArticle);
-        console.log("Snippet Submitted: ", newSnippet);
         if (!articleId) {
             axios
                 .post(`${API_URL}/api/articles`, newArticle, {
                     headers: { Authorization: `Bearer ${storedToken}` },
                 })
                 .then((response) => {
-                    console.log('response', response)
                     axios
                         .post(`${API_URL}/api/articles/${response.data._id}/snippets`, newSnippet, {
                             headers: { Authorization: `Bearer ${storedToken}` },
                         })
-                        .then(response2 => {
-                            console.log("response2", response2)
-                            navigate(`/articles/${response.data._id}`)
-                        })
+                        .then(() => navigate(`/articles/${response.data._id}`))
                         .catch(err => console.log("err", err))
 
                 })
@@ -52,16 +45,12 @@ function ArticleNew() {
                         .post(`${API_URL}/api/articles/${response.data._id}/snippets`, newSnippet, {
                             headers: { Authorization: `Bearer ${storedToken}` },
                         })
-                        .then(response2 => {
-                            console.log("response2", response2)
-                            navigate(`/articles/${response.data._id}`)
-                        })
+                        .then(() => navigate(`/articles/${response.data._id}`))
                         .catch(err => console.log("err", err))
 
                 })
                 .catch((err) => console.log("err", err));
         }
-
     }
 
     return (

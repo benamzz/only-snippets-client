@@ -11,6 +11,8 @@ function Home() {
   const API_URL = "http://localhost:5005";
   const { user } = useContext(AuthContext);
   const [myArticles, setMyArticles] = useState(null)
+
+  console.log("user:", user)
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
 
@@ -20,14 +22,10 @@ function Home() {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
       .then((articles) => {
-        console.log("user", user)
-        console.log("articles", articles)
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
-        console.log("nocomment", noCommentsFilter)
         const filteredArticles = noCommentsFilter.filter(el => {
           return user.following.includes(el.userId._id)
         })
-        console.log("filter:", filteredArticles)
         setMyArticles(filteredArticles)
       })
       .catch(err => console.log(err))

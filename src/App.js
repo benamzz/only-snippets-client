@@ -9,6 +9,7 @@ import Snippet from './pages/Snippet';
 import ArticleDetails from './pages/ArticleDetails';
 import ArticleNew from './pages/ArticleNew';
 import Likes from './pages/Likes'
+import ProfileEdit from './pages/ProfileEdit';
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/users/:userId/edit" element={<ProfileEdit />} />
         <Route path="/users/:userId/likes" element={<Likes />} />
         <Route path="/users/:userId/followers" element={<Followers />} />
         <Route path="/users/:userId/follows" element={<Follows />} />

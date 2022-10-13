@@ -60,7 +60,7 @@ function Profile() {
       <div className="ProfileDetails">
         {isLoggedIn && (
           <>
-            <a href={`/users/${user.userId}/edit`}>Edit</a>
+            <a href={`/users/${userId}/edit`}>Edit</a>
             <button onClick={logOutUser}>Logout</button>
           </>
         )}
