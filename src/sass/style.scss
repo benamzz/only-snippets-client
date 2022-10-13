@@ -13,7 +13,6 @@ body {
   margin: 0;
 }
 
-
 #auth-btn {
   margin: 10px;
   padding: 15px;
@@ -140,16 +139,44 @@ body {
 //      ▐░▌     ▐░░░░░░░░░░░▌▐░▌          ▐░▌      ▐░░▌▐░▌       ▐░▌        ▐░▌
 //       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀        ▀▀  ▀         ▀          ▀
 
+.nav{
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+  }
+
+  li {
+    display: inline;
+
+    a {
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+  }
+  img{
+    width: 50px;
+  }
+}
+
 .TopNavbar {
   background-color: var(--green);
-  overflow: hidden;
-  // position: fixed;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.BottomNavbar {
+  background-color: var(--green);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  
 }
 
 // ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄
@@ -172,7 +199,6 @@ body {
 }
 
 .HomeDisconnected {
-  
   h1 {
     margin-top: 60px;
     margin-bottom: 60px;
@@ -193,17 +219,23 @@ body {
     display: inline;
   }
 
-  p{
+  p {
     margin: 20px;
   }
   a {
     text-decoration: none;
   }
 
-  #two-auth{
+  #two-auth {
     padding: 30px;
     text-shadow: 1px 2px #4c4c4c;
-
   }
+}
 
+.Profile {
+  padding: 50px;
+  background-color: #2c2c2c;
+  #avatar {
+    width: 50px;
+  }
 }

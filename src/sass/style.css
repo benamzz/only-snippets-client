@@ -113,9 +113,39 @@ body {
   text-decoration: none;
 }
 
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+}
+.nav li {
+  display: inline;
+}
+.nav li a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+.nav img {
+  width: 50px;
+}
+
 .TopNavbar {
   background-color: var(--green);
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.BottomNavbar {
+  background-color: var(--green);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .Home section {
@@ -148,4 +178,12 @@ body {
 .HomeDisconnected #two-auth {
   padding: 30px;
   text-shadow: 1px 2px #4c4c4c;
+}
+
+.Profile {
+  padding: 50px;
+  background-color: #2c2c2c;
+}
+.Profile #avatar {
+  width: 50px;
 }/*# sourceMappingURL=style.css.map */
