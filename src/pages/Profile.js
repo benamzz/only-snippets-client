@@ -67,13 +67,13 @@ function Profile() {
 
       <div className="ProfileDetails">
         
-        <section class="userTop"> 
+        <section className="userTop"> 
           
           <div class="flex-child one">
             <img src={user.avatarUrl} id="avatar" alt="profile" />
           </div>
           
-          <div class="flex-child two">
+          <div className="flex-child two">
             <h4>@{user.username}</h4>
             {isLoggedIn && (
               <>
@@ -82,11 +82,11 @@ function Profile() {
               </>
             )}
           </div>
-          
+
         </section>
          
         <div >
-          <ul class="userInfo">
+          <ul className="userInfo">
             <li>
               <p>{user.bio}</p>
             </li>
