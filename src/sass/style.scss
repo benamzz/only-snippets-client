@@ -1,6 +1,7 @@
 :root {
   --green: #0b8d85;
   --darkGreen: #2c2c2cd1;
+  --dark: #2c2c2c;
 }
 
 * {
@@ -8,47 +9,18 @@
 }
 
 body {
-  background-color: var(--green);
+  background-color: var(--dark);
   color: #fff;
-  margin: 0;
-}
-
-#auth-btn {
-  margin: 10px;
-  padding: 15px;
+  // margin: 0;
   margin-top: 50px;
-  font-size: 20px;
-  width: 200px;
-
-  justify-content: center;
-
-  background: var(--darkGreen);
-  color: var(--white);
-  border: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-
-  box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 50px;
 }
 
-#auth-btn:hover {
-  background-color: #2c2c2c;
-  color: var(--white);
-  cursor: pointer;
-  padding-left: 30px;
-}
+// body:not(.Login){
+//   background-color: var(--green);
+// }
 
-#auth-btn:after {
-  content: " ✨";
-  opacity: 0;
-  top: 14px;
-  transition: 0.6s;
-}
 
-#auth-btn:hover:after {
-  opacity: 1;
-  right: 10px;
-}
 
 // ▄            ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄
 // ▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌
@@ -62,10 +34,49 @@ body {
 // ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌
 //  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀
 
+
+#auth-btn {
+  margin: 10px;
+  padding: 15px;
+  margin-top: 50px;
+  font-size: 20px;
+  width: 200px;
+
+  justify-content: center;
+
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+}
+
+#auth-btn:hover {
+  background-color: #0b8d71;
+  color: var(--white);
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+#auth-btn:after {
+  content: "✨";
+  opacity: 0;
+  top: 14px;
+  transition: 0.6s;
+}
+
+#auth-btn:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+
 .Login,
 .Signup {
-  background-color: var(--green);
   margin: 50px;
+  
   form {
     display: flex;
     flex-direction: column;
@@ -125,6 +136,11 @@ body {
       text-decoration: none;
     }
   }
+
+  #logSignLogo{
+    width: 40px;
+    padding: 30px;
+  }
 }
 
 // ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄               ▄
@@ -138,29 +154,6 @@ body {
 //      ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌          ▐░▌     ▐░▐░▌▐░▌       ▐░▌       ▐░▐░▌
 //      ▐░▌     ▐░░░░░░░░░░░▌▐░▌          ▐░▌      ▐░░▌▐░▌       ▐░▌        ▐░▌
 //       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀        ▀▀  ▀         ▀          ▀
-
-// .nav{
-//   ul {
-//     list-style-type: none;
-//     margin: 0;
-//     padding: 0;
-//     height: 50px;
-//   }
-
-//   li {
-//     display: inline;
-
-//     a {
-//       color: white;
-//       text-align: center;
-//       padding: 14px 20px;
-//       text-decoration: none;
-//     }
-//   }
-//   img{
-//     width: 50px;
-//   }
-// }
 
 .nav{
   ul {
@@ -225,6 +218,10 @@ body {
 //  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀
 
 .Home {
+  background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   section {
     margin: 20px;
     // text-align: left;
@@ -266,9 +263,19 @@ body {
 }
 
 .Profile {
-  padding: 50px;
   background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   #avatar {
     width: 50px;
+
   }
+
+}
+
+.ArticleNew{
+  background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

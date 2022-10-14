@@ -1,3 +1,5 @@
+import TopNavbar from "../components/TopNavbar";
+import BottomNavbar from "../components/BottomNavbar";
 import Article from "../components/Article"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
@@ -33,12 +35,14 @@ function ArticleDetails() {
 
     return (
         <div className="ArticleDetails">
+            <TopNavbar />
             <Article value={article.data} />
             {comments && comments.map(el => {
                 return (
                     <Article value={el} />
                 )
             })}
+            <BottomNavbar />
         </div>
     )
 }

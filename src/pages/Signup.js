@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import logoOnlySnippets from "../components/logoOnlySnippets.png";
+
 const API_URL = "http://localhost:5005";
 
 function Signup(props) {
@@ -72,6 +74,9 @@ function Signup(props) {
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
+      <br/>
+      <img src={logoOnlySnippets} alt="snippet" id="logSignLogo"/>
+
     </div>
   );
 }

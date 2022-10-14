@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import BottomNavbar from "../components/BottomNavbar";
+import TopNavbar from "../components/TopNavbar";
 
 function ArticleNew() {
     const [tag, setTag] = useState("")
@@ -55,6 +57,7 @@ function ArticleNew() {
 
     return (
         <div className="ArticleNew">
+            <TopNavbar />
             <form id="articleForm" onSubmit={handleSubmit}>
                 <label>
                     Tag: <select name="tag" value={tag} onChange={handleTagInput}>
@@ -72,6 +75,7 @@ function ArticleNew() {
                 </label>
                 <button type="submit">Send Article</button>
             </form>
+            <BottomNavbar />
         </div>
     )
 }

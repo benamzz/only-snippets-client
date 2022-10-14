@@ -2,6 +2,7 @@
 :root {
   --green: #0b8d85;
   --darkGreen: #2c2c2cd1;
+  --dark: #2c2c2c;
 }
 
 * {
@@ -9,9 +10,10 @@
 }
 
 body {
-  background-color: var(--green);
+  background-color: var(--dark);
   color: #fff;
-  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #auth-btn {
@@ -21,7 +23,7 @@ body {
   font-size: 20px;
   width: 200px;
   justify-content: center;
-  background: var(--darkGreen);
+  background: var(--green);
   color: var(--white);
   border: none;
   border-radius: 10px;
@@ -30,14 +32,14 @@ body {
 }
 
 #auth-btn:hover {
-  background-color: #2c2c2c;
+  background-color: #0b8d71;
   color: var(--white);
   cursor: pointer;
   padding-left: 30px;
 }
 
 #auth-btn:after {
-  content: " ✨";
+  content: "✨";
   opacity: 0;
   top: 14px;
   transition: 0.6s;
@@ -50,7 +52,6 @@ body {
 
 .Login,
 .Signup {
-  background-color: var(--green);
   margin: 50px;
 }
 .Login form,
@@ -112,6 +113,11 @@ body {
   color: #000;
   text-decoration: none;
 }
+.Login #logSignLogo,
+.Signup #logSignLogo {
+  width: 40px;
+  padding: 30px;
+}
 
 .nav ul {
   list-style-type: none;
@@ -151,6 +157,11 @@ body {
   width: 100%;
 }
 
+.Home {
+  background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .Home section {
   margin: 20px;
 }
@@ -184,9 +195,16 @@ body {
 }
 
 .Profile {
-  padding: 50px;
   background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .Profile #avatar {
   width: 50px;
+}
+
+.ArticleNew {
+  background-color: #2c2c2c;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }/*# sourceMappingURL=style.css.map */
