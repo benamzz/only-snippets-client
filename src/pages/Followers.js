@@ -10,28 +10,14 @@ import { AuthContext } from "../context/auth.context";
 
 function Followers() {
     const API_URL = "http://localhost:5005";
-    // const [user, setUser] = useState(null);
     const [followers, setFollowers] = useState(null)
     const { userId } = useParams();
-    const { user } = useContext(AuthContext);
 
 
-    // const getUser = useCallback(() => {
-    //     const storedToken = localStorage.getItem("authToken");
-    //     axios
-    //         .get(`${API_URL}/api/users/${userId}`, {
-    //             headers: { Authorization: `Bearer ${storedToken}` },
-    //         })
-    //         .then((userFromApi) => {
-    //             setUser(userFromApi.data);
-    //         })
-    //         .catch((err) => console.log("err", err));
-    // }, [userId]);
-    // useEffect(() => { getUser() }, [getUser]);
 
     const getFollowers = useCallback(() => {
         const storedToken = localStorage.getItem("authToken");
-        axios.get(`${API_URL}/api/users/${user._id}/followers`, {
+        axios.get(`${API_URL}/api/users/${userId}/followers`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
             .then(followers => setFollowers(followers.data))
@@ -39,7 +25,6 @@ function Followers() {
     }, [userId])
     useEffect(() => { getFollowers() }, [getFollowers])
 
-    if (!user) return "loading";
 
     return (
         <div className="FollowersList">
