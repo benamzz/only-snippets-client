@@ -59,7 +59,9 @@ function ArticleEdit() {
         <div className="ArticleEdit">
             <form onSubmit={handleSubmit}>
                 <label>
-                    Tag:<select value={tag} onChange={handleTagInput} placeholder={myArticle.data.tag}>
+                    Tag:<select value={tag} onChange={handleTagInput}
+                    //placeholder={myArticle.data.tag}
+                    >
                         <option value=""></option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
@@ -67,10 +69,14 @@ function ArticleEdit() {
                     </select>
                 </label>
                 <label>
-                    Content:<input type="text" value={content} onChange={handleContentInput} placeholder={myArticle.data.content} />
+                    Content:<input type="text" value={content} onChange={handleContentInput}
+                    //placeholder={myArticle.data.content} 
+                    />
                 </label>
                 <label>
-                    Snippet<input type="text" value={snippet} onChange={handleSnippetInput} placeholder={myArticle.data.snippet} />
+                    Snippet<input type="text" value={snippet} onChange={handleSnippetInput}
+                    //placeholder={myArticle.data.snippet} 
+                    />
                 </label>
                 <button type="submit">Edit Article</button>
             </form>

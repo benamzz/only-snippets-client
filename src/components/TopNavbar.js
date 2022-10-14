@@ -12,7 +12,7 @@ function TopNavbar() {
       <ul>
         <li>
           <Link to="/search">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </Link>
         </li>
         <li>
@@ -23,7 +23,7 @@ function TopNavbar() {
         </li>
         <li>
           <Link to={`/users/${user._id}`}>
-            <i class="fas fa-heart"></i>
+            <i className="fas fa-heart"></i>
           </Link>
         </li>
       </ul>

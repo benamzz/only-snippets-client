@@ -12,12 +12,12 @@ function BottomNavbar() {
       <ul>
         <li>
           <Link to="/">
-            <i class="fas fa-home"></i>
+            <i className="fas fa-home"></i>
           </Link>
         </li>
         <li>
           <Link to="/articles/new">
-            <i class="fas fa-plus-square"></i>
+            <i className="fas fa-plus-square"></i>
           </Link>
         </li>
         <li>
