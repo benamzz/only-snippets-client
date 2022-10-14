@@ -77,8 +77,8 @@ function Profile() {
             <h4>@{user.username}</h4>
             {isLoggedIn && (
               <>
-                <a href={`/users/${userId}/edit`}>Edit</a>
-                <button onClick={logOutUser}>Logout</button>
+                <a href={`/users/${userId}/edit`}><i class="fas fa-user-edit"></i> Edit</a>
+                <button onClick={logOutUser}><i class="fas fa-sign-out-alt"></i> Logout</button>
               </>
             )}
           </div>
@@ -88,28 +88,28 @@ function Profile() {
         <div >
           <ul className="userInfo">
             <li>
-              <p>{user.bio}</p>
+              <p><i class="fas fa-coffee"></i> {user.bio}</p>
             </li>
             <li>
-              <p>{user.location}</p>
+              <p> <i class="fas fa-map-marker-alt"></i> {user.location}</p>
             </li>
             <li>
-              <p>{user.tags}</p>
+              <p><i class="fas fa-code"></i> {user.tags}</p>
             </li>
             <li>
               <p>{user.website}</p>
             </li>
-            {/* <li>
-              <p>{user.linkedin}</p>
-            </li> */}
             <li>
-              <p>{user.github}</p>
+              <p><i class="fab fa-linkedin"></i> {user.linkedin}</p>
+            </li>
+            <li>
+             <p> <i class="fab fa-github"></i> {user.github}</p>
             </li>
             <li>
               <p>follows : {user.following.length} people</p>
             </li>
             <li>
-              <p>followers: {!followers ? 0 : followers.data.length} people </p>
+              <p> <i class="fas fa-users"></i>followers: {!followers ? 0 : followers.data.length} people </p>
             </li>
           </ul>
         </div>
