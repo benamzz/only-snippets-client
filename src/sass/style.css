@@ -117,7 +117,11 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  padding-top: 5px;
   height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .nav li {
   display: inline;
@@ -125,7 +129,6 @@ body {
 .nav li a {
   color: white;
   text-align: center;
-  padding: 14px 20px;
   text-decoration: none;
 }
 .nav img {
