@@ -208,20 +208,19 @@ body {
   display: flex;
 }
 .Profile .flex-child {
-  border: 2px solid yellow;
   flex: 2;
   margin-bottom: 20px;
+  background-color: #2b292b;
 }
 .Profile .one {
   flex: 1;
 }
 .Profile .one #avatar {
-  width: 200px;
+  width: 150px;
   float: left;
 }
 .Profile .two {
   flex: 1;
-  background-color: #2b292b;
 }
 .Profile .userInfo {
   padding-left: 0;

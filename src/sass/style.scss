@@ -296,16 +296,17 @@ body {
   }
 
   .flex-child {
-    border: 2px solid yellow;
+    // border: 2px solid yellow;
     flex: 2;
     margin-bottom: 20px;
+    background-color: #2b292b;
   }
 
   .one {
     flex: 1;
 
     #avatar {
-      width: 200px;
+      width: 150px;
       // margin: auto;
       float: left;
     }
@@ -313,7 +314,7 @@ body {
 
   .two {
     flex: 1;
-    background-color: #2b292b;
+    
   }
 
   .userInfo {
