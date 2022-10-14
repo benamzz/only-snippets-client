@@ -139,28 +139,61 @@ body {
 //      ▐░▌     ▐░░░░░░░░░░░▌▐░▌          ▐░▌      ▐░░▌▐░▌       ▐░▌        ▐░▌
 //       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀        ▀▀  ▀         ▀          ▀
 
+// .nav{
+//   ul {
+//     list-style-type: none;
+//     margin: 0;
+//     padding: 0;
+//     height: 50px;
+//   }
+
+//   li {
+//     display: inline;
+
+//     a {
+//       color: white;
+//       text-align: center;
+//       padding: 14px 20px;
+//       text-decoration: none;
+//     }
+//   }
+//   img{
+//     width: 50px;
+//   }
+// }
+
 .nav{
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-top: 5px;
     height: 50px;
+    display: flex;
+    justify-content: space-around; 
+    // border: solid 2px red;
+    align-items: center;
   }
 
   li {
     display: inline;
+    // border: solid 2px rgb(28, 231, 231);
+
 
     a {
       color: white;
       text-align: center;
-      padding: 14px 20px;
       text-decoration: none;
+      // border: solid 2px rgb(226, 236, 90);
+
     }
   }
   img{
     width: 50px;
   }
+
 }
+
 
 .TopNavbar {
   background-color: var(--green);
