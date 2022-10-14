@@ -11,6 +11,7 @@ import ArticleNew from './pages/ArticleNew';
 import Likes from './pages/Likes'
 import ProfileEdit from './pages/ProfileEdit';
 import ArticleEdit from './pages/ArticleEdit';
+import Search from './pages/Search';
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/articles/:articleId/edit" element={<ArticleEdit />} />
         <Route path="/articles/:articleId/comment" element={<ArticleNew />} />
         <Route path="/articles/:articleId" element={<ArticleDetails />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </div>
   );
