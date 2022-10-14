@@ -69,7 +69,7 @@ function Profile() {
         
         <section className="userTop"> 
           
-          <div class="flex-child one">
+          <div className="flex-child one">
             <img src={user.avatarUrl} id="avatar" alt="profile" />
           </div>
           
