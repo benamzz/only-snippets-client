@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import BottomNavbar from "../components/BottomNavbar";
 
 function ProfileEdit() {
     const { user } = useContext(AuthContext);
@@ -94,6 +95,8 @@ function ProfileEdit() {
             </label>
             <button type="submit">SUBMIT</button>
         </form>
+        <BottomNavbar />
+
     </div>)
 }
 

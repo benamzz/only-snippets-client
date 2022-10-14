@@ -64,6 +64,10 @@ function Profile() {
   return (
     <div className="Profile">
       <TopNavbar />
+
+
+
+
       <div className="ProfileDetails">
         {isLoggedIn && (
           <>
@@ -96,10 +100,10 @@ function Profile() {
           ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
           ea voluptate velit esse quam nihil molestiae consequatur, vel illum
           qui dolorem eum fugiat quo voluptas nulla pariatur?"
-        </p>
+ </p>
       </div>
 
-      
+
       <Link to={`/users/${userId}`}>Articles</Link>
       <Link to={`/users/${userId}/likes`}>Likes</Link>
       <Link to={`/users/${userId}/follows`}>following</Link>

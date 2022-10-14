@@ -1,25 +1,30 @@
+import { Link } from "react-router-dom";
 import logoOnlySnippets from "../components/logoOnlySnippets.png";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function TopNavbar() {
+  const { user } = useContext(AuthContext);
+
+  if (!user) return "loading";
   return (
     <div className="TopNavbar nav">
       <ul>
         <li>
-          <a href="/search">
+          <Link to="/search">
             <i class="fas fa-search"></i>
-          </a>
+          </Link>
         </li>
         <li>
-         
-          <a href="/">
-            
+
+          <Link to="/">
             <img src={logoOnlySnippets} alt="snippet" />
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/users/:id/love">
+          <Link to={`/users/${user._id}`}>
             <i class="fas fa-heart"></i>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

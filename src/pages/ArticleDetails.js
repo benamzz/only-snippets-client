@@ -4,6 +4,8 @@ import Article from "../components/Article"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import TopNavbar from "../components/TopNavbar";
+import BottomNavbar from "../components/BottomNavbar";
 const storedToken = localStorage.getItem("authToken");
 
 function ArticleDetails() {

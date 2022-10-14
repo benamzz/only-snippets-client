@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function BottomNavbar() {
@@ -10,19 +11,19 @@ function BottomNavbar() {
     <div className="BottomNavbar nav">
       <ul>
         <li>
-          <a href="/">
+          <Link to="/">
             <i class="fas fa-home"></i>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/articles/new">
+          <Link to="/articles/new">
             <i class="fas fa-plus-square"></i>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href={`/users/${user._id}`}>
+          <Link to={`/users/${user._id}`}>
             <img src={user.avatarUrl} id="avatarNav" alt="profile" />
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
