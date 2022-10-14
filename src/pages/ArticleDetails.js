@@ -1,5 +1,4 @@
-import TopNavbar from "../components/TopNavbar";
-import BottomNavbar from "../components/BottomNavbar";
+
 import Article from "../components/Article"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
