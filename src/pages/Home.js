@@ -31,9 +31,10 @@ function Home() {
       .catch(err => console.log(err))
   }, [user])
 
-  if (!myArticles) return "loading"
+
 
   if (!user) {
+    console.log("no user")
     return (
       <div className="HomeDisconnected">
         <h1>Welcome <span>to</span> <span id="name-app" >only.snippet</span> </h1>
@@ -48,15 +49,19 @@ function Home() {
       </div>
     );
   } else {
-    return (
-      <div className="Home">
-        <TopNavbar />
-        {myArticles && (myArticles.map(el => {
-          return (<Article value={el} key={el._id} />)
-        }))}
-        <BottomNavbar />
-      </div>
-    );
+    if (!myArticles) { return "loading" }
+    else {
+      return (
+        <div className="Home">
+          <TopNavbar />
+          {myArticles && (myArticles.map(el => {
+            return (<Article value={el} key={el._id} />)
+          }))}
+          <BottomNavbar />
+        </div>
+      );
+    }
+
   }
 }
 

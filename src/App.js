@@ -10,6 +10,7 @@ import ArticleDetails from './pages/ArticleDetails';
 import ArticleNew from './pages/ArticleNew';
 import Likes from './pages/Likes'
 import ProfileEdit from './pages/ProfileEdit';
+import ArticleEdit from './pages/ArticleEdit';
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/articles/new" element={<ArticleNew />} />
         <Route path="/articles/:articleId/snippet/:snippetId" element={<Snippet />} />
+        <Route path="/articles/:articleId/edit" element={<ArticleEdit />} />
         <Route path="/articles/:articleId/comment" element={<ArticleNew />} />
         <Route path="/articles/:articleId" element={<ArticleDetails />} />
       </Routes>
