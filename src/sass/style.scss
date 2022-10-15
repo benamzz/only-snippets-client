@@ -174,9 +174,15 @@ body {
       text-decoration: none;
       // border: solid 2px rgb(226, 236, 90);
     }
+
+    .fas{
+      font-size: 30px;
+    }
   }
   img {
-    width: 50px;
+    width: 45px;
+    border-radius: 10px ;
+
   }
 }
 
@@ -283,29 +289,22 @@ body {
   }
 
   .flex-child {
-    // border: 2px solid yellow;
     flex: 2;
-    margin-bottom: 20px;
     
   }
 
   .one {
     flex: 1;
-    // border: 2px solid red;
     
-
     #avatar {
       width: 100px;
       float: left;
       border-radius: 30px;
     }
-
-   
   }
 
   .two {
     flex: 4;
-    // border: 2px solid red;
 
     a,
     button {

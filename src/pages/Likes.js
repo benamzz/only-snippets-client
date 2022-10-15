@@ -53,23 +53,55 @@ function Likes() {
         <div className="Profile">
             <TopNavbar />
             <div className="ProfileDetails">
-                {isLoggedIn && (
-                    <>
-                        <a href={`/users/${userId}/edit`}>Edit</a>
-                        <button onClick={logOutUser}>Logout</button>
-                    </>
-                )}
+        <section className="userTop">
+          <div className="flex-child one">
+            <img src={user.avatarUrl} id="avatar" alt="profile" />
+          </div>
 
-                <img src={user.avatarUrl} alt="profile" />
-                <h2>@{user.username}</h2>
-                <p>{user.bio}</p>
-                <p>{user.location}</p>
-                <p>{user.tags}</p>
-                <p>{user.website}</p>
-                <p>{user.linkedin}</p>
-                <p>{user.github}</p>
-                <p>follows : {user.following.length} people</p>
-                <p>followers: {!followers ? 0 : followers.data.length} people </p>
+          <div className="flex-child two">
+            <h3>@{user.username}</h3>
+            {isLoggedIn && (
+              <>
+                <a href={`/users/${userId}/edit`}>
+                  <i className="fas fa-user-edit"></i> Edit
+                </a>
+                <button onClick={logOutUser}>
+                  <i className="fas fa-sign-out-alt"></i> Logout
+                </button>
+              </>
+            )}
+          </div>
+        </section>
+
+        <div>
+          <p id="bio">
+            <i className="fas fa-coffee"></i> {user.bio}
+          </p>
+          <ul className="userInfo">
+            <li>
+              <i className="fas fa-map-marker-alt"></i> {user.location}
+            </li>
+            <li>
+              <i className="fas fa-code"></i> {user.tags}
+            </li>
+            <li>{user.website}</li>
+            <li>
+              <i className="fab fa-linkedin"></i> {user.linkedin}
+            </li>
+            <li>
+              <i className="fab fa-github"></i> {user.github}
+            </li>
+            <li>follows : {user.following.length} people</li>
+            <li>
+              {" "}
+              followers:{" "}
+              {!followers ? 0 : followers.data.length} people{" "}
+            </li>
+          </ul>
+        </div>
+        <Link to={`/users/${userId}/follows`}>following</Link>
+      <Link to={`/users/${userId}/followers`}>followers</Link>
+
             </div>
             <Link to={`/users/${userId}`}>Articles</Link>
             <Link to={`/users/${userId}/likes`}>Likes</Link>

@@ -137,8 +137,12 @@ body {
   text-align: center;
   text-decoration: none;
 }
+.nav li .fas {
+  font-size: 30px;
+}
 .nav img {
-  width: 50px;
+  width: 45px;
+  border-radius: 10px;
 }
 
 .TopNavbar {
@@ -210,7 +214,6 @@ body {
 }
 .Profile .flex-child {
   flex: 2;
-  margin-bottom: 20px;
 }
 .Profile .one {
   flex: 1;
