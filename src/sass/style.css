@@ -262,6 +262,10 @@ body {
   padding: 5px;
   color: var(--green);
 }
+.Profile .userInfo li #fol-links {
+  text-decoration: none;
+  color: white;
+}
 .Profile .containerSlider > section {
   margin: 0 auto;
   text-align: center;

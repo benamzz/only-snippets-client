@@ -130,16 +130,19 @@ function Profile() {
             <li>
               <i className="fab fa-github"></i> {user.github}
             </li>
-            <li>follows : {user.following.length} people</li>
             <li>
-              {" "}
-              followers: {!followers ? 0 : followers.data.length} people{" "}
+              <Link id="fol-links" to={`/users/${userId}/follows`}>
+                {user.following.length} Follows
+              </Link>
+            </li>
+            <li>
+              <Link id="fol-links" to={`/users/${userId}/followers`}>
+                {!followers ? 0 : followers.data.length} Followers 
+              </Link>
             </li>
           </ul>
         </div>
       </div>
-      <Link to={`/users/${userId}/follows`}>following</Link>
-      <Link to={`/users/${userId}/followers`}>followers</Link>
 
       <div className="containerSlider">
         <section className="colorSlider">
@@ -149,7 +152,6 @@ function Profile() {
           </div>
         </section>
       </div>
-      
 
       <div className="articlesList">
         {tab === 0 && "articles"}
