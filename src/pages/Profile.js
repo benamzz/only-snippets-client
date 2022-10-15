@@ -77,14 +77,12 @@ function Profile() {
 
   const [tab, setTab] = useState(0);
   const handleSlideInput = (e) => {
-    e.target.checked = true    
-    console.log(e.target)
-
+    e.target.checked = true;
+    console.log(e.target);
   };
- 
 
-  console.log("my Articles:",myArticles);
-  console.log("my Likes:",myLikes);
+  console.log("my Articles:", myArticles);
+  console.log("my Likes:", myLikes);
 
   if (!user) return "loading";
   // si la checkbox est coche sur article alors on fait setMyLikes(null)
@@ -100,7 +98,7 @@ function Profile() {
           </div>
 
           <div className="flex-child two">
-            <h3>@{user.username}</h3>
+            <h2>@{user.username}</h2>
             {isLoggedIn && (
               <>
                 <a href={`/users/${userId}/edit`}>
@@ -143,16 +141,19 @@ function Profile() {
       <Link to={`/users/${userId}/follows`}>following</Link>
       <Link to={`/users/${userId}/followers`}>followers</Link>
 
-      <div onClick={()=>setTab(0)} >Articles</div>
-      <div onClick={()=>setTab(1)} >Likes</div>
-
-           
-          
+      <div className="containerSlider">
+        <section className="colorSlider">
+          <div className="effectSlider">
+            <h3 onClick={() => setTab(0)}>Articles</h3>
+            <h3 onClick={() => setTab(1)}>Likes</h3>
+          </div>
+        </section>
+      </div>
+      
 
       <div className="articlesList">
-        {tab === 0 && "articles" }
-        {tab === 1 && "likes" }
-        
+        {tab === 0 && "articles"}
+        {tab === 1 && "likes"}
       </div>
       <BottomNavbar />
     </div>

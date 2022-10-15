@@ -247,10 +247,6 @@ body {
   cursor: pointer;
   color: #fff;
 }
-.Profile .two h4 {
-  border: 2px solid rgb(14, 22, 138);
-  text-align: left;
-}
 .Profile #bio {
   text-align: left;
 }
@@ -266,90 +262,57 @@ body {
   padding: 5px;
   color: var(--green);
 }
-
-.clear {
-  clear: both;
-}
-
-.slide-toggle {
-  display: none;
-}
-
-.slidemenu {
-  font-family: arial, sans-serif;
-  max-width: 600px;
-  margin: 50px auto;
-  overflow: hidden;
-}
-
-.slidemenu label {
-  width: 50%;
-  text-align: center;
-  display: block;
-  float: left;
-  color: #333;
-  opacity: 0.2;
-}
-
-.slidemenu label:hover {
-  cursor: pointer;
-  color: #666;
-}
-
-.slidemenu label span {
-  display: block;
-  padding: 10px;
-}
-
-.slidemenu label .icon {
-  font-size: 20px;
-  text-align: center;
-  height: 50px;
-  width: 50px;
-  display: block;
+.Profile .containerSlider > section {
   margin: 0 auto;
-  line-height: 50px;
-  border-radius: 50%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 15px;
 }
-
-span {
-  color: white;
+.Profile *:after,
+.Profile *::before {
+  box-sizing: border-box;
 }
-
-.slider {
+.Profile div h3 {
+  position: relative;
+  display: inline-block;
+  margin: 5px 20px;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+.Profile div h3:hover,
+.Profile div h3:focus {
+  outline: none;
+}
+.Profile .effectSlider h3 {
+  padding: 10px 45px 10px;
+  color: var(--green);
+}
+.Profile .effectSlider h3::before,
+.Profile .effectSlider h3::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
-  height: 5px;
-  display: block;
-  background: rgb(0, 0, 0);
-  margin-top: 10px;
-  border-radius: 5px;
+  height: 2px;
+  background: var(--green);
+  content: "";
+  transition: transform 0.3s;
+  transform: scale(0.85);
 }
-
-.slider .bar {
-  width: 50%;
-  height: 5px;
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
+.Profile .effectSlider h3::after {
+  opacity: 0;
+  transition: top 0.3s, opacity 0.3s, transform 0.3s;
 }
-
-/*Animations*/
-.slidemenu label, .slider .bar {
-  transition: all 500ms ease-in-out;
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
+.Profile .effectSlider h3:hover::before,
+.Profile .effectSlider h3:hover::after,
+.Profile .effectSlider h3:focus::before,
+.Profile .effectSlider h3:focus::after {
+  transform: scale(1);
 }
-
-/*Toggle*/
-.slidemenu .slide-toggle:checked + label {
+.Profile .effectSlider h3:hover::after,
+.Profile .effectSlider h3:focus::after {
+  top: 0%;
   opacity: 1;
-}
-
-.slidemenu #slide-item-1:checked ~ .slider .bar {
-  margin-left: 0;
-}
-
-.slidemenu #slide-item-2:checked ~ .slider .bar {
-  margin-left: 50%;
 }
 
 .ArticleNew {
