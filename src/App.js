@@ -8,7 +8,6 @@ import Profile from './pages/Profile';
 import Snippet from './pages/Snippet';
 import ArticleDetails from './pages/ArticleDetails';
 import ArticleNew from './pages/ArticleNew';
-import Likes from './pages/Likes'
 import ProfileEdit from './pages/ProfileEdit';
 import ArticleEdit from './pages/ArticleEdit';
 import Search from './pages/Search';
@@ -22,7 +21,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/users/:userId/edit" element={<ProfileEdit />} />
-        <Route path="/users/:userId/likes" element={<Likes />} />
+        <Route path="/users/:userId/likes" element={<Profile value="likes" />} />
         <Route path="/users/:userId/followers" element={<Followers />} />
         <Route path="/users/:userId/follows" element={<Follows />} />
         <Route path="/users/:userId" element={<Profile />} />

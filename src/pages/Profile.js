@@ -3,11 +3,10 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import Article from "../components/Article";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import api from "../api"
 
-function Profile() {
-  const API_URL = "http://localhost:5005";
+function Profile(props) {
   const [user, setUser] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [myArticles, setMyArticles] = useState(null);
@@ -16,28 +15,17 @@ function Profile() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
   const [tab, setTab] = useState(0);
 
-
   const getUser = useCallback(() => {
-    const storedToken = localStorage.getItem("authToken");
-    axios
-      .get(`${API_URL}/api/users/${userId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((userFromApi) => {
-        setUser(userFromApi.data);
-      })
-      .catch((err) => console.log("err", err));
+    api().get(`/users/${userId}`)
+      .then(userFromApi => setUser(userFromApi.data))
+      .catch(err => console.log("err", err));
   }, [userId]);
   useEffect(() => {
     getUser();
   }, [getUser]);
 
   const getFollowers = useCallback(() => {
-    const storedToken = localStorage.getItem("authToken");
-    axios
-      .get(`${API_URL}/api/users/${userId}/followers`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+    api().get(`/users/${userId}/followers`)
       .then((followers) => setFollowers(followers))
       .catch((err) => console.log(err));
   }, [userId]);
@@ -46,32 +34,26 @@ function Profile() {
   }, [getFollowers]);
 
   const getArticles = useCallback(() => {
-    const storedToken = localStorage.getItem("authToken");
-    axios
-      .get(`${API_URL}/api/articles?userId=${userId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+    api().get(`/articles?userId=${userId}`)
       .then((articles) => {
+        if (!props.value) { setTab(0) }
         const filteredArticles = articles.data.filter((el) => !el.parentId);
         setMyArticles(filteredArticles);
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, [userId, props.value]);
   useEffect(() => {
     getArticles();
   }, [getArticles]);
 
   const getLikes = useCallback(() => {
-    const storedToken = localStorage.getItem("authToken");
-    axios
-      .get(`${API_URL}/api/users/${userId}/likes`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+    api().get(`/users/${userId}/likes`)
       .then((likes) => {
+        if (props.value === "likes") { setTab(1) }
         setMyLikes(likes.data);
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, [userId, props.value]);
   useEffect(() => {
     getLikes();
   }, [getLikes]);

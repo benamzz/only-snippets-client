@@ -22,7 +22,7 @@ function TopNavbar() {
           </Link>
         </li>
         <li>
-          <Link to={`/users/${user._id}`}>
+          <Link to={`/users/${user._id}/likes`}>
             <i className="fas fa-heart"></i>
           </Link>
         </li>
