@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
   --green: #0b8d85;
   --darkGreen: #2c2c2cd1;
@@ -7,6 +8,10 @@
 
 * {
   font-family: "Urbanist", sans-serif;
+}
+
+img {
+  max-width: 100%;
 }
 
 body {
@@ -54,30 +59,36 @@ body {
 .Signup {
   margin: 50px;
 }
+
 .Login form,
 .Signup form {
   display: flex;
   flex-direction: column;
   margin: 0;
 }
+
 .Login a,
 .Signup a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.724);
 }
+
 .Login .fa-arrow-circle-left,
 .Signup .fa-arrow-circle-left {
   display: flex;
 }
+
 .Login h2,
 .Signup h2 {
   text-shadow: #000;
 }
+
 .Login label,
 .Signup label {
   padding: 30px 0px 10px 0px;
   text-align: left;
 }
+
 .Login input,
 .Signup input {
   justify-content: center;
@@ -88,15 +99,18 @@ body {
   border: solid 1px var(--green);
   background-color: var(--darkGreen);
 }
+
 .Login .pwd-reset,
 .Signup .pwd-reset {
   font-size: 16px;
   text-align: left;
 }
+
 .Login h4,
 .Signup h4 {
   text-align: center;
 }
+
 .Login .googleAuth-btn,
 .Signup .googleAuth-btn {
   margin: 30px;
@@ -108,11 +122,13 @@ body {
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
 }
+
 .Login .googleAuth-btn a,
 .Signup .googleAuth-btn a {
   color: #000;
   text-decoration: none;
 }
+
 .Login #logSignLogo,
 .Signup #logSignLogo {
   width: 40px;
@@ -129,17 +145,21 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
 .nav li {
   display: inline;
 }
+
 .nav li a {
   color: white;
   text-align: center;
   text-decoration: none;
 }
+
 .nav li .fas {
   font-size: 30px;
 }
+
 .nav img {
   width: 45px;
   border-radius: 10px;
@@ -166,6 +186,7 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .Home section {
   margin: 20px;
 }
@@ -175,24 +196,30 @@ body {
   margin-bottom: 60px;
   text-shadow: 2px 3px var(--darkGreen);
 }
+
 .HomeDisconnected h1 span {
   display: block;
 }
+
 .HomeDisconnected h1 #name-app {
   text-shadow: 2px 3px #000000;
   font-weight: 900;
 }
+
 .HomeDisconnected img {
   height: 90vw;
   margin: 10px;
   display: inline;
 }
+
 .HomeDisconnected p {
   margin: 20px;
 }
+
 .HomeDisconnected a {
   text-decoration: none;
 }
+
 .HomeDisconnected #two-auth {
   padding: 30px;
   text-shadow: 1px 2px #4c4c4c;
@@ -203,29 +230,36 @@ body {
   padding-bottom: 20px;
   font-size: 16px;
 }
+
 .Profile .ProfileDetails {
   display: flex;
   flex-direction: column;
   margin-left: 5px;
   margin-right: 5px;
 }
+
 .Profile .userTop {
   display: flex;
 }
+
 .Profile .flex-child {
   flex: 2;
 }
+
 .Profile .one {
   flex: 1;
 }
+
 .Profile .one #avatar {
   width: 100px;
   float: left;
   border-radius: 30px;
 }
+
 .Profile .two {
   flex: 4;
 }
+
 .Profile .two a,
 .Profile .two button {
   margin: 10px;
@@ -236,20 +270,25 @@ body {
   box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
   text-decoration: none;
 }
+
 .Profile .two a:hover {
   color: #fff;
 }
+
 .Profile .two button {
   border: none;
   background-color: #0b768d;
 }
+
 .Profile .two button:hover {
   cursor: pointer;
   color: #fff;
 }
+
 .Profile #bio {
   text-align: left;
 }
+
 .Profile .userInfo {
   padding-left: 0;
   margin: 5px;
@@ -257,25 +296,25 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .Profile .userInfo li {
   list-style: none;
   padding: 5px;
   color: var(--green);
 }
-.Profile .userInfo li #fol-links {
-  text-decoration: none;
-  color: white;
-}
-.Profile .containerSlider > section {
+
+.Profile .containerSlider>section {
   margin: 0 auto;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 15px;
 }
+
 .Profile *:after,
 .Profile *::before {
   box-sizing: border-box;
 }
+
 .Profile div h3 {
   position: relative;
   display: inline-block;
@@ -283,14 +322,17 @@ body {
   letter-spacing: 1px;
   font-size: 16px;
 }
+
 .Profile div h3:hover,
 .Profile div h3:focus {
   outline: none;
 }
+
 .Profile .effectSlider h3 {
   padding: 10px 45px 10px;
   color: var(--green);
 }
+
 .Profile .effectSlider h3::before,
 .Profile .effectSlider h3::after {
   position: absolute;
@@ -303,16 +345,19 @@ body {
   transition: transform 0.3s;
   transform: scale(0.85);
 }
+
 .Profile .effectSlider h3::after {
   opacity: 0;
   transition: top 0.3s, opacity 0.3s, transform 0.3s;
 }
+
 .Profile .effectSlider h3:hover::before,
 .Profile .effectSlider h3:hover::after,
 .Profile .effectSlider h3:focus::before,
 .Profile .effectSlider h3:focus::after {
   transform: scale(1);
 }
+
 .Profile .effectSlider h3:hover::after,
 .Profile .effectSlider h3:focus::after {
   top: 0%;
@@ -323,4 +368,6 @@ body {
   background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
