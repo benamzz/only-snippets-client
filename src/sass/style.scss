@@ -20,8 +20,6 @@ body {
 //   background-color: var(--green);
 // }
 
-
-
 // ▄            ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄
 // ▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌
 // ▐░▌          ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌     ▐░▌
@@ -33,7 +31,6 @@ body {
 // ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄█░█▄▄▄▄ ▐░▌     ▐░▐░▌
 // ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌
 //  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀
-
 
 #auth-btn {
   margin: 10px;
@@ -72,11 +69,10 @@ body {
   right: 10px;
 }
 
-
 .Login,
 .Signup {
   margin: 50px;
-  
+
   form {
     display: flex;
     flex-direction: column;
@@ -137,7 +133,7 @@ body {
     }
   }
 
-  #logSignLogo{
+  #logSignLogo {
     width: 40px;
     padding: 30px;
   }
@@ -155,7 +151,7 @@ body {
 //      ▐░▌     ▐░░░░░░░░░░░▌▐░▌          ▐░▌      ▐░░▌▐░▌       ▐░▌        ▐░▌
 //       ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀        ▀▀  ▀         ▀          ▀
 
-.nav{
+.nav {
   ul {
     list-style-type: none;
     margin: 0;
@@ -163,7 +159,7 @@ body {
     padding-top: 5px;
     height: 50px;
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     // border: solid 2px red;
     align-items: center;
   }
@@ -172,21 +168,17 @@ body {
     display: inline;
     // border: solid 2px rgb(28, 231, 231);
 
-
     a {
       color: white;
       text-align: center;
       text-decoration: none;
       // border: solid 2px rgb(226, 236, 90);
-
     }
   }
-  img{
+  img {
     width: 50px;
   }
-
 }
-
 
 .TopNavbar {
   background-color: var(--green);
@@ -202,7 +194,6 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  
 }
 
 // ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄
@@ -262,36 +253,32 @@ body {
   }
 }
 
-
-
-//                                /$$$$$$  /$$ /$$          
-//                               /$$__  $$|__/| $$          
-// /$$$$$$   /$$$$$$   /$$$$$$ | $$  \__/  /$$| $$  /$$$$$$ 
+//                                /$$$$$$  /$$ /$$
+//                               /$$__  $$|__/| $$
+// /$$$$$$   /$$$$$$   /$$$$$$ | $$  \__/  /$$| $$  /$$$$$$
 // /$$__  $$ /$$__  $$ /$$__  $$| $$$$     | $$| $$ /$$__  $$
 // | $$  \ $$| $$  \__/| $$  \ $$| $$_/    | $$| $$| $$$$$$$$
 // | $$  | $$| $$      | $$  | $$| $$      | $$| $$| $$_____/
 // | $$$$$$$/| $$      |  $$$$$$/| $$      | $$| $$|  $$$$$$$
 // | $$____/ |__/       \______/ |__/      |__/|__/ \_______/
-// | $$                                                      
-// | $$                                                      
-// |__/                                                      
-
+// | $$
+// | $$
+// |__/
 
 .Profile {
-  background-color: #2c2c2c;
-  padding-top: 20px;
+    // background-color: #2b292b;
+    padding-top: 20px;
   padding-bottom: 20px;
   font-size: 16px;
 
-  
-  .ProfileDetails{
+  .ProfileDetails {
     display: flex;
-    flex-direction: column;
-
+    flex-direction: column;    
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
-
-  .userTop{
+  .userTop {
     display: flex;
   }
 
@@ -299,44 +286,86 @@ body {
     // border: 2px solid yellow;
     flex: 2;
     margin-bottom: 20px;
-    background-color: #2b292b;
+    
   }
 
   .one {
     flex: 1;
+    // border: 2px solid red;
+    
 
     #avatar {
-      width: 150px;
-      // margin: auto;
+      width: 100px;
       float: left;
+      border-radius: 30px;
     }
+
+   
   }
 
   .two {
-    flex: 1;
-    
+    flex: 4;
+    // border: 2px solid red;
+
+    a,
+    button {
+      margin: 10px;
+      padding: 5px;
+      background: var(--green);
+      color: var(--dark);
+      border-radius: 10px;
+      box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+
+    button {
+      border: none;
+      background-color: #0b768d;
+    }
+
+    button:hover {
+      cursor: pointer;
+      color: #fff;
+    }
+
+    h4 {
+      border: 2px solid rgb(14, 22, 138);
+      // width: 100%;
+      text-align: left;
+    }
+  }
+
+  #bio{
+    text-align: left;
   }
 
   .userInfo {
     padding-left: 0;
-    margin-right: 5px;
-    margin-left: 5px;
-
+    margin: 5px;
+    
     display: flex;
-    justify-content: space-around;
-    align-items: baseline;
     flex-wrap: wrap;
+    justify-content: space-between;
+
+    
   }
-  .userInfo li{
-    border: 2px solid rgb(200, 0, 255);
+  .userInfo li {
     list-style: none;
+    padding: 5px;
+    // color: #aaaaaa;
+    color: var(--green);
+    
+    // .fas, .fab{
+    //   color: rgba(169, 244, 237, 0.95);
+    // }
   }
-
-
-  
 }
 
-.ArticleNew{
+.ArticleNew {
   background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;

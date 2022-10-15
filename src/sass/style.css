@@ -195,7 +195,6 @@ body {
 }
 
 .Profile {
-  background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 16px;
@@ -203,6 +202,8 @@ body {
 .Profile .ProfileDetails {
   display: flex;
   flex-direction: column;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .Profile .userTop {
   display: flex;
@@ -210,30 +211,57 @@ body {
 .Profile .flex-child {
   flex: 2;
   margin-bottom: 20px;
-  background-color: #2b292b;
 }
 .Profile .one {
   flex: 1;
 }
 .Profile .one #avatar {
-  width: 150px;
+  width: 100px;
   float: left;
+  border-radius: 30px;
 }
 .Profile .two {
-  flex: 1;
+  flex: 4;
+}
+.Profile .two a,
+.Profile .two button {
+  margin: 10px;
+  padding: 5px;
+  background: var(--green);
+  color: var(--dark);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+}
+.Profile .two a:hover {
+  color: #fff;
+}
+.Profile .two button {
+  border: none;
+  background-color: #0b768d;
+}
+.Profile .two button:hover {
+  cursor: pointer;
+  color: #fff;
+}
+.Profile .two h4 {
+  border: 2px solid rgb(14, 22, 138);
+  text-align: left;
+}
+.Profile #bio {
+  text-align: left;
 }
 .Profile .userInfo {
   padding-left: 0;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin: 5px;
   display: flex;
-  justify-content: space-around;
-  align-items: baseline;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .Profile .userInfo li {
-  border: 2px solid rgb(200, 0, 255);
   list-style: none;
+  padding: 5px;
+  color: var(--green);
 }
 
 .ArticleNew {

@@ -66,72 +66,60 @@ function Profile() {
       <TopNavbar />
 
       <div className="ProfileDetails">
-        
-        <section className="userTop"> 
-          
+        <section className="userTop">
           <div className="flex-child one">
             <img src={user.avatarUrl} id="avatar" alt="profile" />
           </div>
-          
+
           <div className="flex-child two">
-            <h4>@{user.username}</h4>
+            <h3>@{user.username}</h3>
             {isLoggedIn && (
               <>
-                <a href={`/users/${userId}/edit`}><i class="fas fa-user-edit"></i> Edit</a>
-                <button onClick={logOutUser}><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <a href={`/users/${userId}/edit`}>
+                  <i className="fas fa-user-edit"></i> Edit
+                </a>
+                <button onClick={logOutUser}>
+                  <i className="fas fa-sign-out-alt"></i> Logout
+                </button>
               </>
             )}
           </div>
-
         </section>
-         
-        <div >
+
+        <div>
+          <p id="bio">
+            <i className="fas fa-coffee"></i> {user.bio}
+          </p>
           <ul className="userInfo">
             <li>
-              <p><i class="fas fa-coffee"></i> {user.bio}</p>
+              <i className="fas fa-map-marker-alt"></i> {user.location}
             </li>
             <li>
-              <p> <i class="fas fa-map-marker-alt"></i> {user.location}</p>
+              <i className="fas fa-code"></i> {user.tags}
+            </li>
+            <li>{user.website}</li>
+            <li>
+              <i className="fab fa-linkedin"></i> {user.linkedin}
             </li>
             <li>
-              <p><i class="fas fa-code"></i> {user.tags}</p>
+              <i className="fab fa-github"></i> {user.github}
             </li>
+            <li>follows : {user.following.length} people</li>
             <li>
-              <p>{user.website}</p>
-            </li>
-            <li>
-              <p><i class="fab fa-linkedin"></i> {user.linkedin}</p>
-            </li>
-            <li>
-             <p> <i class="fab fa-github"></i> {user.github}</p>
-            </li>
-            <li>
-              <p>follows : {user.following.length} people</p>
-            </li>
-            <li>
-              <p> <i class="fas fa-users"></i>followers: {!followers ? 0 : followers.data.length} people </p>
+              {" "}
+              followers:{" "}
+              {!followers ? 0 : followers.data.length} people{" "}
             </li>
           </ul>
         </div>
-
-      
-
-        {/* <img src={user.avatarUrl} id="avatar" alt="profile" />
-        <h2>@{user.username}</h2>
-        <p>{user.bio}</p>
-        <p>{user.location}</p>
-        <p>{user.tags}</p>
-        <p>{user.website}</p>
-        <p>{user.linkedin}</p>
-        <p>{user.github}</p>
-        <p>follows : {user.following.length} people</p>
-        <p>followers: {!followers ? 0 : followers.data.length} people </p> */}
       </div>
-
-      <Link to={`/users/${userId}`}>Articles</Link>
-      <Link to={`/users/${userId}/likes`}>Likes</Link>
       <Link to={`/users/${userId}/follows`}>following</Link>
       <Link to={`/users/${userId}/followers`}>followers</Link>
+
+      <div>
+        <Link to={`/users/${userId}`}>Articles</Link>
+        <Link to={`/users/${userId}/likes`}>Likes</Link>
+      </div>
       <div className="articlesList">
         {myArticles &&
           myArticles.map((el) => {
