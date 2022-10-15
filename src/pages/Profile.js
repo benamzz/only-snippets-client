@@ -79,7 +79,7 @@ function Profile() {
   if (!user) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
- 
+
   return (
     <div className="Profile">
       <TopNavbar />
@@ -130,7 +130,7 @@ function Profile() {
             </li>
             <li>
               <Link id="fol-links" to={`/users/${userId}/followers`}>
-                {!followers ? 0 : followers.data.length} Followers 
+                {!followers ? 0 : followers.data.length} Followers
               </Link>
             </li>
           </ul>
@@ -154,14 +154,13 @@ function Profile() {
             </div>
           );
         })}
-    
         {tab === 1 && myLikes.map((el) => {
-            return (
-              <div key={el._id}>
-                <Article value={el}></Article>
-              </div>
-            );
-          })}
+          return (
+            <div key={el._id}>
+              <Article value={el}></Article>
+            </div>
+          );
+        })}
       </div>
 
       <BottomNavbar />

@@ -34,7 +34,7 @@ function ArticleDetails() {
             <Article value={article.data} />
             {comments && comments.map(el => {
                 return (
-                    <Article value={el} />
+                    <Article value={el} key={el._id} />
                 )
             })}
             <BottomNavbar />
