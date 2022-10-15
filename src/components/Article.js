@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 function Article(props) {
     const { user } = useContext(AuthContext);
     let isMyArticle = false
-    console.log("props.snippet", props.value.snippet)
+    console.log("props.value", props.value)
     if (user._id === props.value.userId) {
         console.log("isMyArticle:", props.value._id)
         isMyArticle = true
@@ -19,7 +19,7 @@ function Article(props) {
                 <p>{props.value.tag}</p>
                 <p>{props.value.content}</p>
             </Link>
-            {props.value.snippet.content && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+            {props.value.snippet && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
             <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
             {isMyArticle && <Link to={`/articles/${props.value._id}/edit`}>Editer mon article</Link>}
 
