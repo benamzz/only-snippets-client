@@ -21,6 +21,7 @@ function ArticleEdit() {
         const storedToken = localStorage.getItem("authToken");
         const updatedArticle = { tag, content };
         const updatedSnippet = { snippet }
+
         axios
             .patch(`${API_URL}/api/articles/${articleId}`, updatedArticle, {
                 headers: { Authorization: `Bearer ${storedToken}` },
@@ -36,7 +37,6 @@ function ArticleEdit() {
                             })
                             .then(() => navigate(`/articles/${articleId}`))
                             .catch(err => console.log("err", err))
-
                     } else {
                         axios
                             .patch(`${API_URL}/api/articles/${articleId}/snippets/${myArticle.data.snippet._id}`, updatedSnippet, {
@@ -71,9 +71,8 @@ function ArticleEdit() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Tag:<select value={tag} onChange={handleTagInput}
-                        placeholder={myArticle.data.tag}
                     >
-                        <option value=""></option>
+                        <option value="">Select your tag</option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
                         <option value="JS">JS</option>
@@ -86,7 +85,8 @@ function ArticleEdit() {
                 </label>
                 <label>
                     Snippet<textarea type="text" value={snippet} onChange={handleSnippetInput}
-                        placeholder={myArticle.data.snippet.content}
+                        //placeholder={myArticle.data.snippet && myArticle.data.snippet.content}
+                        placeholder={myArticle.data.snippet?.content} // optional chaining
                     />
                 </label>
                 <button type="submit">Edit Article</button>
