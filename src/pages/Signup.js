@@ -43,7 +43,7 @@ function Signup(props) {
       <form onSubmit={handleSignupSubmit}>
 
         <div className="googleAuth-btn">
-          <a href="#">
+          <a href="www.google.com">
             <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
             Sign up with Google
           </a>
@@ -74,8 +74,8 @@ function Signup(props) {
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
-      <br/>
-      <img src={logoOnlySnippets} alt="snippet" id="logSignLogo"/>
+      <br />
+      <img src={logoOnlySnippets} alt="snippet" id="logSignLogo" />
 
     </div>
   );

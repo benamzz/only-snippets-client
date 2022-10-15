@@ -1,26 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import User from "../components/User";
+import api from "../api"
 
 
 function Follows() {
-    const API_URL = "http://localhost:5005";
     const { userId } = useParams();
     const [follows, setFollows] = useState(null)
 
     const getFollows = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
-        axios
-            .get(`${API_URL}/api/users/${userId}`, {
-                headers: { Authorization: `Bearer ${storedToken}` },
-            })
-            .then((userFromApi) => {
-                setFollows(userFromApi.data.following);
-            })
-            .catch((err) => console.log("err", err));
+        api.get(`/users/${userId}`)
+            .then(userFromApi => setFollows(userFromApi.data.following))
+            .catch(err => console.log("err", err));
     }, [userId]);
     useEffect(() => { getFollows() }, [getFollows]);
 

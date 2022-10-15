@@ -1,15 +1,13 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
+import api from "../api"
 
 function ArticleNew() {
     const [tag, setTag] = useState("")
     const [content, setContent] = useState("")
     const [snippet, setSnippet] = useState("")
-    const API_URL = "http://localhost:5005";
-    const storedToken = localStorage.getItem("authToken");
     const navigate = useNavigate()
     const { articleId } = useParams()
 
@@ -22,37 +20,21 @@ function ArticleNew() {
         const newArticle = { tag, content };
         const newSnippet = { snippet }
         if (!articleId) {
-            axios
-                .post(`${API_URL}/api/articles`, newArticle, {
-                    headers: { Authorization: `Bearer ${storedToken}` },
-                })
+            return api.post(`/articles`, newArticle)
                 .then((response) => {
-                    axios
-                        .post(`${API_URL}/api/articles/${response.data._id}/snippets`, newSnippet, {
-                            headers: { Authorization: `Bearer ${storedToken}` },
-                        })
+                    api.post(`/articles/${response.data._id}/snippets`, newSnippet)
                         .then(() => navigate(`/articles/${response.data._id}`))
                         .catch(err => console.log("err", err))
-
-                })
-                .catch((err) => console.log("err", err));
-        } else {
-            axios
-                .post(`${API_URL}/api/articles?parentId=${articleId}`, newArticle, {
-                    headers: { Authorization: `Bearer ${storedToken}` },
-                })
-                .then((response) => {
-                    console.log('response', response)
-                    axios
-                        .post(`${API_URL}/api/articles/${response.data._id}/snippets`, newSnippet, {
-                            headers: { Authorization: `Bearer ${storedToken}` },
-                        })
-                        .then(() => navigate(`/articles/${response.data._id}`))
-                        .catch(err => console.log("err", err))
-
                 })
                 .catch((err) => console.log("err", err));
         }
+        api.post(`/articles?parentId=${articleId}`, newArticle)
+            .then((response) => {
+                api.post(`/articles/${response.data._id}/snippets`, newSnippet)
+                    .then(() => navigate(`/articles/${response.data._id}`))
+                    .catch(err => console.log("err", err))
+            })
+            .catch((err) => console.log("err", err));
     }
 
     return (

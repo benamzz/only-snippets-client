@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import snippetImg from "../components/codeSnippet.svg";
-import axios from "axios"
+import api from "../api"
 import Article from "../components/Article";
 
 function Home() {
@@ -12,15 +12,9 @@ function Home() {
   const { user } = useContext(AuthContext);
   const [myArticles, setMyArticles] = useState(null)
 
-  console.log("user:", user)
   useEffect(() => {
-    const storedToken = localStorage.getItem("authToken");
-
     if (!user) return
-
-    axios.get(`${API_URL}/api/articles`, {
-      headers: { Authorization: `Bearer ${storedToken}` },
-    })
+    api.get(`${API_URL}/api/articles`)
       .then((articles) => {
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
         const filteredArticles = noCommentsFilter.filter(el => {
@@ -30,8 +24,6 @@ function Home() {
       })
       .catch(err => console.log(err))
   }, [user])
-
-
 
   if (!user) {
     console.log("no user")
@@ -48,21 +40,17 @@ function Home() {
         </div>
       </div>
     );
-  } else {
-    if (!myArticles) { return "loading" }
-    else {
-      return (
-        <div className="Home">
-          <TopNavbar />
-          {myArticles && (myArticles.map(el => {
-            return (<Article value={el} key={el._id} />)
-          }))}
-          <BottomNavbar />
-        </div>
-      );
-    }
-
   }
+  if (!myArticles) { return "loading" }
+  return (
+    <div className="Home">
+      <TopNavbar />
+      {myArticles && (myArticles.map(el => {
+        return (<Article value={el} key={el._id} />)
+      }))}
+      <BottomNavbar />
+    </div>
+  );
 }
 
 export default Home;

@@ -2,30 +2,24 @@
 import Article from "../components/Article"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
-import axios from "axios"
 import TopNavbar from "../components/TopNavbar";
 import BottomNavbar from "../components/BottomNavbar";
-const storedToken = localStorage.getItem("authToken");
+import api from "../api"
 
 function ArticleDetails() {
     const [article, setArticle] = useState(null)
     const [comments, setComments] = useState(null)
-    const API_URL = "http://localhost:5005";
     const { articleId } = useParams()
 
     const getArticle = useCallback(() => {
-        axios.get(`${API_URL}/api/articles/${articleId}`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-        })
+        api.get(`/articles/${articleId}`)
             .then(article => setArticle(article))
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getArticle() }, [getArticle])
 
     const getComments = useCallback(() => {
-        axios.get(`${API_URL}/api/articles/${articleId}/comments`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-        })
+        api.get(`/articles/${articleId}/comments`)
             .then(comments => setComments(comments.data))
             .catch(err => console.log(err))
     }, [articleId])
