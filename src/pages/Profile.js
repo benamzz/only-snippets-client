@@ -11,6 +11,7 @@ function Profile() {
   const [user, setUser] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [myArticles, setMyArticles] = useState(null);
+  const [myLikes, setMyLikes] = useState(null);
   const { userId } = useParams();
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
@@ -59,8 +60,35 @@ function Profile() {
     getArticles();
   }, [getArticles]);
 
-  if (!user) return "loading";
+  const getLikes = useCallback(() => {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`${API_URL}/api/users/${userId}/likes`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((likes) => {
+        setMyLikes(likes);
+      })
+      .catch((err) => console.log(err));
+  }, [userId]);
+  useEffect(() => {
+    getLikes();
+  }, [getLikes]);
 
+  const [tab, setTab] = useState(0);
+  const handleSlideInput = (e) => {
+    e.target.checked = true    
+    console.log(e.target)
+
+  };
+ 
+
+  console.log("my Articles:",myArticles);
+  console.log("my Likes:",myLikes);
+
+  if (!user) return "loading";
+  // si la checkbox est coche sur article alors on fait setMyLikes(null)
+  // si la checkbox est coche sur likes alors on fait setMyArticless(null)
   return (
     <div className="Profile">
       <TopNavbar />
@@ -107,8 +135,7 @@ function Profile() {
             <li>follows : {user.following.length} people</li>
             <li>
               {" "}
-              followers:{" "}
-              {!followers ? 0 : followers.data.length} people{" "}
+              followers: {!followers ? 0 : followers.data.length} people{" "}
             </li>
           </ul>
         </div>
@@ -116,21 +143,17 @@ function Profile() {
       <Link to={`/users/${userId}/follows`}>following</Link>
       <Link to={`/users/${userId}/followers`}>followers</Link>
 
-      <div>
-        <Link to={`/users/${userId}`}>Articles</Link>
-        <Link to={`/users/${userId}/likes`}>Likes</Link>
-      </div>
-      <div className="articlesList">
-        {myArticles &&
-          myArticles.map((el) => {
-            return (
-              <div key={el._id}>
-                <Article value={el}></Article>
-              </div>
-            );
-          })}
-      </div>
+      <div onClick={()=>setTab(0)} >Articles</div>
+      <div onClick={()=>setTab(1)} >Likes</div>
 
+           
+          
+
+      <div className="articlesList">
+        {tab === 0 && "articles" }
+        {tab === 1 && "likes" }
+        
+      </div>
       <BottomNavbar />
     </div>
   );

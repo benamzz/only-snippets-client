@@ -7,52 +7,62 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 function Likes() {
-    const API_URL = "http://localhost:5005";
-    const [user, setUser] = useState(null);
-    const [followers, setFollowers] = useState(null)
-    const [myLikes, setMyLikes] = useState(null)
-    const { userId } = useParams();
-    const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const API_URL = "http://localhost:5005";
+  const [user, setUser] = useState(null);
+  const [followers, setFollowers] = useState(null);
+  const [myLikes, setMyLikes] = useState(null);
+  const { userId } = useParams();
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
-    const getUser = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
-        axios
-            .get(`${API_URL}/api/users/${userId}`, {
-                headers: { Authorization: `Bearer ${storedToken}` },
-            })
-            .then((userFromApi) => {
-                setUser(userFromApi.data);
-            })
-            .catch((err) => console.log("err", err));
-    }, [userId]);
-    useEffect(() => { getUser() }, [getUser]);
+  const getUser = useCallback(() => {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`${API_URL}/api/users/${userId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((userFromApi) => {
+        setUser(userFromApi.data);
+      })
+      .catch((err) => console.log("err", err));
+  }, [userId]);
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
-    const getFollowers = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
-        axios.get(`${API_URL}/api/users/${userId}/followers`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-        })
-            .then(followers => setFollowers(followers))
-            .catch(err => console.log(err))
-    }, [userId])
-    useEffect(() => { getFollowers() }, [getFollowers])
+  const getFollowers = useCallback(() => {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`${API_URL}/api/users/${userId}/followers`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((followers) => setFollowers(followers))
+      .catch((err) => console.log(err));
+  }, [userId]);
+  useEffect(() => {
+    getFollowers();
+  }, [getFollowers]);
 
-    const getLikes = useCallback(() => {
-        const storedToken = localStorage.getItem("authToken");
-        axios.get(`${API_URL}/api/users/${userId}/likes`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-        })
-            .then((likes) => { setMyLikes(likes) })
-            .catch(err => console.log(err))
-    }, [userId])
-    useEffect(() => { getLikes() }, [getLikes])
+  const getLikes = useCallback(() => {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`${API_URL}/api/users/${userId}/likes`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((likes) => {
+        setMyLikes(likes);
+      })
+      .catch((err) => console.log(err));
+  }, [userId]);
+  useEffect(() => {
+    getLikes();
+  }, [getLikes]);
 
-    if (!user) return "loading";
+  if (!user) return "loading";
 
-    return (
-        <div className="Profile">
-            <TopNavbar />
-            <div className="ProfileDetails">
+  return (
+    <div className="Profile">
+      <TopNavbar />
+      <div className="ProfileDetails">
         <section className="userTop">
           <div className="flex-child one">
             <img src={user.avatarUrl} id="avatar" alt="profile" />
@@ -94,30 +104,64 @@ function Likes() {
             <li>follows : {user.following.length} people</li>
             <li>
               {" "}
-              followers:{" "}
-              {!followers ? 0 : followers.data.length} people{" "}
+              followers: {!followers ? 0 : followers.data.length} people{" "}
             </li>
           </ul>
         </div>
         <Link to={`/users/${userId}/follows`}>following</Link>
-      <Link to={`/users/${userId}/followers`}>followers</Link>
+        <Link to={`/users/${userId}/followers`}>followers</Link>
+      </div>
 
-            </div>
+      <nav className="slidemenu">
+        <input
+          type="radio"
+          name="slideItem"
+          id="slide-item-1"
+          className="slide-toggle"
+          checked
+        />
+        <label for="slide-item-1">
+          <span>
             <Link to={`/users/${userId}`}>Articles</Link>
-            <Link to={`/users/${userId}/likes`}>Likes</Link>
-            <div className="articlesList">
-                {myLikes && (myLikes.data.map(el => {
-                    return (
-                        <div key={el._id}>
-                            <Article value={el}></Article>
-                        </div>
-                    )
-                }))}
-            </div>
+          </span>
+        </label>
 
-            <BottomNavbar />
+        <input
+          type="radio"
+          name="slideItem"
+          id="slide-item-2"
+          className="slide-toggle"
+        />
+        <label for="slide-item-2">
+          <span>
+            {" "}
+            <Link to={`/users/${userId}/likes`}>Likes</Link>
+          </span>
+        </label>
+
+        <div className="clear"></div>
+
+        <div className="slider">
+          <div className="bar"></div>
         </div>
-    );
+      </nav>
+
+      {/* <Link to={`/users/${userId}`}>Articles</Link>
+      <Link to={`/users/${userId}/likes`}>Likes</Link> */}
+      <div className="articlesList">
+        {myLikes &&
+          myLikes.data.map((el) => {
+            return (
+              <div key={el._id}>
+                <Article value={el}></Article>
+              </div>
+            );
+          })}
+      </div>
+
+      <BottomNavbar />
+    </div>
+  );
 }
 
 export default Likes;
