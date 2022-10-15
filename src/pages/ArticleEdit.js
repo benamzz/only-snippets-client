@@ -7,7 +7,7 @@ function ArticleEdit() {
     const [content, setContent] = useState("")
     const [snippet, setSnippet] = useState("")
     const { articleId } = useParams()
-    const [myArticle, setMyArticle] = useState({})
+    const [myArticle, setMyArticle] = useState({ data: { tag: "", content: "", snippet: "" } })
     const API_URL = "http://localhost:5005";
 
     const navigate = useNavigate()
@@ -26,20 +26,30 @@ function ArticleEdit() {
                 headers: { Authorization: `Bearer ${storedToken}` },
             })
             .then(() => {
-                if (myArticle.data.snippet) {
-                    axios
-                        .patch(`${API_URL}/api/articles/${articleId}/snippets`, updatedSnippet, {
-                            headers: { Authorization: `Bearer ${storedToken}` },
-                        })
-                        .then(() => navigate(`/articles/${articleId}`))
-                        .catch(err => console.log("err", err))
-                } else {
+                if (snippet === "") {
                     navigate(`/articles/${articleId}`)
+                } else {
+                    if (!myArticle.data.snippet) {
+                        axios
+                            .post(`${API_URL}/api/articles/${articleId}/snippets`, updatedSnippet, {
+                                headers: { Authorization: `Bearer ${storedToken}` },
+                            })
+                            .then(() => navigate(`/articles/${articleId}`))
+                            .catch(err => console.log("err", err))
+
+                    } else {
+                        axios
+                            .patch(`${API_URL}/api/articles/${articleId}/snippets/${myArticle.data.snippet._id}`, updatedSnippet, {
+                                headers: { Authorization: `Bearer ${storedToken}` },
+                            })
+                            .then(() => navigate(`/articles/${articleId}`))
+                            .catch(err => console.log("err", err))
+                    }
+
                 }
             })
             .catch((err) => console.log("err", err));
     }
-
 
     const getArticle = useCallback(() => {
         const storedToken = localStorage.getItem("authToken");
@@ -52,6 +62,7 @@ function ArticleEdit() {
     useEffect(() => { getArticle() }, [getArticle]);
 
 
+    console.log("snippet", snippet)
     console.log("myArticle", myArticle)
     if (!myArticle) return "loading"
 
@@ -60,7 +71,7 @@ function ArticleEdit() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Tag:<select value={tag} onChange={handleTagInput}
-                    //placeholder={myArticle.data.tag}
+                        placeholder={myArticle.data.tag}
                     >
                         <option value=""></option>
                         <option value="HTML">HTML</option>
@@ -69,13 +80,13 @@ function ArticleEdit() {
                     </select>
                 </label>
                 <label>
-                    Content:<input type="text" value={content} onChange={handleContentInput}
-                    //placeholder={myArticle.data.content} 
+                    Content:<textarea type="text" value={content} onChange={handleContentInput}
+                        placeholder={myArticle.data.content}
                     />
                 </label>
                 <label>
-                    Snippet<input type="text" value={snippet} onChange={handleSnippetInput}
-                    //placeholder={myArticle.data.snippet} 
+                    Snippet<textarea type="text" value={snippet} onChange={handleSnippetInput}
+                        placeholder={myArticle.data.snippet.content}
                     />
                 </label>
                 <button type="submit">Edit Article</button>
