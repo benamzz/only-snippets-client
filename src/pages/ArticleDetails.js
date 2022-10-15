@@ -12,14 +12,14 @@ function ArticleDetails() {
     const { articleId } = useParams()
 
     const getArticle = useCallback(() => {
-        api.get(`/articles/${articleId}`)
+        api().get(`/articles/${articleId}`)
             .then(article => setArticle(article))
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getArticle() }, [getArticle])
 
     const getComments = useCallback(() => {
-        api.get(`/articles/${articleId}/comments`)
+        api().get(`/articles/${articleId}/comments`)
             .then(comments => setComments(comments.data))
             .catch(err => console.log(err))
     }, [articleId])

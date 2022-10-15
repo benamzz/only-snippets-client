@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import BottomNavbar from "../components/BottomNavbar";
 
 function ProfileEdit() {
-    const { user } = useContext(AuthContext);
+    const { user, refresh: refreshUser } = useContext(AuthContext);
     const [username, setUsername] = useState("")
     const [bio, setBio] = useState("")
     const [location, setLocation] = useState("")
@@ -13,11 +13,8 @@ function ProfileEdit() {
     const [website, setWebsite] = useState("")
     const [linkedin, setLinkedin] = useState("")
     const [github, setGithub] = useState("")
-    const [file, setFile] = useState(null)
     const [avatarUrl, setAvatarUrl] = useState("")
     const { userId } = useParams()
-    const API_URL = "http://localhost:5005";
-    const storedToken = localStorage.getItem("authToken");
 
     const navigate = useNavigate()
 
@@ -31,31 +28,29 @@ function ProfileEdit() {
     const handleWebsiteInput = e => setWebsite(e.target.value);
     const handleLinkedinInput = e => setLinkedin(e.target.value);
     const handleGithubInput = e => setGithub(e.target.value);
-    const handleAvatarInput = e => setFile(e.target.files[0])
 
-    const fileUploadHandler = () => {
-        axios.post(`${API_URL}/api/upload`, file,
-            { headers: { Authorization: `Bearer ${storedToken}` } }
-        )
-            .then((response) => { setAvatarUrl(response) })
-            .catch(err => console.log(err))
-    }
+    const handleFileUpload = (e) => {
+        console.log("e.target.files", e.target.files[0])
+        const uploadData = new FormData();
+        uploadData.append("avatarUrl", e.target.files[0]);
+        api().post(`/upload`, uploadData)
+            .then((response) => {
+                setAvatarUrl(response.data)
+            })
+            .catch(err => console.log("Error while uploading file:", err))
+    };
+
 
     const handleProfileSubmit = (e) => {
         e.preventDefault();
-        if (file) {
-            fileUploadHandler()
-        }
         const requestBody = { username, bio, location, tags, website, linkedin, github, avatarUrl };
-        axios.patch(`${API_URL}/api/users/${user._id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+        api().patch(`/users/${user._id}`, requestBody)
             .then(() => {
-                fileUploadHandler()
+                refreshUser()
                 navigate(`/users/${userId}`)
             })
             .catch(err => console.log(err));
     };
-
-    console.log("file", file)
 
     if (!user) return "loading"
 
@@ -90,8 +85,7 @@ function ProfileEdit() {
                 Github<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={user.github} />
             </label>
             <label>
-                Avatar <input type="file" name="avatarUrl" onChange={handleAvatarInput} />
-                <button type="submit" onClick={fileUploadHandler}>Upload image</button>
+                Avatar <input type="file" name="avatarUrl" onChange={handleFileUpload} />
             </label>
             <button type="submit">SUBMIT</button>
         </form>

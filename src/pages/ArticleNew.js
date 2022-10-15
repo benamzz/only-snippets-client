@@ -20,17 +20,17 @@ function ArticleNew() {
         const newArticle = { tag, content };
         const newSnippet = { snippet }
         if (!articleId) {
-            return api.post(`/articles`, newArticle)
+            return api().post(`/articles`, newArticle)
                 .then((response) => {
-                    api.post(`/articles/${response.data._id}/snippets`, newSnippet)
+                    api().post(`/articles/${response.data._id}/snippets`, newSnippet)
                         .then(() => navigate(`/articles/${response.data._id}`))
                         .catch(err => console.log("err", err))
                 })
                 .catch((err) => console.log("err", err));
         }
-        api.post(`/articles?parentId=${articleId}`, newArticle)
+        api().post(`/articles?parentId=${articleId}`, newArticle)
             .then((response) => {
-                api.post(`/articles/${response.data._id}/snippets`, newSnippet)
+                api().post(`/articles/${response.data._id}/snippets`, newSnippet)
                     .then(() => navigate(`/articles/${response.data._id}`))
                     .catch(err => console.log("err", err))
             })

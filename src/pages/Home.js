@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     if (!user) return
-    api.get(`${API_URL}/api/articles`)
+    api().get(`${API_URL}/api/articles`)
       .then((articles) => {
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
         const filteredArticles = noCommentsFilter.filter(el => {

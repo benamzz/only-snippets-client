@@ -10,7 +10,7 @@ function Snippet() {
     const { articleId, snippetId } = useParams()
 
     const getSnippet = useCallback(() => {
-        api.get(`${API_URL}/api/articles/${articleId}/snippets/${snippetId}`)
+        api().get(`${API_URL}/api/articles/${articleId}/snippets/${snippetId}`)
             .then(snippet => setSnippet(snippet))
             .catch(err => console.log(err))
     }, [snippetId, articleId])

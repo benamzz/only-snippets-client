@@ -5,13 +5,12 @@ import { useParams } from "react-router-dom";
 import User from "../components/User";
 import api from "../api"
 
-
 function Follows() {
     const { userId } = useParams();
     const [follows, setFollows] = useState(null)
 
     const getFollows = useCallback(() => {
-        api.get(`/users/${userId}`)
+        api().get(`/users/${userId}`)
             .then(userFromApi => setFollows(userFromApi.data.following))
             .catch(err => console.log("err", err));
     }, [userId]);

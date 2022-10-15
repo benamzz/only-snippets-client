@@ -1,12 +1,14 @@
 import axios from "axios"
 
-const storedToken = localStorage.getItem("authToken");
-
 const instance = axios.create({
     baseURL: 'http://localhost:5005/api',
-    headers: {
-        Authorization: `Bearer ${storedToken}`
-    }
 })
 
-export default instance
+function api() {
+    const storedToken = localStorage.getItem("authToken");
+    instance.defaults.headers.Authorization = `Bearer ${storedToken}` // MAJ
+
+    return instance
+}
+
+export default api

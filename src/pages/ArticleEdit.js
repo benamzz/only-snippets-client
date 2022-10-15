@@ -20,17 +20,17 @@ function ArticleEdit() {
         const updatedArticle = { tag, content };
         const updatedSnippet = { snippet }
 
-        api.patch(`/articles/${articleId}`, updatedArticle)
+        api().patch(`/articles/${articleId}`, updatedArticle)
             .then(() => {
                 if (snippet === "") {
                     return navigate(`/articles/${articleId}`)
                 }
                 if (!myArticle.data.snippet) {
-                    api.post(`/articles/${articleId}/snippets`, updatedSnippet)
+                    api().post(`/articles/${articleId}/snippets`, updatedSnippet)
                         .then(() => navigate(`/articles/${articleId}`))
                         .catch(err => console.log("err", err))
                 } else {
-                    api.patch(`/articles/${articleId}/snippets/${myArticle.data.snippet._id}`, updatedSnippet)
+                    api().patch(`/articles/${articleId}/snippets/${myArticle.data.snippet._id}`, updatedSnippet)
                         .then(() => navigate(`/articles/${articleId}`))
                         .catch(err => console.log("err", err))
                 }
@@ -39,7 +39,7 @@ function ArticleEdit() {
     }
 
     const getArticle = useCallback(() => {
-        api.get(`/articles/${articleId}`)
+        api().get(`/articles/${articleId}`)
             .then((article) => setMyArticle(article))
             .catch(err => console.log(err))
     }, [articleId])
