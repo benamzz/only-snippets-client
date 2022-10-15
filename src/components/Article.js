@@ -24,7 +24,6 @@ function Article(props) {
             {props.value.snippet && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
             <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
             {isMyArticle && <Link to={`/articles/${props.value._id}/edit`}>Editer mon article</Link>}
-
         </Styled>
     );
 }

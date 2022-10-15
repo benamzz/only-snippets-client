@@ -14,6 +14,8 @@ function Profile() {
   const [myLikes, setMyLikes] = useState(null);
   const { userId } = useParams();
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const [tab, setTab] = useState(0);
+
 
   const getUser = useCallback(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -55,7 +57,6 @@ function Profile() {
       })
       .catch((err) => console.log(err));
   }, [userId]);
-
   useEffect(() => {
     getArticles();
   }, [getArticles]);
@@ -67,7 +68,7 @@ function Profile() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((likes) => {
-        setMyLikes(likes);
+        setMyLikes(likes.data);
       })
       .catch((err) => console.log(err));
   }, [userId]);
@@ -75,18 +76,10 @@ function Profile() {
     getLikes();
   }, [getLikes]);
 
-  const [tab, setTab] = useState(0);
-  const handleSlideInput = (e) => {
-    e.target.checked = true;
-    console.log(e.target);
-  };
-
-  console.log("my Articles:", myArticles);
-  console.log("my Likes:", myLikes);
-
   if (!user) return "loading";
-  // si la checkbox est coche sur article alors on fait setMyLikes(null)
-  // si la checkbox est coche sur likes alors on fait setMyArticless(null)
+  if (!myArticles) return "loading";
+  if (!myLikes) return "loading";
+ 
   return (
     <div className="Profile">
       <TopNavbar />
@@ -154,9 +147,23 @@ function Profile() {
       </div>
 
       <div className="articlesList">
-        {tab === 0 && "articles"}
-        {tab === 1 && "likes"}
+        {tab === 0 && myArticles.map((el) => {
+          return (
+            <div key={el._id}>
+              <Article value={el}></Article>
+            </div>
+          );
+        })}
+    
+        {tab === 1 && myLikes.map((el) => {
+            return (
+              <div key={el._id}>
+                <Article value={el}></Article>
+              </div>
+            );
+          })}
       </div>
+
       <BottomNavbar />
     </div>
   );
