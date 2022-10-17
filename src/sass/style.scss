@@ -503,3 +503,26 @@ body {
     text-decoration: none;
   }
 }
+
+// --------------------------------------------ARTICLE----------------------------------------
+.Article {
+  #articleLink {
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    width: 20px;
+    display: flex;
+  }
+
+  .isMyArticle {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .articleBtn {
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -362,4 +362,21 @@ body {
 }
 .User a {
   text-decoration: none;
+}
+
+.Article #articleLink {
+  display: flex;
+  justify-content: center;
+}
+.Article img {
+  width: 20px;
+  display: flex;
+}
+.Article .isMyArticle {
+  display: flex;
+  justify-content: flex-end;
+}
+.Article .articleBtn {
+  display: flex;
+  justify-content: space-around;
 }/*# sourceMappingURL=style.css.map */
