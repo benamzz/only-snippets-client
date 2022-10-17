@@ -58,7 +58,7 @@ function Likes() {
   }, [getLikes]);
 
   if (!user) return "loading";
-
+  console.log("user = ", user)
   return (
     <div className="Profile">
       <TopNavbar />
@@ -71,14 +71,17 @@ function Likes() {
           <div className="flex-child two">
             <h3>@{user.username}</h3>
             {isLoggedIn && (
-              <>
-                <a href={`/users/${userId}/edit`}>
-                  <i className="fas fa-user-edit"></i> Edit
-                </a>
-                <button onClick={logOutUser}>
-                  <i className="fas fa-sign-out-alt"></i> Logout
-                </button>
-              </>
+              (user._id === myUser._id ?
+                <>
+                  <Link to={`/users/${userId}/edit`}>
+                    <i className="fas fa-user-edit"></i> Edit
+                  </Link>
+                  <button onClick={logOutUser}>
+                    <i className="fas fa-sign-out-alt"></i> Logout
+                  </button>
+                </> : <FollowButton value={myUser} />
+              )
+
             )}
           </div>
         </section>

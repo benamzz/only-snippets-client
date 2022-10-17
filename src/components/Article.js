@@ -30,12 +30,21 @@ function Article(props) {
                 .catch(err => console.log(err))
         }
     })
+    const deleteArticle = useCallback((e) => {
+        e.preventDefault();
+        return api().delete(`/articles/${props.value._id}`)
+            .then(() => {
+                console.log("Article deleted!", props.value._id)
+                refresh()
+            })
+            .catch(err => console.log(err))
+    })
 
     let isMyArticle = false
-    if (user._id === props.value.userId) { isMyArticle = true }
-
+    if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"
     return (
+
         <Styled clr={clr} className="Article">
             <Link to={`/articles/${props.value._id}`}>
                 <img src={props.value.userId.avatarUrl} alt="avatar" />
