@@ -16,16 +16,15 @@ function Profile(props) {
   const { isLoggedIn, logOutUser, user, refresh } = useContext(AuthContext);
   const [tab, setTab] = useState(0);
 
-  const getMyUser = useCallback(() => {
+  //get User
+  useEffect(() => {
     api().get(`/users/${userId}`)
       .then(userFromApi => setMyUser(userFromApi.data))
-      .catch(err => console.log("err", err));
+      .catch(err => console.log("err", err));;
   }, [userId]);
-  useEffect(() => {
-    getMyUser();
-  }, [getMyUser]);
 
-  const getFollowers = useCallback(() => {
+  //get followers
+  useEffect(() => {
     api().get(`/users/${userId}/followers`)
       .then((followersFromAPI) => {
         setFollowers(followersFromAPI)
@@ -33,11 +32,9 @@ function Profile(props) {
       })
       .catch((err) => console.log(err));
   }, [userId]);
-  useEffect(() => {
-    getFollowers();
-  }, [getFollowers]);
 
-  const getArticles = useCallback(() => {
+  //get articles
+  useEffect(() => {
     api().get(`/articles?userId=${userId}`)
       .then((articles) => {
         if (!props.value) { setTab(0) }
@@ -45,12 +42,10 @@ function Profile(props) {
         setMyArticles(filteredArticles);
       })
       .catch((err) => console.log(err));
-  }, [userId, props.value]);
-  useEffect(() => {
-    getArticles();
-  }, [getArticles]);
+  }, [userId]);
 
-  const getLikes = useCallback(() => {
+  //get likes
+  useEffect(() => {
     api().get(`/users/${userId}/likes`)
       .then((likes) => {
         if (props.value === "likes") { setTab(1) }
@@ -58,15 +53,10 @@ function Profile(props) {
       })
       .catch((err) => console.log(err));
   }, [userId, props.value]);
-  useEffect(() => {
-    getLikes();
-  }, [getLikes]);
 
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
-  console.log("user", user)
-  console.log("myUser", myUser)
   return (
     <div className="Profile">
       <TopNavbar />

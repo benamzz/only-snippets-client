@@ -19,21 +19,13 @@ function ArticleEdit() {
         e.preventDefault();
         const updatedArticle = { content: content };
         const updatedSnippet = { content: snippet, tag: tag }
+        console.log("updatedSnippet", updatedSnippet)
 
         api().patch(`/articles/${articleId}`, updatedArticle)
             .then(() => {
-                if (snippet === "") {
-                    return navigate(`/articles/${articleId}`)
-                }
-                if (!myArticle.snippet) {
-                    api().post(`/articles/${articleId}/snippets`, updatedSnippet)
-                        .then(() => navigate(`/articles/${articleId}`))
-                        .catch(err => console.log("err", err))
-                } else {
-                    api().patch(`/articles/${articleId}/snippets/${myArticle.snippet._id}`, updatedSnippet)
-                        .then(() => navigate(`/articles/${articleId}`))
-                        .catch(err => console.log("err", err))
-                }
+                api().patch(`/articles/${articleId}/snippets/${myArticle.snippet._id}`, updatedSnippet)
+                    .then(() => navigate(`/articles/${articleId}`))
+                    .catch(err => console.log("err", err))
             })
             .catch((err) => console.log("err", err));
     }
@@ -45,11 +37,6 @@ function ArticleEdit() {
             })
             .catch(err => console.log(err))
     }, [articleId]);
-
-    console.log("myArticle", myArticle)
-    // console.log("content", content)
-    // console.log("snippet", snippet)
-    // console.log("tag", tag)
 
     if (!myArticle) return "loading"
 

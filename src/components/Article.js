@@ -44,8 +44,6 @@ function Article(props) {
     })
     if (!props.value) return "loading"
     let isMyArticle = false
-    console.log("user", user)
-    console.log("props", props.value)
     if (user._id === props.value.userId) { isMyArticle = true }
 
     return (
@@ -74,7 +72,7 @@ function Article(props) {
                     <div className='articleBtn'>
                         <Link to={`/articles/${props.value._id}/comment`}>commentaire</Link>
                         <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
-                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+                        {props.value.snippet.content !== "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
                     </div>
                 </>
             }
