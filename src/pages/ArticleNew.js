@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import api from "../api"
+import languages from "../languages";
 
 function ArticleNew() {
     const [tag, setTag] = useState("")
@@ -17,8 +18,9 @@ function ArticleNew() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newArticle = { tag, content };
-        const newSnippet = { snippet }
+        const newArticle = { content };
+        const newSnippet = { snippet: snippet, tag }
+        console.log("newSnippet", newSnippet)
         if (!articleId) {
             return api().post(`/articles`, newArticle)
                 .then((response) => {
@@ -42,11 +44,10 @@ function ArticleNew() {
             <TopNavbar />
             <form id="articleForm" onSubmit={handleSubmit}>
                 <label>
-                    Tag: <select name="tag" value={tag} onChange={handleTagInput}>
-                        <option value=""></option>
-                        <option value="HTML">HTML</option>
-                        <option value="JS">JS</option>
-                        <option value="CSS">CSS</option>
+                    Tag: <select name="tag" onChange={handleTagInput}>
+                        {languages.map(elem => {
+                            return (<option key={elem} value={elem}>{elem}</option>)
+                        })}
                     </select>
                 </label>
                 <label>

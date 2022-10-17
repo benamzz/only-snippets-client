@@ -16,7 +16,6 @@ function Article(props) {
         if (user.likes.includes(props.value._id)) {
             return api().put(`/articles/${props.value._id}/unlike`)
                 .then(() => {
-                    console.log("unlike!", props.value.id)
                     setLiked(false)
                     refresh()
                 })
@@ -25,7 +24,6 @@ function Article(props) {
         if (!liked) {
             return api().put(`/articles/${props.value._id}/like`)
                 .then(() => {
-                    console.log("like!", props.value.id)
                     setLiked(true)
                     refresh()
                 })
@@ -46,7 +44,7 @@ function Article(props) {
                 <p>{props.value.content}</p>
             </Link>
             {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
-            {props.value.snippet && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+            {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
             <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
             {isMyArticle && <Link to={`/articles/${props.value._id}/edit`}>Editer mon article</Link>}
             <div onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
