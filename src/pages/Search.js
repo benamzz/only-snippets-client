@@ -106,7 +106,8 @@ function Search(props) {
                 <div className="searchResult">
                     <p>Articles</p>
                     {myArticles.data.filter((e) => {
-                        return e.content.includes(searchTerm)
+                        const lower = e.content.toLowerCase()
+                        return lower.includes(searchTerm.trim().toLowerCase())
                     }).map((e) => {
                         return (
                             <Link key={e._id} to={`/articles/${e._id}`}>
@@ -115,9 +116,11 @@ function Search(props) {
                         );
                     })}
                     <p>Users</p>
-                    {user.data.filter((e) => e.username.includes(searchTerm))
+                    {user.data.filter((e) => {
+                        const lower = e.username.toLowerCase()
+                        return lower.includes(searchTerm.trim().toLowerCase())
+                    })
                         .map((e) => {
-                            console.log("e = ", e)
                             return (
                                 <Link key={e._id} to={`/users/${e._id}`}>
 

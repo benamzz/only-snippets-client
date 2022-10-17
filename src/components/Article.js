@@ -17,7 +17,6 @@ function Article(props) {
         if (user.likes.includes(props.value._id)) {
             return api().put(`/articles/${props.value._id}/unlike`)
                 .then(() => {
-                    console.log("unlike!", props.value.id)
                     setLiked(false)
                     refresh()
                 })
@@ -26,7 +25,6 @@ function Article(props) {
         if (!liked) {
             return api().put(`/articles/${props.value._id}/like`)
                 .then(() => {
-                    console.log("like!", props.value.id)
                     setLiked(true)
                     refresh()
                 })

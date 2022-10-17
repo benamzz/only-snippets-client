@@ -3,8 +3,8 @@ import TopNavbar from "../components/TopNavbar"
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import api from "../api"
-import hljs from "highlight.js"
 import Highlight from "react-highlight"
+
 function Snippet() {
     const [snippet, setSnippet] = useState(null)
     const API_URL = "http://localhost:5005";
@@ -24,7 +24,7 @@ function Snippet() {
         return (
             <div className="Snippet">
                 <TopNavbar />
-                <Highlight classname="html">{mySnippet.content}</Highlight>
+                <Highlight classname={mySnippet.tag}>{mySnippet.content}</Highlight>
                 <BottomNavbar />
             </div>
         )
