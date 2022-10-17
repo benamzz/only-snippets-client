@@ -46,8 +46,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
+import Article from "../components/Article";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
+import User from "../components/User";
 
 function Search(props) {
     const [user, setUser] = useState(null);
@@ -99,29 +101,31 @@ function Search(props) {
                 onChange={HandleSearch}
                 value={searchTerm}
             />
-            <div className="searchResult">
-                {myArticles.data.filter((e) => {
-                    return e.content.includes(searchTerm)
-                }).map((e) => {
-                    return (
-                        <Link key={e._id} to={`/articles/${e._id}`}>
-                            <div className="searchResult">{e.content}</div>
-                            <div>{e.userId.username}</div>
-                            <img src={e.userId.avatarUrl} alt="avatar image"></img>
 
-                        </Link>
-                    );
-                })}
-
-                {user.data.filter((e) => e.username.includes(searchTerm))
-                    .map((e) => {
+            {searchTerm.length > 0 &&
+                <div className="searchResult">
+                    <p>Articles</p>
+                    {myArticles.data.filter((e) => {
+                        return e.content.includes(searchTerm)
+                    }).map((e) => {
                         return (
-                            <Link key={e._id} to={`/users/${e._id}`}>
-                                <div className="searchResult">{e.username}</div>
+                            <Link key={e._id} to={`/articles/${e._id}`}>
+                                <Article value={e} />
                             </Link>
                         );
                     })}
-            </div>
+                    <p>Users</p>
+                    {user.data.filter((e) => e.username.includes(searchTerm))
+                        .map((e) => {
+                            console.log("e = ", e)
+                            return (
+                                <Link key={e._id} to={`/users/${e._id}`}>
+
+                                    <User value={e} />
+                                </Link>
+                            );
+                        })}
+                </div>}
             <BottomNavbar />
         </div>
     );

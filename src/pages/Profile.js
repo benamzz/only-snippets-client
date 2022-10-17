@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import Article from "../components/Article";
+import FollowButton from "../components/followButton";
 import { Link, useParams } from "react-router-dom";
 import api from "../api"
 
@@ -12,7 +13,7 @@ function Profile(props) {
   const [myArticles, setMyArticles] = useState(null);
   const [myLikes, setMyLikes] = useState(null);
   const { userId } = useParams();
-  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user, refresh } = useContext(AuthContext);
   const [tab, setTab] = useState(0);
 
   const getMyUser = useCallback(() => {
@@ -26,7 +27,10 @@ function Profile(props) {
 
   const getFollowers = useCallback(() => {
     api().get(`/users/${userId}/followers`)
-      .then((followers) => setFollowers(followers))
+      .then((followersFromAPI) => {
+        setFollowers(followersFromAPI)
+        refresh()
+      })
       .catch((err) => console.log(err));
   }, [userId]);
   useEffect(() => {
@@ -61,8 +65,8 @@ function Profile(props) {
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
-  console.log(user._id)
-  console.log(myUser._id)
+  console.log("user", user)
+  console.log("myUser", myUser)
   return (
     <div className="Profile">
       <TopNavbar />
@@ -70,11 +74,11 @@ function Profile(props) {
       <div className="ProfileDetails">
         <section className="userTop">
           <div className="flex-child one">
-            <img src={user.avatarUrl} id="avatar" alt="profile" />
+            <img src={myUser.avatarUrl} id="avatar" alt="profile" />
           </div>
 
           <div className="flex-child two">
-            <h2>@{user.username}</h2>
+            <h2>@{myUser.username}</h2>
             {isLoggedIn && (
               (user._id === myUser._id ?
                 <>
@@ -84,7 +88,7 @@ function Profile(props) {
                   <button onClick={logOutUser}>
                     <i className="fas fa-sign-out-alt"></i> Logout
                   </button>
-                </> : "loading follow"
+                </> : <FollowButton value={myUser} />
               )
 
             )}
@@ -93,27 +97,27 @@ function Profile(props) {
 
         <div>
           <p id="bio">
-            <i className="fas fa-coffee"></i> {user.bio}
+            <i className="fas fa-coffee"></i> {myUser.bio}
           </p>
           <ul className="userInfo">
             <li>
-              <i className="fas fa-map-marker-alt"></i> {user.location}
+              <i className="fas fa-map-marker-alt"></i> {myUser.location}
             </li>
             <li>
-              <i className="fas fa-code"></i> {user.tags}
+              <i className="fas fa-code"></i> {myUser.tags}
             </li>
-            <Link to={user.website} target="_blank">
-              {user.website}
+            <a href={myUser.website} target="_blank">
+              {myUser.website}
+            </a>
+            <Link to={myUser.linkedin} target="_blank">
+              <i className="fab fa-linkedin"></i> {myUser.linkedin}
             </Link>
-            <Link to={user.linkedin} target="_blank">
-              <i className="fab fa-linkedin"></i> {user.linkedin}
-            </Link>
-            <Link to={user.github} target="_blank">
-              <i className="fab fa-github"></i> {user.github}
+            <Link to={myUser.github} target="_blank">
+              <i className="fab fa-github"></i> {myUser.github}
             </Link>
             <li>
               <Link id="fol-links" to={`/users/${userId}/follows`}>
-                {user.following.length} Follows
+                {myUser.following.length === 0 ? 0 : myUser.following.length} Follows
               </Link>
             </li>
             <li>
