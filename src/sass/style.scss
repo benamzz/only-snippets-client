@@ -506,6 +506,10 @@ body {
 
 // --------------------------------------------ARTICLE----------------------------------------
 .Article {
+  .articleContainer {
+    display: flex;
+  }
+
   #articleLink {
     display: flex;
     justify-content: center;

@@ -364,6 +364,9 @@ body {
   text-decoration: none;
 }
 
+.Article .articleContainer {
+  display: flex;
+}
 .Article #articleLink {
   display: flex;
   justify-content: center;
