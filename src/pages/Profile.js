@@ -76,9 +76,9 @@ function Profile(props) {
             <h2>@{user.username}</h2>
             {isLoggedIn && (
               <>
-                <a href={`/users/${userId}/edit`}>
+                <Link to={`/users/${userId}/edit`}>
                   <i className="fas fa-user-edit"></i> Edit
-                </a>
+                </Link>
                 <button onClick={logOutUser}>
                   <i className="fas fa-sign-out-alt"></i> Logout
                 </button>
@@ -98,13 +98,15 @@ function Profile(props) {
             <li>
               <i className="fas fa-code"></i> {user.tags}
             </li>
-            <li>{user.website}</li>
-            <li>
+            <Link to={user.website} target="_blank">
+              {user.website}
+            </Link>
+            <Link to={user.linkedin} target="_blank">
               <i className="fab fa-linkedin"></i> {user.linkedin}
-            </li>
-            <li>
+            </Link>
+            <Link to={user.github} target="_blank">
               <i className="fab fa-github"></i> {user.github}
-            </li>
+            </Link>
             <li>
               <Link id="fol-links" to={`/users/${userId}/follows`}>
                 {user.following.length} Follows

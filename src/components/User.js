@@ -1,32 +1,36 @@
 import { Link } from 'react-router-dom'
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
+import api from "../api"
+
 
 function User(props) {
-    const { user } = useContext(AuthContext);
-    const [buttonValue, setButtonValue] = useState(true);
+    const { user, refresh } = useContext(AuthContext);
+    const [followed, setFollow] = useState(false)
+
+
+    const toggleFollow = useCallback((e) => {
+        e.preventDefault();
+        if (user.following.includes(props.value._id)) {
+            return api().put(`/users/${props.value._id}/unfollow`)
+                .then(() => {
+                    console.log("unfollow!", props.value._id)
+                    setFollow(false)
+                    refresh()
+                })
+                .catch(err => console.log(err))
+        }
+        if (!followed) {
+            return api().put(`/users/${props.value._id}/follow`)
+                .then(() => {
+                    console.log("follow!", props.value._id)
+                    setFollow(true)
+                    refresh()
+                })
+                .catch(err => console.log(err))
+        }
+    })
     if (!props.value) return "loading"
-
-    const updateList = function () {
-        user.following.filter(el => el === props.value._id)
-        console.log(user.following)
-        setButtonValue(el => !el)
-        console.log(buttonValue)
-    }
-
-    // console.log("user:", user)
-
-    // const storedToken = localStorage.getItem("authToken");
-    // axios.put(`${API_URL}/api/users/${props.value._id}/unfollow`, {
-    //     headers: { Authorization: `Bearer ${storedToken}` },
-    // })
-    //     .then(() => {
-    //         const filteredList = user.following.filter(el => el === props.value._id)
-    //         setMyFollowList(filteredList)
-    //     })
-    //     .catch(err => console.log(err))
-
-    // () => setButtonValue(el => !el)
 
 
     return (
@@ -36,7 +40,7 @@ function User(props) {
                 <p>{props.value.username}</p>
 
             </Link>
-            <button onClick={updateList} value={buttonValue}>{buttonValue ? "Delete" : "Follow"}</button>
+            <div onClick={toggleFollow}>{user.following.includes(props.value._id) ? "Unfollow" : "Follow"}</div>
         </div>
     );
 }
