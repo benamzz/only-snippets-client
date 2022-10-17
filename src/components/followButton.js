@@ -30,7 +30,9 @@ function FollowButton(props) {
     })
     if (!props.value) return "loading"
     return (
-        <div onClick={toggleFollow}>{user.following.includes(props.value._id) ? "Unfollow" : "Follow"}</div>
+        <div className="FollowButton">
+            <div onClick={toggleFollow}>{user.following.includes(props.value._id) ? "Unfollow" : "Follow"}</div>
+        </div>
     )
 }
 

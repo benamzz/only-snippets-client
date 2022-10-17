@@ -6,6 +6,8 @@
 
 * {
   font-family: "Urbanist", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -179,6 +181,7 @@ body {
       font-size: 30px;
     }
   }
+
   img {
     width: 45px;
     border-radius: 10px;
@@ -233,6 +236,7 @@ body {
     span {
       display: block;
     }
+
     #name-app {
       text-shadow: 2px 3px #000000;
       font-weight: 900;
@@ -248,6 +252,7 @@ body {
   p {
     margin: 20px;
   }
+
   a {
     text-decoration: none;
   }
@@ -328,8 +333,8 @@ body {
       cursor: pointer;
       color: #fff;
     }
-    
-   
+
+
   }
 
   #bio {
@@ -344,6 +349,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
   .userInfo li {
     list-style: none;
     padding: 5px;
@@ -351,92 +357,93 @@ body {
     color: var(--green);
 
 
-    #fol-links{
+    #fol-links {
       text-decoration: none;
       color: white;
-    
+
     }
+
     // .fas, .fab{
     //   color: rgba(169, 244, 237, 0.95);
     // }
   }
 
-  .containerSlider > section {
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 15px;
+  .containerSlider>section {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
 
   }
-  
-  
+
+
   *:after,
   *::before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  
-  
+
+
   div h3 {
-  position: relative;
-  display: inline-block;
-  margin: 5px 20px;
-  letter-spacing: 1px;
-  font-size: 16px;
+    position: relative;
+    display: inline-block;
+    margin: 5px 20px;
+    letter-spacing: 1px;
+    font-size: 16px;
   }
-  
+
   div h3:hover,
   div h3:focus {
-  outline: none;
+    outline: none;
   }
-  
-  
+
+
   .effectSlider h3 {
-  padding: 10px 45px 10px;
-  color: var(--green);
+    padding: 10px 45px 10px;
+    color: var(--green);
   }
-  
+
   .effectSlider h3::before,
   .effectSlider h3::after {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--green);
-  content: '';
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  transition: transform 0.3s;
-  -webkit-transform: scale(0.85);
-  -moz-transform: scale(0.85);
-  transform: scale(0.85);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--green);
+    content: '';
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    transform: scale(0.85);
   }
-  
+
   .effectSlider h3::after {
-  opacity: 0;
-  -webkit-transition: top 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-  -moz-transition: top 0.3s, opacity 0.3s, -moz-transform 0.3s;
-  transition: top 0.3s, opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    -webkit-transition: top 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: top 0.3s, opacity 0.3s, -moz-transform 0.3s;
+    transition: top 0.3s, opacity 0.3s, transform 0.3s;
   }
-  
+
   .effectSlider h3:hover::before,
   .effectSlider h3:hover::after,
   .effectSlider h3:focus::before,
   .effectSlider h3:focus::after {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
   }
-  
+
   .effectSlider h3:hover::after,
   .effectSlider h3:focus::after {
-  top: 0%;
-  opacity: 1;
+    top: 0%;
+    opacity: 1;
   }
-  
-  
+
+
 }
 
 
@@ -448,4 +455,51 @@ body {
   background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+// -------------------------------------FOLLOW PAGES-------------------------------------------------
+.FollowButton {
+  display: flex;
+  align-items: center;
+
+  div {
+    background-color: #0b768d;
+    padding: 5px;
+    padding-inline: 10px;
+    border-radius: 15px;
+  }
+
+}
+
+.User {
+  padding-top: 10px;
+  display: flex;
+  height: 70px;
+  border-bottom: solid 2px wheat;
+  justify-content: space-between;
+  margin-inline: 20px;
+
+
+
+
+  #userLink {
+    display: flex;
+    width: 80vw;
+    align-items: center;
+  }
+
+  p {
+    color: #0b768d;
+    font-size: 20px;
+  }
+
+  img {
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 40px;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }

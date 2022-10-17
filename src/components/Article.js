@@ -32,24 +32,43 @@ function Article(props) {
                 .catch(err => console.log(err))
         }
     })
+    const deleteArticle = useCallback((e) => {
+        e.preventDefault();
+        return api().delete(`/articles/${props.value._id}`)
+            .then(() => {
+                console.log("Article deleted!", props.value._id)
+                refresh()
+            })
+            .catch(err => console.log(err))
+    })
 
     let isMyArticle = false
-    if (user._id === props.value.userId) { isMyArticle = true }
-
+    if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"
     return (
+
         <Styled clr={clr} className="Article">
-            <Link to={`/articles/${props.value._id}`}>
-                <img src={props.value.userId.avatarUrl} alt="avatar" />
-                <p>{props.value.userId.username}</p>
-                <p>{props.value.tag}</p>
-                <p>{props.value.content}</p>
-            </Link>
-            {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
-            {props.value.snippet && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
-            <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
-            {isMyArticle && <Link to={`/articles/${props.value._id}/edit`}>Editer mon article</Link>}
-            <div onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
+            {!props.value.deletedAt &&
+                <>
+                    <Link to={`/articles/${props.value._id}`}>
+                        <img src={props.value.userId.avatarUrl} alt="avatar" />
+                        <p>{props.value.userId.username}</p>
+                        <p>{props.value.tag}</p>
+                        <p>{props.value.content}</p>
+                    </Link>
+
+                    {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
+                    {props.value.snippet && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+                    <Link to={`/articles/${props.value._id}/comment`}>Ajouter un commentaire</Link>
+                    {isMyArticle && (
+                        <>
+                            <div onClick={deleteArticle}>Delete</div>
+                            <Link to={`/articles/${props.value._id}/edit`}>Editer mon article</Link>
+                        </>
+                    )}
+                    <div onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
+                </>
+            }
         </Styled>
     );
 }
