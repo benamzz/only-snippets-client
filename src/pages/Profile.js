@@ -7,22 +7,22 @@ import { Link, useParams } from "react-router-dom";
 import api from "../api"
 
 function Profile(props) {
-  const [user, setUser] = useState(null);
+  const [myUser, setMyUser] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [myArticles, setMyArticles] = useState(null);
   const [myLikes, setMyLikes] = useState(null);
   const { userId } = useParams();
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
   const [tab, setTab] = useState(0);
 
-  const getUser = useCallback(() => {
+  const getMyUser = useCallback(() => {
     api().get(`/users/${userId}`)
-      .then(userFromApi => setUser(userFromApi.data))
+      .then(userFromApi => setMyUser(userFromApi.data))
       .catch(err => console.log("err", err));
   }, [userId]);
   useEffect(() => {
-    getUser();
-  }, [getUser]);
+    getMyUser();
+  }, [getMyUser]);
 
   const getFollowers = useCallback(() => {
     api().get(`/users/${userId}/followers`)
@@ -58,10 +58,11 @@ function Profile(props) {
     getLikes();
   }, [getLikes]);
 
-  if (!user) return "loading";
+  if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
-
+  console.log(user._id)
+  console.log(myUser._id)
   return (
     <div className="Profile">
       <TopNavbar />
@@ -75,14 +76,17 @@ function Profile(props) {
           <div className="flex-child two">
             <h2>@{user.username}</h2>
             {isLoggedIn && (
-              <>
-                <Link to={`/users/${userId}/edit`}>
-                  <i className="fas fa-user-edit"></i> Edit
-                </Link>
-                <button onClick={logOutUser}>
-                  <i className="fas fa-sign-out-alt"></i> Logout
-                </button>
-              </>
+              (user._id === myUser._id ?
+                <>
+                  <Link to={`/users/${userId}/edit`}>
+                    <i className="fas fa-user-edit"></i> Edit
+                  </Link>
+                  <button onClick={logOutUser}>
+                    <i className="fas fa-sign-out-alt"></i> Logout
+                  </button>
+                </> : "loading follow"
+              )
+
             )}
           </div>
         </section>

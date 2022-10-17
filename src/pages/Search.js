@@ -107,7 +107,8 @@ function Search(props) {
                         <Link key={e._id} to={`/articles/${e._id}`}>
                             <div className="searchResult">{e.content}</div>
                             <div>{e.userId.username}</div>
-                            <div>{e.userId.avatarUrl}</div>
+                            <img src={e.userId.avatarUrl} alt="avatar image"></img>
+
                         </Link>
                     );
                 })}
