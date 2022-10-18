@@ -22,10 +22,7 @@ function Signup(props) {
     const requestBody = { email, password };
     axios
       .post(`${API_URL}/api/users`, requestBody)
-      .then((response) => {
-        console.log(response);
-        navigate("/login");
-      })
+      .then(() => navigate("/login"))
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);

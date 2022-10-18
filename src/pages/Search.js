@@ -43,7 +43,7 @@
 // }
 
 // export default Search
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
 import Article from "../components/Article";
@@ -55,39 +55,29 @@ function Search(props) {
     const [user, setUser] = useState(null);
     const [myArticles, setMyArticles] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
-
     const HandleSearch = (e) => setSearchTerm(e.target.value)
 
-    const getUser = useCallback(() => {
+    //get users
+    useEffect(() => {
         api().get(`/users`)
             .then((users) => {
-                console.log("users", users.data)
                 setUser(users)
             })
             .catch(err => console.log("err", err));
     }, []);
+    //get articles
     useEffect(() => {
-        getUser();
-    }, [getUser]);
-
-
-
-    const getArticles = useCallback(() => {
         api().get(`/articles`)
             .then((articles) => {
                 setMyArticles(articles);
             })
             .catch((err) => console.log(err));
     }, []);
-    useEffect(() => {
-        getArticles();
-    }, [getArticles]);
-    console.log("MYart", myArticles)
-    console.log(searchTerm)
-    if (!myArticles) {
-        return "loading"
-    }
-    if (!user) { return "loading" }
+
+    console.log("myArticles", myArticles)
+
+    if (!myArticles) return "loading"
+    if (!user) return "loading"
 
     return (
 
@@ -105,7 +95,7 @@ function Search(props) {
             {searchTerm.length > 0 &&
                 <div className="searchResult">
                     <p>Articles</p>
-                    {myArticles.data.filter((e) => {
+                    {myArticles.data.filter(e => {
                         const lower = e.content.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
                     }).map((e) => {
@@ -116,7 +106,7 @@ function Search(props) {
                         );
                     })}
                     <p>Users</p>
-                    {user.data.filter((e) => {
+                    {user.data.filter(e => {
                         const lower = e.username.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
                     })
@@ -127,6 +117,28 @@ function Search(props) {
                                     <User value={e} />
                                 </Link>
                             );
+                        })}
+                    <p>Snippets</p>
+                    {myArticles.data.filter(e => {
+                        console.log("e", e)
+                        const lower = e.snippet.content.toLowerCase()
+                        return lower.includes(searchTerm.trim().toLowerCase())
+                    })
+                        .map(e => {
+                            return (<Link key={e._id} to={`/articles/${e._id}`}>
+                                <Article value={e} />
+                            </Link>)
+                        })}
+                    <p>Tags</p>
+                    {myArticles.data.filter(e => {
+                        console.log("e", e)
+                        const lower = e.snippet.tag.toLowerCase()
+                        return lower.includes(searchTerm.trim().toLowerCase())
+                    })
+                        .map(e => {
+                            return (<Link key={e._id} to={`/articles/${e._id}`}>
+                                <Article value={e} />
+                            </Link>)
                         })}
                 </div>}
             <BottomNavbar />

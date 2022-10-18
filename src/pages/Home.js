@@ -13,14 +13,22 @@ function Home() {
   const [myArticles, setMyArticles] = useState(null)
 
   useEffect(() => {
-    if (!user) return
     api().get(`${API_URL}/api/articles`)
       .then((articles) => {
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
-        const filteredArticles = noCommentsFilter.filter(el => {
+        const followingArticles = noCommentsFilter.filter(el => {
           return user.following.includes(el.userId._id)
         })
-        setMyArticles(filteredArticles)
+        const userArticles = noCommentsFilter.filter(el => {
+          return user._id === el.userId._id
+        })
+        let feedArticles = []
+        feedArticles = followingArticles.concat(userArticles)
+        console.log("feedArticles", feedArticles)
+        feedArticles.sort((a, b) => { return b.updatedAt - a.updatedAt })
+        console.log("sortedArticles", feedArticles)
+
+        setMyArticles(feedArticles)
       })
       .catch(err => console.log(err))
   }, [user])

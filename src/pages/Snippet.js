@@ -1,7 +1,7 @@
 import BottomNavbar from "../components/BottomNavbar"
 import TopNavbar from "../components/TopNavbar"
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useParams, Link } from 'react-router-dom'
 import api from "../api"
 import Highlight from "react-highlight"
 
@@ -10,13 +10,12 @@ function Snippet() {
     const API_URL = "http://localhost:5005";
     const { articleId, snippetId } = useParams()
 
-    const getSnippet = useCallback(() => {
+    //get snippet
+    useEffect(() => {
         api().get(`${API_URL}/api/articles/${articleId}/snippets/${snippetId}`)
             .then(snippet => setSnippet(snippet))
             .catch(err => console.log(err))
     }, [snippetId, articleId])
-
-    useEffect(() => { getSnippet() }, [getSnippet])
 
     if (!snippet) { return "snippet not found" }
     else {
@@ -25,6 +24,7 @@ function Snippet() {
             <div className="Snippet">
                 <TopNavbar />
                 <Highlight classname={mySnippet.tag}>{mySnippet.content}</Highlight>
+                <Link to={`/articles/${articleId}`} >Revenir à l'article</Link>
                 <BottomNavbar />
             </div>
         )
