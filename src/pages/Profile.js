@@ -1,5 +1,5 @@
 import { AuthContext } from "../context/auth.context";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import Article from "../components/Article";
@@ -52,7 +52,7 @@ function Profile(props) {
         setMyLikes(likes.data);
       })
       .catch((err) => console.log(err));
-  }, [userId, props.value]);
+  }, [userId]);
 
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
@@ -97,15 +97,15 @@ function Profile(props) {
             <li>
               <i className="fas fa-code"></i> {myUser.tags}
             </li>
-            <a href={myUser.website} target="_blank">
+            {myUser.website !== "" && <Link href={myUser.website} target="_blank" rel="noreferrer">
               {myUser.website}
-            </a>
-            <Link to={myUser.linkedin} target="_blank">
+            </Link>}
+            {myUser.linkedin !== "" && <Link to={myUser.linkedin} target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin"></i> {myUser.linkedin}
-            </Link>
-            <Link to={myUser.github} target="_blank">
+            </Link>}
+            {myUser.github !== "" && <Link to={myUser.github} target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i> {myUser.github}
-            </Link>
+            </Link>}
             <li>
               <Link id="fol-links" to={`/users/${userId}/follows`}>
                 {myUser.following.length === 0 ? 0 : myUser.following.length} Follows

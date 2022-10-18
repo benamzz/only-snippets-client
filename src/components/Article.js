@@ -30,7 +30,8 @@ function Article(props) {
                 })
                 .catch(err => console.log(err))
         }
-    })
+    }, [props.value._id, liked, refresh, user.likes])
+
     const deleteArticle = useCallback((e) => {
         e.preventDefault();
         return api().delete(`/articles/${props.value._id}`)
@@ -41,11 +42,11 @@ function Article(props) {
                 refresh()
             })
             .catch(err => console.log(err))
-    })
+    }, [deleted, props.value._id, refresh])
 
+    console.log("props.value", props.value)
     let isMyArticle = false
-    console.log("user", user)
-    console.log("props", props.value)
+
     if (user._id === props.value.userId) { isMyArticle = true }
     if (!props.value) return "loading"
     return (
@@ -60,7 +61,7 @@ function Article(props) {
 
                         <Link to={`/articles/${props.value._id}`} id="articleLink">
                             <h3>@{props.value.userId.username}</h3>
-                            <p id='content'>Description : {props.value.content}</p>
+                            <p id='content'>{props.value.content}</p>
                             <p>{props.value.snippet.tag}</p>
                         </Link>
                         {isMyArticle && (
@@ -75,7 +76,7 @@ function Article(props) {
                     <div className='articleBtn'>
                         <Link to={`/articles/${props.value._id}/comment`}>commentaire</Link>
                         <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
-                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+                        {props.value.snippet.content !== "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
                     </div>
                 </>
             }
