@@ -47,7 +47,7 @@ function ArticleEdit() {
             <TopNavbar />
             <form onSubmit={handleSubmit}>
                 <label>
-                    Tag:<select onChange={handleTagInput}
+                    Tag : <select onChange={handleTagInput}
                     >
                         {languages.map(elem => {
                             return (<option key={elem} value={elem} selected={elem === myArticle.snippet.tag}>{elem}</option>)
@@ -55,12 +55,12 @@ function ArticleEdit() {
                     </select>
                 </label>
                 <label>
-                    Content:<textarea type="text" name="content" value={content} onChange={handleContentInput}
+                    Content : <textarea type="text" name="content" value={content} onChange={handleContentInput}
                         placeholder={myArticle.content}
                     />
                 </label>
                 <label>
-                    Snippet<textarea type="text" name="snippet" value={snippet} onChange={handleSnippetInput}
+                    Snippet : <textarea type="text" name="snippet" value={snippet} onChange={handleSnippetInput}
                         placeholder={myArticle.snippet?.content} // optional chaining
                     />
                 </label>

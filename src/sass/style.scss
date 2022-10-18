@@ -281,6 +281,11 @@ body {
   padding-bottom: 20px;
   font-size: 16px;
 
+  a {
+    text-decoration: none;
+    color: #0b768d;
+  }
+
   .ProfileDetails {
     display: flex;
     flex-direction: column;
@@ -300,7 +305,7 @@ body {
     flex: 1;
 
     #avatar {
-      width: 100px;
+      width: 80px;
       float: left;
       border-radius: 30px;
     }
@@ -308,6 +313,17 @@ body {
 
   .two {
     flex: 4;
+    display: flex;
+
+    .EditLogoutContainer {
+      margin-left: auto;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      margin-left: 20px;
+
+    }
 
     a,
     button {
@@ -337,20 +353,26 @@ body {
 
   }
 
+  .userInfo {
+    display: flex;
+    justify-content: space-evenly;
+    margin-block: 20px;
+  }
+
   #bio {
     text-align: left;
   }
 
-  .userInfo {
-    padding-left: 0;
+  .userInfoLink {
+    padding-inline: 20px;
     margin: 5px;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
-  .userInfo li {
+  .userInfoLink li {
     list-style: none;
     padding: 5px;
     // color: #aaaaaa;
@@ -443,18 +465,53 @@ body {
     opacity: 1;
   }
 
-
+  .FollowsLink {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
 // ----------------------------------------------------EDIT PROFILE/ARTICLE-------------------------------------------------------
 .ProfileEdit,
 .ArticleEdit {
   form {
-    display: block;
+    display: flex;
+    flex-direction: column;
+
   }
 
   label {
     display: flex;
+    margin-left: 50px;
+    margin-block: 10px;
+  }
+
+  input {
+    height: 20px;
+    border: none;
+    border-radius: 7px;
+    margin-left: 5px;
+  }
+
+  select {
+    border: none;
+    border-radius: 7px;
+  }
+
+  button {
+    width: 100px;
+    margin-inline: auto;
+    border: none;
+    border-radius: 20px;
+    background-color: #0b768d;
+    color: #fff;
+  }
+}
+
+.ArticleEdit {
+  textarea {
+    border: none;
+    border-radius: 7px;
   }
 }
 
@@ -467,6 +524,23 @@ body {
   background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+// -------------------------------------------SEARCH.js-----------------------------
+.searchBar {
+  input {
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 50vw;
+  }
+
+  p {
+    color: #0b768d;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 // ---------------------------------------------------------USER-------------------------------------------------------------------
@@ -488,7 +562,7 @@ body {
   padding-inline: 10px;
   display: flex;
   height: 100px;
-  border-bottom: solid 2px wheat;
+  border-bottom: solid 2px #0b768d;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
   justify-content: space-between;

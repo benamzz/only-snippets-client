@@ -73,27 +73,34 @@ function Profile(props) {
             <h2>@{myUser.username}</h2>
             {isLoggedIn && (
               (user._id === myUser._id ?
-                <>
+                <div className="EditLogoutContainer">
                   <Link to={`/users/${userId}/edit`}>
                     <i className="fas fa-user-edit"></i> Edit
                   </Link>
                   <button onClick={logOutUser}>
                     <i className="fas fa-sign-out-alt"></i> Logout
                   </button>
-                </>
+                </div>
                 : <FollowButton value={myUser} />
               )
             )}
           </div>
         </section>
 
-        <div>
+        <div className="userInfo">
           <p id="bio">
             <i className="fas fa-coffee"></i> {myUser.bio}
           </p>
-          <ul className="userInfo">
+          <p id="bio">
+            <i className="fas fa-map-marker-alt"></i> {myUser.location}
+          </p>
+        </div >
+
+
+        <div>
+          <ul className="userInfoLink">
             <li>
-              <i className="fas fa-map-marker-alt"></i> {myUser.location}
+
             </li>
             <li>
               <i className="fas fa-code"></i> {myUser.tags}
@@ -104,20 +111,19 @@ function Profile(props) {
             {myUser.linkedin !== "" && <a href={`https://www.${myUser.linkedin}`} target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>}
-            {myUser.github !== "" && <Link to={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
+            {myUser.github !== "" && <a href={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i>
-            </Link>}
-            <li>
-              <Link id="fol-links" to={`/users/${userId}/follows`}>
-                {myUser.following.length === 0 ? 0 : myUser.following.length} Follows
-              </Link>
-            </li>
-            <li>
-              <Link id="fol-links" to={`/users/${userId}/followers`}>
-                {!followers ? 0 : followers.data.length} Followers
-              </Link>
-            </li>
+            </a>}
+
           </ul>
+          <div className="FollowsLink">
+            <Link id="fol-links" to={`/users/${userId}/follows`}>
+              {myUser.following.length === 0 ? 0 : myUser.following.length} Follows
+            </Link>
+            <Link id="fol-links" to={`/users/${userId}/followers`}>
+              {!followers ? 0 : followers.data.length} Followers
+            </Link>
+          </div>
         </div>
       </div>
 

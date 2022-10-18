@@ -60,16 +60,16 @@ function ProfileEdit() {
             <TopNavbar />
             <form onSubmit={handleProfileSubmit}>
                 <label>
-                    Username<input type="text" name="username" value={username} onChange={handleUsernameInput} placeholder={user.username} />
+                    Username : <input type="text" name="username" value={username} onChange={handleUsernameInput} placeholder={user.username} />
                 </label>
                 <label>
-                    Bio<input type="text" name="bio" value={bio} onChange={handleBioInput} placeholder={user.bio} />
+                    Bio : <input type="text" name="bio" value={bio} onChange={handleBioInput} placeholder={user.bio} />
                 </label>
                 <label>
-                    Location<input type="text" name="location" value={location} onChange={handleLocationInput} placeholder={user.location} />
+                    Location : <input type="text" name="location" value={location} onChange={handleLocationInput} placeholder={user.location} />
                 </label>
                 <label>
-                    Tags<select name="tags" value={tags} onChange={handleTagsInput} placeholder={user.tags} multiple>
+                    Tags : <select name="tags" value={tags} onChange={handleTagsInput} placeholder={user.tags} multiple>
                         <option value=""></option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
@@ -87,16 +87,16 @@ function ProfileEdit() {
                     </select>
                 </label>
                 <label>
-                    Website : http://www.<input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={user.website} />
+                    Website : http://www.<input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={`  ${user.website}`} />
                 </label>
                 <label>
-                    Linkedin : http://www.<input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={user.linkedin} />
+                    Linkedin : http://www.<input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={`  ${user.linkedin}`} />
                 </label>
                 <label>
-                    Github : http://www.<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={user.github} />
+                    Github : http://www.<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={`  ${user.github}`} />
                 </label>
                 <label>
-                    Profile Image File <input type="file" name="avatarUrl" onChange={handleFileUpload} />
+                    Profile image<input type="file" name="avatarUrl" id="uploadImg  " onChange={handleFileUpload} />
                 </label>
                 <button type="submit">SUBMIT</button>
             </form>

@@ -205,6 +205,10 @@ body {
   padding-bottom: 20px;
   font-size: 16px;
 }
+.Profile a {
+  text-decoration: none;
+  color: #0b768d;
+}
 .Profile .ProfileDetails {
   display: flex;
   flex-direction: column;
@@ -221,12 +225,20 @@ body {
   flex: 1;
 }
 .Profile .one #avatar {
-  width: 100px;
+  width: 80px;
   float: left;
   border-radius: 30px;
 }
 .Profile .two {
   flex: 4;
+  display: flex;
+}
+.Profile .two .EditLogoutContainer {
+  margin-left: auto;
+}
+.Profile .two h2 {
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
 .Profile .two a,
 .Profile .two button {
@@ -249,22 +261,27 @@ body {
   cursor: pointer;
   color: #fff;
 }
+.Profile .userInfo {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block: 20px;
+}
 .Profile #bio {
   text-align: left;
 }
-.Profile .userInfo {
-  padding-left: 0;
+.Profile .userInfoLink {
+  padding-inline: 20px;
   margin: 5px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
-.Profile .userInfo li {
+.Profile .userInfoLink li {
   list-style: none;
   padding: 5px;
   color: var(--green);
 }
-.Profile .userInfo li #fol-links {
+.Profile .userInfoLink li #fol-links {
   text-decoration: none;
   color: white;
 }
@@ -320,20 +337,65 @@ body {
   top: 0%;
   opacity: 1;
 }
+.Profile .FollowsLink {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .ProfileEdit form,
 .ArticleEdit form {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 .ProfileEdit label,
 .ArticleEdit label {
   display: flex;
+  margin-left: 50px;
+  margin-block: 10px;
+}
+.ProfileEdit input,
+.ArticleEdit input {
+  height: 20px;
+  border: none;
+  border-radius: 7px;
+  margin-left: 5px;
+}
+.ProfileEdit select,
+.ArticleEdit select {
+  border: none;
+  border-radius: 7px;
+}
+.ProfileEdit button,
+.ArticleEdit button {
+  width: 100px;
+  margin-inline: auto;
+  border: none;
+  border-radius: 20px;
+  background-color: #0b768d;
+  color: #fff;
+}
+
+.ArticleEdit textarea {
+  border: none;
+  border-radius: 7px;
 }
 
 .ArticleNew {
   background-color: #2c2c2c;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.searchBar input {
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 50vw;
+}
+.searchBar p {
+  color: #0b768d;
+}
+.searchBar a {
+  text-decoration: none;
 }
 
 .FollowButton {
@@ -352,7 +414,7 @@ body {
   padding-inline: 10px;
   display: flex;
   height: 100px;
-  border-bottom: solid 2px wheat;
+  border-bottom: solid 2px #0b768d;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
   justify-content: space-between;

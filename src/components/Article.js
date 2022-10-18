@@ -58,7 +58,7 @@ function Article(props) {
                         </Link>
 
                         <Link to={`/articles/${props.value._id}`} id="articleLink">
-                            <h3>@{props.value.userId.username}</h3>
+                            <h3>Edited by : @{props.value.userId.username}</h3>
                             <p id='content'>Description : {props.value.content}</p>
                             <p>{props.value.snippet.tag}</p>
                         </Link>
