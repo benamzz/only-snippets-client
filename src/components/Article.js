@@ -42,39 +42,40 @@ function Article(props) {
             })
             .catch(err => console.log(err))
     })
-    if (!props.value) return "loading"
-    let isMyArticle = false
-    console.log("user", user)
-    console.log("props", props.value)
-    if (user._id === props.value.userId) { isMyArticle = true }
 
+    let isMyArticle = false
+    // console.log("user", user)
+    // console.log("props", props.value)
+    if (user._id === props.value.userId) { isMyArticle = true }
+    if (!props.value) return "loading"
     return (
 
         <Styled clr={clr} className="Article">
             {!props.value.deletedAt &&
                 <>
-                    <div className='articleDiv'>
+                    <div className='articleContainer'>
                         <Link to={`/users/${props.value._id}`} id="userProfileLink">
                             <img src={props.value.userId.avatarUrl} alt="avatar" />
+                        </Link>
+
+                        <Link to={`/articles/${props.value._id}`} id="articleLink">
+                            <h3>@{props.value.userId.username}</h3>
+                            <p id='content'>Description : {props.value.content}</p>
+                            <p>{props.value.snippet.tag}</p>
                         </Link>
                         {isMyArticle && (
                             <div className='isMyArticle'>
                                 <div className='deleteArticleBtn' onClick={deleteArticle}>{!deleted ? "Delete" : "Deleted"}</div>
                                 <Link to={`/articles/${props.value._id}/edit`} id="editArticleLink">Editer</Link>
                             </div>)}
-                        <Link to={`/articles/${props.value._id}`} id="articleLink">
-                            <p>{props.value.userId.username}</p>
-                            <p>{props.value.content}</p>
-                            <p>{props.value.tag}</p>
-                        </Link>
 
                         {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
 
                     </div>
                     <div className='articleBtn'>
-                        <Link to={`/articles/${props.value._id}/comment`}>commentaire</Link>
-                        <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
-                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+                        <Link to={`/articles/${props.value._id}/comment`}>Commenter</Link>
+                        <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Liker"}</div>
+                        {props.value.snippet.content && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
                     </div>
                 </>
             }

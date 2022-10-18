@@ -506,27 +506,57 @@ body {
 
 // --------------------------------------------ARTICLE----------------------------------------
 .Article {
+
+
   .articleContainer {
     display: flex;
+    justify-content: space-between;
+    padding-inline: 20px;
+    padding-top: 20px;
   }
 
   #articleLink {
-    display: flex;
-    justify-content: center;
+    margin-right: auto;
+    text-align: justify;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  #articleLink p {
+    color: white
+  }
+
+  #articleLink h3 {
+    color: #0b768d;
   }
 
   img {
-    width: 20px;
-    display: flex;
+    width: 30px;
   }
 
-  .isMyArticle {
-    display: flex;
-    justify-content: flex-end;
+  a {
+    text-decoration: none;
+    color: #0b768d;
+  }
+
+  .likeBtn {
+    color: rgb(222, 20, 131);
   }
 
   .articleBtn {
     display: flex;
     justify-content: space-around;
+    border-bottom: solid 2px #0b768d;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 10px;
+  }
+
+  .isMyArticle {
+    margin-left: 10px;
+  }
+
+  .deleteArticleBtn {
+    color: rgb(165, 48, 44);
   }
 }
