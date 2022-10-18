@@ -37,20 +37,18 @@ function Article(props) {
         return api().delete(`/articles/${props.value._id}`)
             .then(() => {
                 setDeleted(!deleted)
-                console.log(deleted)
                 console.log("Article deleted!", props.value._id)
                 refresh()
             })
             .catch(err => console.log(err))
     }, [deleted, props.value._id, refresh])
 
-    console.log("props.value", props.value)
     let isMyArticle = false
 
     if (user._id === props.value.userId) { isMyArticle = true }
     if (!props.value) return "loading"
-    return (
 
+    return (
         <Styled clr={clr} className="Article">
             {!props.value.deletedAt &&
                 <>

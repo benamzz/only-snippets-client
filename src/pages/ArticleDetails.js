@@ -13,18 +13,17 @@ function ArticleDetails() {
 
     const getArticle = useCallback(() => {
         api().get(`/articles/${articleId}`)
-            .then(article => setArticle(article))
+            .then(articleFromApi => setArticle(articleFromApi))
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getArticle() }, [getArticle])
 
     const getComments = useCallback(() => {
         api().get(`/articles/${articleId}/comments`)
-            .then(comments => setComments(comments.data))
+            .then(commentsFromApi => setComments(commentsFromApi.data))
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getComments() }, [getComments])
-
 
     if (!article) return "loading"
 

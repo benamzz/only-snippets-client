@@ -20,7 +20,6 @@ function ArticleNew() {
         e.preventDefault();
         const newArticle = { content };
         const newSnippet = { snippet: snippet, tag }
-        console.log("newSnippet", newSnippet)
         if (!articleId) {
             return api().post(`/articles`, newArticle)
                 .then((response) => {
@@ -51,10 +50,10 @@ function ArticleNew() {
                     </select>
                 </label>
                 <label>
-                    Content : <input type="text" name="content" value={content} onChange={handleContentInput} />
+                    Content : <textarea type="text" name="content" value={content} onChange={handleContentInput} />
                 </label>
                 <label>
-                    Snippet:<input type="text" name="snippet" value={snippet} onChange={handleSnippetInput} />
+                    Snippet:<textarea type="text" name="snippet" value={snippet} onChange={handleSnippetInput} />
                 </label>
                 <button type="submit">Send Article</button>
             </form>
