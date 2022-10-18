@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import BottomNavbar from "../components/BottomNavbar";
+import TopNavbar from "../components/TopNavbar";
 
 function ProfileEdit() {
     const { user, refresh: refreshUser } = useContext(AuthContext);
@@ -54,44 +55,53 @@ function ProfileEdit() {
 
     if (!user) return "loading"
 
-    return (<div className="ProfileEdit">
-        <form onSubmit={handleProfileSubmit}>
-            <label>
-                Username<input type="text" name="username" value={username} onChange={handleUsernameInput} placeholder={user.username} />
-            </label>
-            <label>
-                Bio<input type="text" name="bio" value={bio} onChange={handleBioInput} placeholder={user.bio} />
-            </label>
-            <label>
-                Location<input type="text" name="location" value={location} onChange={handleLocationInput} placeholder={user.location} />
-            </label>
-            <label>
-                Tags<select name="tags" value={tags} onChange={handleTagsInput} placeholder={user.tags} multiple>
-                    <option value=""></option>
-                    <option value="HTML">HTML</option>
-                    <option value="CSS">CSS</option>
-                    <option value="JS">JS</option>
-                    <option value="PYTHON">PYTHON</option>
-                    <option value="C">C</option>
-                </select>
-            </label>
-            <label>
-                Website<input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={user.website} />
-            </label>
-            <label>
-                Linkedin<input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={user.linkedin} />
-            </label>
-            <label>
-                Github<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={user.github} />
-            </label>
-            <label>
-                Avatar <input type="file" name="avatarUrl" onChange={handleFileUpload} />
-            </label>
-            <button type="submit">SUBMIT</button>
-        </form>
-        <BottomNavbar />
-
-    </div>)
+    return (
+        <div className="ProfileEdit">
+            <TopNavbar />
+            <form onSubmit={handleProfileSubmit}>
+                <label>
+                    Username<input type="text" name="username" value={username} onChange={handleUsernameInput} placeholder={user.username} />
+                </label>
+                <label>
+                    Bio<input type="text" name="bio" value={bio} onChange={handleBioInput} placeholder={user.bio} />
+                </label>
+                <label>
+                    Location<input type="text" name="location" value={location} onChange={handleLocationInput} placeholder={user.location} />
+                </label>
+                <label>
+                    Tags<select name="tags" value={tags} onChange={handleTagsInput} placeholder={user.tags} multiple>
+                        <option value=""></option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JS">JS</option>
+                        <option value="TYPESCRIPT">TYPESCRIPT</option>
+                        <option value="PYTHON">PYTHON</option>
+                        <option value="C">C</option>
+                        <option value="PHP">PHP</option>
+                        <option value="PYTHON">PYTHON</option>
+                        <option value="C#">C#</option>
+                        <option value="c++">c++</option>
+                        <option value="REACTJS">REACTJS</option>
+                        <option value="VUEJS">VUEJS</option>
+                        <option value="NEXTJS">NEXTJS</option>
+                    </select>
+                </label>
+                <label>
+                    Website : http://www.<input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={user.website} />
+                </label>
+                <label>
+                    Linkedin : http://www.<input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={user.linkedin} />
+                </label>
+                <label>
+                    Github : http://www.<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={user.github} />
+                </label>
+                <label>
+                    Profile Image File <input type="file" name="avatarUrl" onChange={handleFileUpload} />
+                </label>
+                <button type="submit">SUBMIT</button>
+            </form>
+            <BottomNavbar />
+        </div>)
 }
 
 export default ProfileEdit

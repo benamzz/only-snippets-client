@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import api from "../api"
 import languages from "../languages"
+import TopNavbar from "../components/TopNavbar"
+import BottomNavbar from "../components/BottomNavbar"
 
 function ArticleEdit() {
     const [tag, setTag] = useState("")
@@ -42,6 +44,7 @@ function ArticleEdit() {
 
     return (
         <div className="ArticleEdit">
+            <TopNavbar />
             <form onSubmit={handleSubmit}>
                 <label>
                     Tag:<select onChange={handleTagInput}
@@ -63,6 +66,7 @@ function ArticleEdit() {
                 </label>
                 <button type="submit">Edit Article</button>
             </form>
+            <BottomNavbar />
         </div>
     )
 }

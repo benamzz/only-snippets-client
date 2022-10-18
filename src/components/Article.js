@@ -46,10 +46,9 @@ function Article(props) {
     let isMyArticle = false
     console.log("user", user)
     console.log("props", props.value)
-    if (user._id === props.value.userId) { isMyArticle = true }
+    if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"
     return (
-
         <Styled clr={clr} className="Article">
             {!props.value.deletedAt &&
                 <>
@@ -66,16 +65,16 @@ function Article(props) {
                         {isMyArticle && (
                             <div className='isMyArticle'>
                                 <div className='deleteArticleBtn' onClick={deleteArticle}>{!deleted ? "Delete" : "Deleted"}</div>
-                                <Link to={`/articles/${props.value._id}/edit`} id="editArticleLink">Editer</Link>
+                                <Link to={`/articles/${props.value._id}/edit`} id="editArticleLink">Edit</Link>
                             </div>)}
 
                         {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
 
                     </div>
                     <div className='articleBtn'>
-                        <Link to={`/articles/${props.value._id}/comment`}>commentaire</Link>
+                        <Link to={`/articles/${props.value._id}/comment`}>comment</Link>
                         <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? "Unlike" : "Like"}</div>
-                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>Voir le Snippet</Link>}
+                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>See the Snippet</Link>}
                     </div>
                 </>
             }

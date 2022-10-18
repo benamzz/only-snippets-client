@@ -80,9 +80,9 @@ function Profile(props) {
                   <button onClick={logOutUser}>
                     <i className="fas fa-sign-out-alt"></i> Logout
                   </button>
-                </> : <FollowButton value={myUser} />
+                </>
+                : <FollowButton value={myUser} />
               )
-
             )}
           </div>
         </section>
@@ -98,14 +98,14 @@ function Profile(props) {
             <li>
               <i className="fas fa-code"></i> {myUser.tags}
             </li>
-            {myUser.website !== "" && <Link href={myUser.website} target="_blank" rel="noreferrer">
+            {myUser.website !== "" && <a href={`https://www.${myUser.website}`} target="_blank" rel="noreferrer">
               {myUser.website}
-            </Link>}
-            {myUser.linkedin !== "" && <Link to={myUser.linkedin} target="_blank" rel="noreferrer">
-              <i className="fab fa-linkedin"></i> {myUser.linkedin}
-            </Link>}
-            {myUser.github !== "" && <Link to={myUser.github} target="_blank" rel="noreferrer">
-              <i className="fab fa-github"></i> {myUser.github}
+            </a>}
+            {myUser.linkedin !== "" && <a href={`https://www.${myUser.linkedin}`} target="_blank" rel="noreferrer">
+              <i className="fab fa-linkedin"></i>
+            </a>}
+            {myUser.github !== "" && <Link to={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
+              <i className="fab fa-github"></i>
             </Link>}
             <li>
               <Link id="fol-links" to={`/users/${userId}/follows`}>

@@ -321,6 +321,15 @@ body {
   opacity: 1;
 }
 
+.ProfileEdit form,
+.ArticleEdit form {
+  display: block;
+}
+.ProfileEdit label,
+.ArticleEdit label {
+  display: flex;
+}
+
 .ArticleNew {
   background-color: #2c2c2c;
   padding-top: 20px;
@@ -340,19 +349,28 @@ body {
 
 .User {
   padding-top: 10px;
+  padding-inline: 10px;
   display: flex;
-  height: 70px;
+  height: 100px;
   border-bottom: solid 2px wheat;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
   justify-content: space-between;
-  margin-inline: 20px;
+  margin-inline: 10px;
 }
 .User #userLink {
   display: flex;
   width: 80vw;
   align-items: center;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+.User h3 {
+  font-size: 20px;
+  color: #0b768d;
 }
 .User p {
-  color: #0b768d;
+  color: white;
   font-size: 20px;
 }
 .User img {

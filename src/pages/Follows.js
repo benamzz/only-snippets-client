@@ -24,7 +24,7 @@ function Follows() {
             {follows && (follows.map(el => {
                 return (
                     <div key={el._id}>
-                        <User value={el}></User>
+                        <User value={el} />
                     </div>
                 )
             }))}

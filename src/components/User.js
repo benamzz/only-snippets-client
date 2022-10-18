@@ -3,7 +3,7 @@ import FollowButton from './followButton';
 
 
 function User(props) {
-
+    console.log(props.value)
     if (!props.value) return "loading"
 
 
@@ -11,7 +11,10 @@ function User(props) {
         <div className="User">
             <Link to={`/users/${props.value._id}`} id="userLink">
                 <img src={props.value.avatarUrl} alt="avatar" />
-                <p>{props.value.username}</p>
+                <div>
+                    <h3>@{props.value.username}</h3>
+                    <p>{props.value.bio}</p>
+                </div>
             </Link>
             <FollowButton value={props.value} />
         </div>
