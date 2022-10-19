@@ -120,7 +120,6 @@ function Search(props) {
                         })}
                     <p>Snippets</p>
                     {myArticles.data.filter(e => {
-                        console.log("e", e)
                         const lower = e.snippet.content.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
                     })

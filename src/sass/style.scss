@@ -18,15 +18,16 @@ body {
   margin-bottom: 50px;
 }
 
-i > p {
+i>p {
   font-family: "Urbanist", sans-serif;
+  font-size: 10px;
 }
 
-a{
+a {
   text-decoration: none;
- 
-    color: var(--green);
-  
+
+  color: var(--green);
+
 }
 
 // body:not(.Login){
@@ -285,23 +286,12 @@ a{
 
 .Profile {
   // background-color: #2b292b;
-  padding-top: 20px;
-  padding-bottom: 20px;
   font-size: 16px;
 
   .fa-user-edit,
   .fa-sign-out-alt {
     font-size: 16px;
   }
-
-  i {
-    font-size: 18px;
-  }
-
-  // a {
-  //   text-decoration: none;
-  //   color: #0b768d;
-  // }
 
   .ProfileDetails {
     display: flex;
@@ -320,6 +310,8 @@ a{
 
   .one {
     flex: 1;
+    display: flex;
+    align-items: center;
 
     #avatar {
       width: 80px;
@@ -331,21 +323,25 @@ a{
   .two {
     flex: 4;
     display: flex;
+    align-items: center;
+    height: 100px;
 
-    
 
+    h2 {
+      margin-bottom: 10px;
+      margin-left: 20px;
+      font-size: 20px;
+    }
 
     .EditLogoutContainer {
       margin-left: auto;
       display: flex;
       flex-direction: column;
-      
 
       a,
       button {
-        margin: 10px;
+        margin: 5px;
         padding: 5px;
-
         background: var(--green);
         color: var(--dark);
         border-radius: 10px;
@@ -366,7 +362,7 @@ a{
         color: #fff;
       }
 
-      
+
 
       a:hover {
         color: #fff;
@@ -383,27 +379,28 @@ a{
       }
     }
 
-    h2 {
-      margin-bottom: 10px;
-      margin-left: 20px;
-      font-size: 20px;
-    }
+
   }
 
   .userInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-block: 20px;
     padding-inline: 20px;
+
     i {
-      font-size: 25px;
+      font-size: 18px;
+      width: 23px;
+    }
+
+    .fa-map-marker-alt {
+      padding-left: 4px;
     }
   }
 
   .bio {
     text-align: left;
-    padding-bottom: 10px;
+    padding-top: 5px;
   }
 
   .userInfoLink {
@@ -413,8 +410,8 @@ a{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    
-    
+
+
   }
 
   .userInfoLink li {
@@ -423,12 +420,12 @@ a{
     // color: #aaaaaa;
     color: var(--green);
 
-    
+
   }
 
-  
 
-  .containerSlider > section {
+
+  .containerSlider>section {
     margin: 0 auto;
     text-align: center;
     padding-top: 20px;
@@ -504,7 +501,7 @@ a{
     justify-content: space-evenly;
   }
 
-  .fas > i {
+  .fas>i {
     font-size: 16px;
   }
 }

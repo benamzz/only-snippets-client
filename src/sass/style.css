@@ -20,6 +20,7 @@ body {
 
 i > p {
   font-family: "Urbanist", sans-serif;
+  font-size: 10px;
 }
 
 a {
@@ -204,16 +205,11 @@ a {
 }
 
 .Profile {
-  padding-top: 20px;
-  padding-bottom: 20px;
   font-size: 16px;
 }
 .Profile .fa-user-edit,
 .Profile .fa-sign-out-alt {
   font-size: 16px;
-}
-.Profile i {
-  font-size: 18px;
 }
 .Profile .ProfileDetails {
   display: flex;
@@ -229,6 +225,8 @@ a {
 }
 .Profile .one {
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 .Profile .one #avatar {
   width: 80px;
@@ -238,6 +236,13 @@ a {
 .Profile .two {
   flex: 4;
   display: flex;
+  align-items: center;
+  height: 100px;
+}
+.Profile .two h2 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 20px;
 }
 .Profile .two .EditLogoutContainer {
   margin-left: auto;
@@ -246,7 +251,7 @@ a {
 }
 .Profile .two .EditLogoutContainer a,
 .Profile .two .EditLogoutContainer button {
-  margin: 10px;
+  margin: 5px;
   padding: 5px;
   background: var(--green);
   color: var(--dark);
@@ -275,24 +280,22 @@ a {
   cursor: pointer;
   color: #fff;
 }
-.Profile .two h2 {
-  margin-bottom: 10px;
-  margin-left: 20px;
-  font-size: 20px;
-}
 .Profile .userInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-block: 20px;
   padding-inline: 20px;
 }
 .Profile .userInfo i {
-  font-size: 25px;
+  font-size: 18px;
+  width: 23px;
+}
+.Profile .userInfo .fa-map-marker-alt {
+  padding-left: 4px;
 }
 .Profile .bio {
   text-align: left;
-  padding-bottom: 10px;
+  padding-top: 5px;
 }
 .Profile .userInfoLink {
   padding-inline: 20px;

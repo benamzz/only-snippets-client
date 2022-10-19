@@ -60,7 +60,7 @@ function Profile(props) {
         setMyLikes(likes.data);
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, [userId, props.value]);
   // console.log(myUser)
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
@@ -82,13 +82,13 @@ function Profile(props) {
               (user._id === myUser._id ? (
 
                 <div className="EditLogoutContainer">
-                  
+
                   <Link id="edit-btn" to={`/users/${userId}/edit`}>
                     <i className="fas fa-user-edit">
                       <p>Edit</p>
                     </i>
                   </Link>
-                  
+
                   <button onClick={logOutUser}>
                     <i className="fas fa-sign-out-alt">
                       <p>Logout</p>
@@ -102,7 +102,7 @@ function Profile(props) {
         </section>
 
         <div className="userInfo">
-        {myUser.location && (
+          {myUser.location && (
             <p className="bio">
               <i className="fas fa-map-marker-alt"></i> {myUser.location}
             </p>
@@ -113,52 +113,52 @@ function Profile(props) {
               <i className="fas fa-coffee"></i> {myUser.bio}
             </p>
           )}
-          
+
           {myUser.tags.length > 0 && <p className="bio">
-              <i className="fas fa-code"></i> {myUser.tags.map(e => { return `${e} || ` })}
-           </p> }
+            <i className="fas fa-code"></i> {myUser.tags.map(e => { return `${e} || ` })}
+          </p>}
         </div>
 
         <div>
           <ul className="userInfoLink">
-               
-          
-            
+
+
+
             <li> <i class="fas fa-desktop"> </i>
-               {myUser.website && (
+              {myUser.website && (
                 <a
                   href={`https://www.${myUser.website}`}
                   target="_blank"
                   rel="noreferrer"
                 >
-                 {myUser.website}
+                  {myUser.website}
                 </a>
-                
+
               )}
-              
+
             </li>
-            
+
             <li>
-            {myUser.linkedin && (
-              <a
-                href={`https://www.${myUser.linkedin}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-linkedin"></i>
-              </a>
-            )}
+              {myUser.linkedin && (
+                <a
+                  href={`https://www.${myUser.linkedin}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-linkedin"></i>
+                </a>
+              )}
             </li>
             <li>
-            {myUser.github && (
-              <a
-                href={`http://www.${myUser.github}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-github"></i>
-              </a>
-            )}
+              {myUser.github && (
+                <a
+                  href={`http://www.${myUser.github}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-github"></i>
+                </a>
+              )}
             </li>
           </ul>
           <div className="FollowsLink">

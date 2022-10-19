@@ -20,11 +20,12 @@ function ArticleDetails() {
 
     const getComments = useCallback(() => {
         api().get(`/articles/${articleId}/comments`)
-            .then(commentsFromApi => setComments(commentsFromApi.data))
+            .then(commentsFromApi => {
+                setComments(commentsFromApi.data)
+            })
             .catch(err => console.log(err))
     }, [articleId])
     useEffect(() => { getComments() }, [getComments])
-
     if (!article) return "loading"
 
     return (
@@ -33,6 +34,7 @@ function ArticleDetails() {
             <Article value={article.data} />
             {comments && comments.map(el => {
                 return (
+
                     <Article value={el} key={el._id} />
                 )
             })}
