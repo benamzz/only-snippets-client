@@ -18,6 +18,15 @@ body {
   margin-bottom: 50px;
 }
 
+i > p {
+  font-family: "Urbanist", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--green);
+}
+
 #auth-btn {
   margin: 10px;
   padding: 15px;
@@ -64,7 +73,6 @@ body {
 }
 .Login a,
 .Signup a {
-  text-decoration: none;
   color: rgba(255, 255, 255, 0.724);
 }
 .Login .fa-arrow-circle-left,
@@ -113,7 +121,6 @@ body {
 .Login .googleAuth-btn a,
 .Signup .googleAuth-btn a {
   color: #000;
-  text-decoration: none;
 }
 .Login #logSignLogo,
 .Signup #logSignLogo {
@@ -137,7 +144,6 @@ body {
 .nav li a {
   color: white;
   text-align: center;
-  text-decoration: none;
 }
 .nav li .fas {
   font-size: 30px;
@@ -192,9 +198,6 @@ body {
 .HomeDisconnected p {
   margin: 20px;
 }
-.HomeDisconnected a {
-  text-decoration: none;
-}
 .HomeDisconnected #two-auth {
   padding: 30px;
   text-shadow: 1px 2px #4c4c4c;
@@ -205,9 +208,12 @@ body {
   padding-bottom: 20px;
   font-size: 16px;
 }
-.Profile a {
-  text-decoration: none;
-  color: #0b768d;
+.Profile .fa-user-edit,
+.Profile .fa-sign-out-alt {
+  font-size: 16px;
+}
+.Profile i {
+  font-size: 18px;
 }
 .Profile .ProfileDetails {
   display: flex;
@@ -235,39 +241,58 @@ body {
 }
 .Profile .two .EditLogoutContainer {
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
 }
-.Profile .two h2 {
-  margin-bottom: 10px;
-  margin-left: 20px;
-}
-.Profile .two a,
-.Profile .two button {
+.Profile .two .EditLogoutContainer a,
+.Profile .two .EditLogoutContainer button {
   margin: 10px;
   padding: 5px;
   background: var(--green);
   color: var(--dark);
   border-radius: 10px;
   box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.7);
-  text-decoration: none;
 }
-.Profile .two a:hover {
+.Profile .two .EditLogoutContainer a:hover {
   color: #fff;
 }
-.Profile .two button {
+.Profile .two .EditLogoutContainer button {
   border: none;
   background-color: #0b768d;
 }
-.Profile .two button:hover {
+.Profile .two .EditLogoutContainer button:hover {
   cursor: pointer;
   color: #fff;
 }
+.Profile .two .EditLogoutContainer a:hover {
+  color: #fff;
+}
+.Profile .two .EditLogoutContainer button {
+  border: none;
+  background-color: #0b768d;
+}
+.Profile .two .EditLogoutContainer button:hover {
+  cursor: pointer;
+  color: #fff;
+}
+.Profile .two h2 {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+}
 .Profile .userInfo {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   margin-block: 20px;
+  padding-inline: 20px;
 }
-.Profile #bio {
+.Profile .userInfo i {
+  font-size: 25px;
+}
+.Profile .bio {
   text-align: left;
+  padding-bottom: 10px;
 }
 .Profile .userInfoLink {
   padding-inline: 20px;
@@ -280,10 +305,6 @@ body {
   list-style: none;
   padding: 5px;
   color: var(--green);
-}
-.Profile .userInfoLink li #fol-links {
-  text-decoration: none;
-  color: white;
 }
 .Profile .containerSlider > section {
   margin: 0 auto;
@@ -340,6 +361,9 @@ body {
 .Profile .FollowsLink {
   display: flex;
   justify-content: space-evenly;
+}
+.Profile .fas > i {
+  font-size: 16px;
 }
 
 .ProfileEdit form,

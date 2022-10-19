@@ -5,7 +5,7 @@ import TopNavbar from "../components/TopNavbar";
 import Article from "../components/Article";
 import FollowButton from "../components/followButton";
 import { Link, useParams } from "react-router-dom";
-import api from "../api"
+import api from "../api";
 
 function Profile(props) {
   const [myUser, setMyUser] = useState(null);
@@ -18,26 +18,31 @@ function Profile(props) {
 
   //get User
   useEffect(() => {
-    api().get(`/users/${userId}`)
-      .then(userFromApi => setMyUser(userFromApi.data))
-      .catch(err => console.log("err", err));;
+    api()
+      .get(`/users/${userId}`)
+      .then((userFromApi) => setMyUser(userFromApi.data))
+      .catch((err) => console.log("err", err));
   }, [userId]);
 
   //get followers
   useEffect(() => {
-    api().get(`/users/${userId}/followers`)
+    api()
+      .get(`/users/${userId}/followers`)
       .then((followersFromAPI) => {
-        setFollowers(followersFromAPI)
-        refresh()
+        setFollowers(followersFromAPI);
+        refresh();
       })
       .catch((err) => console.log(err));
   }, [userId]);
 
   //get articles
   useEffect(() => {
-    api().get(`/articles?userId=${userId}`)
+    api()
+      .get(`/articles?userId=${userId}`)
       .then((articles) => {
-        if (!props.value) { setTab(0) }
+        if (!props.value) {
+          setTab(0);
+        }
         const filteredArticles = articles.data.filter((el) => !el.parentId);
         setMyArticles(filteredArticles);
       })
@@ -46,14 +51,17 @@ function Profile(props) {
 
   //get likes
   useEffect(() => {
-    api().get(`/users/${userId}/likes`)
+    api()
+      .get(`/users/${userId}/likes`)
       .then((likes) => {
-        if (props.value === "likes") { setTab(1) }
+        if (props.value === "likes") {
+          setTab(1);
+        }
         setMyLikes(likes.data);
       })
       .catch((err) => console.log(err));
   }, [userId]);
-
+  // console.log(myUser)
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
@@ -70,54 +78,93 @@ function Profile(props) {
 
           <div className="flex-child two">
             <h2>@{myUser.username}</h2>
-            {isLoggedIn && (
-              (user._id === myUser._id ?
+            {isLoggedIn &&
+              (user._id === myUser._id ? (
+
                 <div className="EditLogoutContainer">
-                  <Link to={`/users/${userId}/edit`}>
-                    <i className="fas fa-user-edit"></i> Edit
+                  
+                  <Link id="edit-btn" to={`/users/${userId}/edit`}>
+                    <i className="fas fa-user-edit">
+                      <p>Edit</p>
+                    </i>
                   </Link>
+                  
                   <button onClick={logOutUser}>
-                    <i className="fas fa-sign-out-alt"></i> Logout
+                    <i className="fas fa-sign-out-alt">
+                      <p>Logout</p>
+                    </i>
                   </button>
                 </div>
-                : <FollowButton value={myUser} />
-              )
-            )}
+              ) : (
+                <FollowButton value={myUser} />
+              ))}
           </div>
         </section>
 
         <div className="userInfo">
-          {myUser.bio && <p id="bio">
-            <i className="fas fa-coffee"></i> {myUser.bio}
-          </p>}
-          {myUser.location && <p id="bio">
-            <i className="fas fa-map-marker-alt"></i> {myUser.location}
-          </p>}
-        </div >
+        {myUser.location && (
+            <p className="bio">
+              <i className="fas fa-map-marker-alt"></i> {myUser.location}
+            </p>
+          )}
 
+          {myUser.bio && (
+            <p className="bio">
+              <i className="fas fa-coffee"></i> {myUser.bio}
+            </p>
+          )}
+          
+          {myUser.tags.length > 0 && <p className="bio">
+              <i className="fas fa-code"></i> {myUser.tags.map(e => { return `${e} || ` })}
+           </p> }
+        </div>
 
         <div>
           <ul className="userInfoLink">
-            <li>
-
+               
+          
+            
+            <li> <i class="fas fa-desktop"> </i>
+               {myUser.website && (
+                <a
+                  href={`https://www.${myUser.website}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                 {myUser.website}
+                </a>
+                
+              )}
+              
             </li>
-            {myUser.tags && <li>
-              <i className="fas fa-code"></i> {myUser.tags.map(e => { return `${e} || ` })}
-            </li>}
-            {myUser.website && <a href={`https://www.${myUser.website}`} target="_blank" rel="noreferrer">
-              {myUser.website}
-            </a>}
-            {myUser.linkedin && <a href={`https://www.${myUser.linkedin}`} target="_blank" rel="noreferrer">
-              <i className="fab fa-linkedin"></i>
-            </a>}
-            {myUser.github && <a href={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
-              <i className="fab fa-github"></i>
-            </a>}
-
+            
+            <li>
+            {myUser.linkedin && (
+              <a
+                href={`https://www.${myUser.linkedin}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            )}
+            </li>
+            <li>
+            {myUser.github && (
+              <a
+                href={`http://www.${myUser.github}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+            )}
+            </li>
           </ul>
           <div className="FollowsLink">
             <Link id="fol-links" to={`/users/${userId}/follows`}>
-              {myUser.following.length === 0 ? 0 : myUser.following.length} Follows
+              {myUser.following.length === 0 ? 0 : myUser.following.length}{" "}
+              Follows
             </Link>
             <Link id="fol-links" to={`/users/${userId}/followers`}>
               {!followers ? 0 : followers.data.length} Followers
@@ -136,20 +183,22 @@ function Profile(props) {
       </div>
 
       <div className="articlesList">
-        {tab === 0 && myArticles.map((el) => {
-          return (
-            <div key={el._id}>
-              <Article value={el}></Article>
-            </div>
-          );
-        })}
-        {tab === 1 && myLikes.map((el) => {
-          return (
-            <div key={el._id}>
-              <Article value={el}></Article>
-            </div>
-          );
-        })}
+        {tab === 0 &&
+          myArticles.map((el) => {
+            return (
+              <div key={el._id}>
+                <Article value={el}></Article>
+              </div>
+            );
+          })}
+        {tab === 1 &&
+          myLikes.map((el) => {
+            return (
+              <div key={el._id}>
+                <Article value={el}></Article>
+              </div>
+            );
+          })}
       </div>
 
       <BottomNavbar />
