@@ -54,7 +54,6 @@ function ProfileEdit() {
             .catch(err => console.log(err));
     };
 
-    console.log("tags", tags)
     if (!user) return "loading"
 
     return (

@@ -57,8 +57,7 @@ function Profile(props) {
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
-  // console.log("user", user)
-  console.log("myUser", myUser)
+
   return (
     <div className="Profile">
       <TopNavbar />
