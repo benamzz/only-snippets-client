@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
+import languages from "../languages";
 
 function ProfileEdit() {
     const { user, refresh: refreshUser } = useContext(AuthContext);
@@ -69,21 +70,10 @@ function ProfileEdit() {
                     Location : <input type="text" name="location" value={location} onChange={handleLocationInput} placeholder={user.location} />
                 </label>
                 <label>
-                    Tags : <select name="tags" value={tags} onChange={handleTagsInput} placeholder={user.tags} multiple>
-                        <option value=""></option>
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="JS">JS</option>
-                        <option value="TYPESCRIPT">TYPESCRIPT</option>
-                        <option value="PYTHON">PYTHON</option>
-                        <option value="C">C</option>
-                        <option value="PHP">PHP</option>
-                        <option value="PYTHON">PYTHON</option>
-                        <option value="C#">C#</option>
-                        <option value="c++">c++</option>
-                        <option value="REACTJS">REACTJS</option>
-                        <option value="VUEJS">VUEJS</option>
-                        <option value="NEXTJS">NEXTJS</option>
+                    Tags : <select name="tags" onChange={handleTagsInput} placeholder={user.tags} multiple>
+                        {languages.map(elem => {
+                            return (<option key={elem} value={elem} selected={user.tags.includes(elem)}>{elem}</option>)
+                        })}
                     </select>
                 </label>
                 <label>

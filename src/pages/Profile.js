@@ -88,12 +88,12 @@ function Profile(props) {
         </section>
 
         <div className="userInfo">
-          <p id="bio">
+          {myUser.bio && <p id="bio">
             <i className="fas fa-coffee"></i> {myUser.bio}
-          </p>
-          <p id="bio">
+          </p>}
+          {myUser.location && <p id="bio">
             <i className="fas fa-map-marker-alt"></i> {myUser.location}
-          </p>
+          </p>}
         </div >
 
 
@@ -102,16 +102,16 @@ function Profile(props) {
             <li>
 
             </li>
-            <li>
+            {myUser.tag && <li>
               <i className="fas fa-code"></i> {myUser.tags}
-            </li>
-            {myUser.website !== "" && <a href={`https://www.${myUser.website}`} target="_blank" rel="noreferrer">
+            </li>}
+            {myUser.website && <a href={`https://www.${myUser.website}`} target="_blank" rel="noreferrer">
               {myUser.website}
             </a>}
-            {myUser.linkedin !== "" && <a href={`https://www.${myUser.linkedin}`} target="_blank" rel="noreferrer">
+            {myUser.linkedin && <a href={`https://www.${myUser.linkedin}`} target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>}
-            {myUser.github !== "" && <a href={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
+            {myUser.github && <a href={`http://www.${myUser.github}`} target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i>
             </a>}
 
