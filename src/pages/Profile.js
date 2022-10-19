@@ -58,7 +58,7 @@ function Profile(props) {
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
   // console.log("user", user)
-  // console.log("myUser", myUser)
+  console.log("myUser", myUser)
   return (
     <div className="Profile">
       <TopNavbar />
@@ -102,8 +102,8 @@ function Profile(props) {
             <li>
 
             </li>
-            {myUser.tag && <li>
-              <i className="fas fa-code"></i> {myUser.tags}
+            {myUser.tags && <li>
+              <i className="fas fa-code"></i> {myUser.tags.map(e => { return `${e} || ` })}
             </li>}
             {myUser.website && <a href={`https://www.${myUser.website}`} target="_blank" rel="noreferrer">
               {myUser.website}

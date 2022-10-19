@@ -24,8 +24,8 @@ function ProfileEdit() {
     const handleBioInput = e => setBio(e.target.value);
     const handleLocationInput = e => setLocation(e.target.value);
     const handleTagsInput = e => {
-        const arr = e.target.value.push
-        setTags(arr)
+        let selectedTags = Array.from(e.target.selectedOptions, option => option.value);
+        setTags(selectedTags);
     };
     const handleWebsiteInput = e => setWebsite(e.target.value);
     const handleLinkedinInput = e => setLinkedin(e.target.value);
@@ -54,6 +54,7 @@ function ProfileEdit() {
             .catch(err => console.log(err));
     };
 
+    console.log("tags", tags)
     if (!user) return "loading"
 
     return (
