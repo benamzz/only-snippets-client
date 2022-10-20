@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import { useParams } from "react-router-dom";
@@ -9,12 +9,12 @@ function Follows() {
     const { userId } = useParams();
     const [follows, setFollows] = useState(null)
 
-    const getFollows = useCallback(() => {
+    //get follows
+    useEffect(() => {
         api().get(`/users/${userId}`)
             .then(userFromApi => setFollows(userFromApi.data.following))
             .catch(err => console.log("err", err));
     }, [userId]);
-    useEffect(() => { getFollows() }, [getFollows]);
 
     if (!follows) return "loading";
 

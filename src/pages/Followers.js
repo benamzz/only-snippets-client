@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import { useParams } from "react-router-dom";
@@ -9,13 +9,12 @@ function Followers() {
     const [followers, setFollowers] = useState(null)
     const { userId } = useParams();
 
-    const getFollowers = useCallback(() => {
+    //get followers
+    useEffect(() => {
         api().get(`/users/${userId}/followers`)
             .then(followers => setFollowers(followers.data))
             .catch(err => console.log(err))
     }, [userId])
-    useEffect(() => { getFollowers() }, [getFollowers])
-
 
     return (
         <div className="FollowersList">

@@ -6,7 +6,6 @@ function FollowButton(props) {
     const { user, refresh } = useContext(AuthContext);
     const [followed, setFollow] = useState(false)
 
-
     const toggleFollow = useCallback((e) => {
         e.preventDefault();
         if (user.following.includes(props.value._id)) {
@@ -27,7 +26,7 @@ function FollowButton(props) {
                 })
                 .catch(err => console.log(err))
         }
-    })
+    }, [user])
     if (!props.value) return "loading"
     return (
         <div className="FollowButton">

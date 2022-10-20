@@ -21,7 +21,6 @@ function ArticleEdit() {
         e.preventDefault();
         const updatedArticle = { content: content };
         const updatedSnippet = { content: snippet, tag: tag }
-        console.log("updatedSnippet", updatedSnippet)
 
         api().patch(`/articles/${articleId}`, updatedArticle)
             .then(() => {
@@ -34,9 +33,7 @@ function ArticleEdit() {
 
     useEffect(() => {
         api().get(`/articles/${articleId}`)
-            .then((article) => {
-                setMyArticle(article.data)
-            })
+            .then((article) => setMyArticle(article.data))
             .catch(err => console.log(err))
     }, [articleId]);
 

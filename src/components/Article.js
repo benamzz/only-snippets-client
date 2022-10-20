@@ -3,14 +3,10 @@ import { useCallback, useContext, useState } from 'react'
 import { AuthContext } from "../context/auth.context";
 import api from "../api"
 
-import styled from '@emotion/styled'
-
 function Article(props) {
     const { user, refresh } = useContext(AuthContext);
-    const [clr, setClr] = useState("red")
     const [liked, setLiked] = useState(false)
     const [deleted, setDeleted] = useState(false)
-
 
     const toggleLike = useCallback((e) => {
         e.preventDefault();
@@ -30,13 +26,12 @@ function Article(props) {
                 })
                 .catch(err => console.log(err))
         }
-    })
+    }, [props.value._id, refresh, user.likes])
     const deleteArticle = useCallback((e) => {
         e.preventDefault();
         return api().delete(`/articles/${props.value._id}`)
             .then(() => {
                 setDeleted(!deleted)
-                console.log(deleted)
                 console.log("Article deleted!", props.value._id)
                 refresh()
             })
@@ -47,7 +42,7 @@ function Article(props) {
     if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"
     return (
-        <Styled clr={clr} className="Article">
+        <div className='Article'>
             {!props.value.deletedAt &&
                 <>
                     <div className='articleContainer'>
@@ -66,29 +61,17 @@ function Article(props) {
                                 <Link to={`/articles/${props.value._id}/edit`} id="editArticleLink">Edit</Link>
                             </div>)}
 
-                        {/* <p onClick={e => setClr('yellow')}>coucou <a>ca</a> va ?</p> */}
-
                     </div>
                     <div className='articleBtn'>
                         <Link to={`/articles/${props.value._id}/comment`}>{props.value.comments.length} comment(s)</Link>
                         <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? <i class="fas fa-heart"></i>
                             : <i class="far fa-heart"></i>}</div>
-                        {props.value.snippet.content != "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>See the Snippet</Link>}
+                        {props.value.snippet.content !== "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>See the Snippet</Link>}
                     </div>
                 </>
             }
-        </Styled >
+        </div>
     );
 }
-
-const Styled = styled.div`
-
-p {
-    color:${(props) => props.clr};
-
-    &:hover {font-size:2rem;}
-    a {color:green;}
-}
-`
 
 export default Article;

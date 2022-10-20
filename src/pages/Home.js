@@ -8,12 +8,11 @@ import api from "../api"
 import Article from "../components/Article";
 
 function Home() {
-  const API_URL = "http://localhost:5005";
   const { user } = useContext(AuthContext);
   const [myArticles, setMyArticles] = useState(null)
 
   useEffect(() => {
-    api().get(`${API_URL}/api/articles`)
+    api().get(`/articles`)
       .then((articles) => {
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
         const followingArticles = noCommentsFilter.filter(el => {
@@ -26,15 +25,12 @@ function Home() {
         feedArticles = followingArticles.concat(userArticles)
         console.log("feedArticles", feedArticles)
         feedArticles.sort((a, b) => { return b.updatedAt - a.updatedAt })
-        console.log("sortedArticles", feedArticles)
-
         setMyArticles(feedArticles)
       })
       .catch(err => console.log(err))
   }, [user])
 
   if (!user) {
-    console.log("no user")
     return (
       <div className="HomeDisconnected">
         <h1>Welcome <span>to</span> <span id="name-app" >only.snippet</span> </h1>

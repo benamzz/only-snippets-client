@@ -6,7 +6,7 @@ import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import User from "../components/User";
 
-function Search(props) {
+function Search() {
     const [user, setUser] = useState(null);
     const [myArticles, setMyArticles] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -29,8 +29,6 @@ function Search(props) {
             .catch((err) => console.log(err));
     }, []);
 
-    console.log("myArticles", myArticles)
-
     if (!myArticles) return "loading"
     if (!user) return "loading"
 
@@ -38,12 +36,11 @@ function Search(props) {
 
         <div className="searchBar">
             <TopNavbar />
-            <h1>Search</h1>
             <input
                 type="text"
                 name="searchBar"
                 id="searchBar"
-                placeholder="Searching on Only-Snippet"
+                placeholder="search by user, article, snippet or tag"
                 onChange={HandleSearch}
                 value={searchTerm}
             />
@@ -86,7 +83,6 @@ function Search(props) {
                         })}
                     <p>Tags</p>
                     {myArticles.data.filter(e => {
-                        console.log("e", e)
                         const lower = e.snippet.tag.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
                     })

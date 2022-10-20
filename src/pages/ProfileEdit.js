@@ -32,7 +32,6 @@ function ProfileEdit() {
     const handleGithubInput = e => setGithub(e.target.value);
 
     const handleFileUpload = (e) => {
-        console.log("e.target.files", e.target.files[0])
         const uploadData = new FormData();
         uploadData.append("avatarUrl", e.target.files[0]);
         api().post(`/upload`, uploadData)
@@ -41,7 +40,6 @@ function ProfileEdit() {
             })
             .catch(err => console.log("Error while uploading file:", err))
     };
-
 
     const handleProfileSubmit = (e) => {
         e.preventDefault();

@@ -61,7 +61,7 @@ function Profile(props) {
       })
       .catch((err) => console.log(err));
   }, [userId, props.value]);
-  // console.log(myUser)
+
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";
@@ -121,9 +121,6 @@ function Profile(props) {
 
         <div>
           <ul className="userInfoLink">
-
-
-
             <li> <i class="fas fa-desktop"> </i>
               {myUser.website && (
                 <a
@@ -133,11 +130,8 @@ function Profile(props) {
                 >
                   {myUser.website}
                 </a>
-
               )}
-
             </li>
-
             <li>
               {myUser.linkedin && (
                 <a

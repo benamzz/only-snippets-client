@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import logoOnlySnippets from "../components/logoOnlySnippets.png";
+import api from "../api"
 
 const API_URL = "http://localhost:5005";
 
-function Signup(props) {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -20,8 +20,7 @@ function Signup(props) {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
-    axios
-      .post(`${API_URL}/api/users`, requestBody)
+    api().post(`${API_URL}/api/users`, requestBody)
       .then(() => navigate("/login"))
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -38,15 +37,6 @@ function Signup(props) {
       <h2>Create your account</h2>
 
       <form onSubmit={handleSignupSubmit}>
-
-        <div className="googleAuth-btn">
-          <a href="www.google.com">
-            <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
-            Sign up with Google
-          </a>
-        </div>
-
-        <div>or</div>
 
         <label>Email <i className="fas fa-at"> :</i></label>
         <input type="email" name="email" value={email} onChange={handleEmail} placeholder="Your email adress"
