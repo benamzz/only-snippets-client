@@ -164,7 +164,7 @@ function Profile(props) {
           <div className="FollowsLink">
             <Link id="fol-links" to={`/users/${userId}/follows`}>
               {myUser.following.length === 0 ? 0 : myUser.following.length}{" "}
-              Follows
+              Followings
             </Link>
             <Link id="fol-links" to={`/users/${userId}/followers`}>
               {!followers ? 0 : followers.data.length} Followers

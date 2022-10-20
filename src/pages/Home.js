@@ -53,6 +53,7 @@ function Home() {
   return (
     <div className="Home">
       <TopNavbar />
+      <h1>Feed</h1>
       {myArticles && (myArticles.map(el => {
         return (<Article value={el} key={el._id} />)
       }))}
