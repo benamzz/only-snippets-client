@@ -33,6 +33,8 @@ function App() {
         <Route path="/articles/:articleId/comment" element={<ArticleNew />} />
         <Route path="/articles/:articleId" element={<ArticleDetails />} />
         <Route path="/search" element={<Search />} />
+
+
       </Routes>
     </div>
   );

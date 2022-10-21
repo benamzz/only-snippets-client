@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './sass/style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProviderWrapper } from "./context/auth.context"; // <== IMPORT
-import {BrowserRouter} from 'react-router-dom'
+import { AuthProviderWrapper } from "./context/auth.context";
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
   <React.StrictMode>
-     <BrowserRouter>
-      <AuthProviderWrapper>      
+    <BrowserRouter>
+      <AuthProviderWrapper>
         <App />
-      </AuthProviderWrapper>     
+      </AuthProviderWrapper>
     </BrowserRouter>
   </React.StrictMode>,
-    document.getElementById("root")
+  document.getElementById("root")
 
 );
 

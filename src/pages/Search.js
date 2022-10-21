@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import api from "../api";
 import Article from "../components/Article";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import User from "../components/User";
+import { AuthContext } from '../context/auth.context'
 
 function Search() {
     const [user, setUser] = useState(null);
     const [myArticles, setMyArticles] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const { isLoggedIn } = useContext(AuthContext)
+
     const HandleSearch = (e) => setSearchTerm(e.target.value)
 
     //get users
@@ -28,7 +31,12 @@ function Search() {
             })
             .catch((err) => console.log(err));
     }, []);
-
+    if (!isLoggedIn) return (
+        <>
+            <p>You must login to access this page</p>
+            <Link to="/login">Login</Link>
+        </>
+    )
     if (!myArticles) return "loading"
     if (!user) return "loading"
 

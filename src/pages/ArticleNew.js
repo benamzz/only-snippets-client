@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 import api from "../api"
 import languages from "../languages";
+import { AuthContext } from '../context/auth.context'
 
 function ArticleNew() {
     const [tag, setTag] = useState("")
@@ -11,6 +12,7 @@ function ArticleNew() {
     const [snippet, setSnippet] = useState("")
     const navigate = useNavigate()
     const { articleId } = useParams()
+    const { isLoggedIn } = useContext(AuthContext)
 
     const handleTagInput = e => setTag(e.target.value);
     const handleContentInput = e => setContent(e.target.value);
@@ -37,7 +39,12 @@ function ArticleNew() {
             })
             .catch((err) => console.log("err", err));
     }
-
+    if (!isLoggedIn) return (
+        <>
+            <p>You must login to access this page</p>
+            <Link to="/login">Login</Link>
+        </>
+    )
     return (
         <div className="ArticleNew">
             <TopNavbar />

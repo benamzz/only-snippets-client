@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import api from "../api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
@@ -17,6 +17,8 @@ function ProfileEdit() {
     const [github, setGithub] = useState("")
     const [avatarUrl, setAvatarUrl] = useState("")
     const { userId } = useParams()
+    const { isLoggedIn } = useContext(AuthContext)
+
 
     const navigate = useNavigate()
 
@@ -51,7 +53,12 @@ function ProfileEdit() {
             })
             .catch(err => console.log(err));
     };
-
+    if (!isLoggedIn) return (
+        <>
+            <p>You must login to access this page</p>
+            <Link to="/login">Login</Link>
+        </>
+    )
     if (!user) return "loading"
 
     return (

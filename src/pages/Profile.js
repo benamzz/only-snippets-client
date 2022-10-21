@@ -61,7 +61,12 @@ function Profile(props) {
       })
       .catch((err) => console.log(err));
   }, [userId, props.value]);
-
+  if (!isLoggedIn) return (
+    <>
+      <p>You must login to access this page</p>
+      <Link to="/login">Login</Link>
+    </>
+  )
   if (!myUser) return "loading";
   if (!myArticles) return "loading";
   if (!myLikes) return "loading";

@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useState, useEffect, useContext } from "react"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import api from "../api"
 import languages from "../languages"
 import TopNavbar from "../components/TopNavbar"
 import BottomNavbar from "../components/BottomNavbar"
+import { AuthContext } from '../context/auth.context'
 
 function ArticleEdit() {
     const [tag, setTag] = useState("")
@@ -12,6 +13,7 @@ function ArticleEdit() {
     const { articleId } = useParams()
     const [myArticle, setMyArticle] = useState()
     const navigate = useNavigate()
+    const { isLoggedIn } = useContext(AuthContext)
 
     const handleTagInput = e => setTag(e.target.value);
     const handleContentInput = e => setContent(e.target.value);
@@ -36,7 +38,12 @@ function ArticleEdit() {
             .then((article) => setMyArticle(article.data))
             .catch(err => console.log(err))
     }, [articleId]);
-
+    if (!isLoggedIn) return (
+        <>
+            <p>You must login to access this page</p>
+            <Link to="/login">Login</Link>
+        </>
+    )
     if (!myArticle) return "loading"
 
     return (

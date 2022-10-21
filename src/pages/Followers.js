@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import User from "../components/User";
 import api from "../api"
+import { AuthContext } from '../context/auth.context'
 
 function Followers() {
     const [followers, setFollowers] = useState(null)
     const { userId } = useParams();
+    const { isLoggedIn } = useContext(AuthContext)
 
     //get followers
     useEffect(() => {
@@ -15,7 +17,12 @@ function Followers() {
             .then(followers => setFollowers(followers.data))
             .catch(err => console.log(err))
     }, [userId])
-
+    if (!isLoggedIn) return (
+        <>
+            <p>You must login to access this page</p>
+            <Link to="/login">Login</Link>
+        </>
+    )
     return (
         <div className="FollowersList">
             <TopNavbar />
