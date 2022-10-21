@@ -130,7 +130,7 @@ function Profile(props) {
               <li>
                 <i className="fas fa-desktop"> </i>
                 <a
-                  href={`https://www.${myUser.website}`}
+                  href={`${myUser.website}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -141,7 +141,7 @@ function Profile(props) {
             <li>
               {myUser.linkedin && (
                 <a
-                  href={`https://www.${myUser.linkedin}`}
+                  href={`https://www.linkedin.com/in/${myUser.linkedin}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -152,7 +152,7 @@ function Profile(props) {
             <li>
               {myUser.github && (
                 <a
-                  href={`http://www.${myUser.github}`}
+                  href={`http://www.github.com/${myUser.github}`}
                   target="_blank"
                   rel="noreferrer"
                 >

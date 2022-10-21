@@ -82,13 +82,13 @@ function ProfileEdit() {
                     </select>
                 </label>
                 <label>
-                    Website : http://www.<input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={`  ${user.website}`} />
+                    Website : <input type="text" name="website" value={website} onChange={handleWebsiteInput} placeholder={`  ${user.website}`} />
                 </label>
                 <label>
-                    Linkedin : http://www.<input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={`  ${user.linkedin}`} />
+                    Linkedin : <input type="text" name="linkedin" value={linkedin} onChange={handleLinkedinInput} placeholder={`  ${user.linkedin}`} />
                 </label>
                 <label>
-                    Github : http://www.<input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={`  ${user.github}`} />
+                    Github : <input type="text" name="github" value={github} onChange={handleGithubInput} placeholder={`  ${user.github}`} />
                 </label>
                 <label>
                     Profile image<input type="file" name="avatarUrl" id="uploadImg  " onChange={handleFileUpload} />
