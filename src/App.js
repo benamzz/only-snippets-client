@@ -1,4 +1,3 @@
-import './App.css';
 import '../node_modules/highlight.js/styles/tokyo-night-dark.css'
 import Home from "./pages/Home"
 import Login from "./pages/Login"

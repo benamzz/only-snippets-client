@@ -55,7 +55,7 @@ function Search() {
 
             {searchTerm.length > 0 &&
                 <div className="searchResult">
-                    <p>Articles</p>
+                    <h4>Articles</h4>
                     {myArticles.data.filter(e => {
                         const lower = e.content.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
@@ -66,7 +66,7 @@ function Search() {
                             </Link>
                         );
                     })}
-                    <p>Users</p>
+                    <h4>Users</h4>
                     {user.data.filter(e => {
                         const lower = e.username.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
@@ -79,7 +79,7 @@ function Search() {
                                 </Link>
                             );
                         })}
-                    <p>Snippets</p>
+                    <h4>Snippets</h4>
                     {myArticles.data.filter(e => {
                         const lower = e.snippet.content.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())
@@ -89,7 +89,7 @@ function Search() {
                                 <Article value={e} />
                             </Link>)
                         })}
-                    <p>Tags</p>
+                    <h4>Tags</h4>
                     {myArticles.data.filter(e => {
                         const lower = e.snippet.tag.toLowerCase()
                         return lower.includes(searchTerm.trim().toLowerCase())

@@ -232,6 +232,10 @@ a {
   padding-top: 20px;
   padding-bottom: 20px;
 
+  h1 {
+    text-align: center;
+  }
+
   section {
     margin: 20px;
     // text-align: left;
@@ -578,10 +582,14 @@ a {
 
 // -------------------------------------------SEARCH.js-----------------------------
 .searchBar {
+  display: flex;
+  flex-direction: column;
+
   input {
     margin-top: 20px;
     border-radius: 10px;
     width: 50vw;
+    margin-inline: auto;
   }
 
   p {
@@ -590,6 +598,10 @@ a {
 
   a {
     text-decoration: none;
+  }
+
+  h4 {
+    text-align: center;
   }
 }
 
@@ -720,6 +732,10 @@ a {
   display: flex;
   flex-direction: column;
   background-color: var --darkGreen;
+
+  pre {
+    white-space: pre-wrap;
+  }
 
   #returnBtn {
     height: 30px;

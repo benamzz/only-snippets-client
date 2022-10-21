@@ -179,6 +179,9 @@ a {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.Home h1 {
+  text-align: center;
+}
 .Home section {
   margin: 20px;
 }
@@ -443,16 +446,24 @@ a {
   padding-bottom: 20px;
 }
 
+.searchBar {
+  display: flex;
+  flex-direction: column;
+}
 .searchBar input {
   margin-top: 20px;
   border-radius: 10px;
   width: 50vw;
+  margin-inline: auto;
 }
 .searchBar p {
   color: var(--green);
 }
 .searchBar a {
   text-decoration: none;
+}
+.searchBar h4 {
+  text-align: center;
 }
 
 .FollowButton {
@@ -557,6 +568,9 @@ a {
   display: flex;
   flex-direction: column;
   background-color: var --darkGreen;
+}
+.Snippet pre {
+  white-space: pre-wrap;
 }
 .Snippet #returnBtn {
   height: 30px;
