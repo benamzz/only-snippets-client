@@ -23,7 +23,7 @@ function Snippet() {
             <div className="Snippet">
                 <TopNavbar />
                 <Highlight classname={mySnippet.tag}>{mySnippet.content}</Highlight>
-                <Link to={`/articles/${articleId}`} >Revenir à l'article</Link>
+                <Link to={`/articles/${articleId}`} id="returnBtn">Revenir à l'article</Link>
                 <BottomNavbar />
             </div>
         )

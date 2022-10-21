@@ -424,7 +424,7 @@ a {
 .ArticleNew button {
   height: 30px;
   width: 100px;
-  margin-top: 20px;
+  margin-block: 20px;
   margin-inline: auto;
   border: none;
   border-radius: 20px;
@@ -554,4 +554,19 @@ a {
 
 .Snippet {
   text-align: justify;
+  display: flex;
+  flex-direction: column;
+  background-color: var --darkGreen;
+}
+.Snippet #returnBtn {
+  height: 30px;
+  width: 150px;
+  margin-block: 20px;
+  margin-inline: auto;
+  padding-block: 5px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--green);
+  color: #fff;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
