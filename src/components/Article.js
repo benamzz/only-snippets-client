@@ -64,8 +64,8 @@ function Article(props) {
                     </div>
                     <div className='articleBtn'>
                         <Link to={`/articles/${props.value._id}/comment`}>{props.value.comments.length} comment(s)</Link>
-                        <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? <i class="fas fa-heart"></i>
-                            : <i class="far fa-heart"></i>}</div>
+                        <div className='likeBtn' onClick={toggleLike}>{user.likes.includes(props.value._id) ? <i className="fas fa-heart"></i>
+                            : <i className="far fa-heart"></i>}</div>
                         {props.value.snippet.content !== "" && <Link to={`/articles/${props.value._id}/snippet/${props.value.snippet._id}`}>See the Snippet</Link>}
                     </div>
                 </>

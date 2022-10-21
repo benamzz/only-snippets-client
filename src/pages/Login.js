@@ -39,15 +39,6 @@ function Login() {
 
       <form onSubmit={handleLoginSubmit}>
 
-        <div className="googleAuth-btn">
-          <a href="#">
-            <img src="https://d3ptyyxy2at9ui.cloudfront.net/google-32ae27.svg" alt="" />
-            Google Login
-          </a>
-        </div>
-
-        <div>or</div>
-
         <label>
           Email <i className="fas fa-at"> :</i>
         </label>
