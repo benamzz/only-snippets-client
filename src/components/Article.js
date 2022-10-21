@@ -46,7 +46,7 @@ function Article(props) {
             {!props.value.deletedAt &&
                 <>
                     <div className='articleContainer'>
-                        <Link to={`/users/${props.value._id}`} id="userProfileLink">
+                        <Link to={`/users/${props.value.userId._id}`} id="userProfileLink">
                             <img src={props.value.userId.avatarUrl} alt="avatar" />
                         </Link>
 
