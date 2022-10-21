@@ -69,6 +69,7 @@ a {
 .Login,
 .Signup {
   margin: 50px;
+  text-align: center;
 }
 .Login form,
 .Signup form {
@@ -186,6 +187,9 @@ a {
   margin: 20px;
 }
 
+.HomeDisconnected {
+  text-align: center;
+}
 .HomeDisconnected h1 {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -541,6 +545,9 @@ a {
 .Article .likeBtn {
   color: var(--green);
 }
+.Article .likeBtn:hover {
+  cursor: pointer;
+}
 .Article .articleBtn {
   display: flex;
   justify-content: space-around;
@@ -557,6 +564,9 @@ a {
 .Article .deleteArticleBtn {
   color: rgb(165, 48, 44);
   font-weight: 900;
+}
+.Article .deleteArticleBtn:hover {
+  cursor: pointer;
 }
 .Article #editArticleLink {
   font-weight: 900;
