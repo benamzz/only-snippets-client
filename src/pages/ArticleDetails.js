@@ -1,6 +1,6 @@
 
 import Article from "../components/Article"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import TopNavbar from "../components/TopNavbar";
 import BottomNavbar from "../components/BottomNavbar";
@@ -11,23 +11,22 @@ function ArticleDetails() {
     const [comments, setComments] = useState(null)
     const { articleId } = useParams()
 
-    const getArticle = useCallback(() => {
+    //get article
+    useEffect(() => {
         api().get(`/articles/${articleId}`)
             .then(articleFromApi => setArticle(articleFromApi))
             .catch(err => console.log(err))
     }, [articleId])
-    useEffect(() => { getArticle() }, [getArticle])
 
-    const getComments = useCallback(() => {
+    //get comments
+    useEffect(() => {
         api().get(`/articles/${articleId}/comments`)
-            .then(commentsFromApi => {
-                setComments(commentsFromApi.data)
-            })
+            .then(commentsFromApi => setComments(commentsFromApi.data))
             .catch(err => console.log(err))
     }, [articleId])
-    useEffect(() => { getComments() }, [getComments])
     if (!article) return "loading"
 
+    console.log(article.data)
     return (
         <div className="ArticleDetails">
             <TopNavbar />

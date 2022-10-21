@@ -27,17 +27,17 @@ function Article(props) {
                 .catch(err => console.log(err))
         }
     }, [props.value._id, refresh, user.likes])
+
     const deleteArticle = useCallback((e) => {
         e.preventDefault();
         return api().delete(`/articles/${props.value._id}`)
             .then(() => {
                 setDeleted(!deleted)
-                console.log("Article deleted!", props.value._id)
                 refresh()
             })
             .catch(err => console.log(err))
     })
-
+    console.log("props.value:", props.value)
     let isMyArticle = false
     if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"

@@ -121,8 +121,9 @@ function Profile(props) {
 
         <div>
           <ul className="userInfoLink">
-            <li> <i class="fas fa-desktop"> </i>
-              {myUser.website && (
+            {myUser.website && (
+              <li>
+                <i className="fas fa-desktop"> </i>
                 <a
                   href={`https://www.${myUser.website}`}
                   target="_blank"
@@ -130,8 +131,8 @@ function Profile(props) {
                 >
                   {myUser.website}
                 </a>
-              )}
-            </li>
+              </li>
+            )}
             <li>
               {myUser.linkedin && (
                 <a
