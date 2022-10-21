@@ -26,7 +26,6 @@ function ArticleDetails() {
     }, [articleId])
     if (!article) return "loading"
 
-    console.log(article.data)
     return (
         <div className="ArticleDetails">
             <TopNavbar />

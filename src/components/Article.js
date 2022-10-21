@@ -37,7 +37,7 @@ function Article(props) {
             })
             .catch(err => console.log(err))
     })
-    console.log("props.value:", props.value)
+
     let isMyArticle = false
     if (user._id === props.value.userId._id) { isMyArticle = true }
     if (!props.value) return "loading"
