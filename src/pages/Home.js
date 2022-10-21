@@ -14,6 +14,7 @@ function Home() {
   useEffect(() => {
     api().get(`/articles`)
       .then((articles) => {
+        console.log('articles', articles.data)
         const noCommentsFilter = articles.data.filter(el => !el.parentId)
         const followingArticles = noCommentsFilter.filter(el => {
           return user.following.includes(el.userId._id)
@@ -21,10 +22,7 @@ function Home() {
         const userArticles = noCommentsFilter.filter(el => {
           return user._id === el.userId._id
         })
-        let feedArticles = []
-        feedArticles = followingArticles.concat(userArticles)
-        console.log("feedArticles", feedArticles)
-        feedArticles.sort((a, b) => { return b.updatedAt - a.updatedAt })
+        const feedArticles = followingArticles.concat(userArticles)
         setMyArticles(feedArticles)
       })
       .catch(err => console.log(err))
